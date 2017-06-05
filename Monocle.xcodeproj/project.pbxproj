@@ -1,0 +1,936 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02257750BFB5DACF7BD3E638 /* Pods_Monocle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9996AEFFE0722DC746D93 /* Pods_Monocle.framework */; };
+		029449ECD859B7CA7643126D /* Pods_MonocleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8344F4C5CCC566C7B3E02673 /* Pods_MonocleUITests.framework */; };
+		5254DC898A05A029E877F85D /* Pods_MonocleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39ECA1B7ECC23994164BDFF1 /* Pods_MonocleTests.framework */; };
+		AC86AF3C1EE318670025B68A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF3B1EE318670025B68A /* AppDelegate.swift */; };
+		AC86AF411EE318670025B68A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC86AF3F1EE318670025B68A /* Main.storyboard */; };
+		AC86AF431EE318670025B68A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC86AF421EE318670025B68A /* Assets.xcassets */; };
+		AC86AF461EE318670025B68A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC86AF441EE318670025B68A /* LaunchScreen.storyboard */; };
+		AC86AF511EE318670025B68A /* MonocleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF501EE318670025B68A /* MonocleTests.swift */; };
+		AC86AF5C1EE318670025B68A /* MonocleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF5B1EE318670025B68A /* MonocleUITests.swift */; };
+		AC86AF7B1EE318F30025B68A /* SwifteriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC86AF741EE318E60025B68A /* SwifteriOS.framework */; };
+		AC86AF7C1EE318F30025B68A /* SwifteriOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC86AF741EE318E60025B68A /* SwifteriOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC86AF811EE321C80025B68A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF801EE321C80025B68A /* SplashViewController.swift */; };
+		AC86AF831EE323FB0025B68A /* TwitterLoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF821EE323FB0025B68A /* TwitterLoginDelegate.swift */; };
+		AC86AF851EE326AE0025B68A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF841EE326AE0025B68A /* LoginViewController.swift */; };
+		AC86AF891EE3276A0025B68A /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF881EE3276A0025B68A /* TwitterClient.swift */; };
+		AC86AF961EE44B8A0025B68A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF951EE44B8A0025B68A /* User.swift */; };
+		AC86AFA21EE475460025B68A /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AFA11EE475460025B68A /* Tweet.swift */; };
+		AC86AFA41EE47B990025B68A /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */; };
+		AC86AFA61EE48D8F0025B68A /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */; };
+		AC86AFA81EE49C050025B68A /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AFA71EE49C050025B68A /* TweetCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC86AF4D1EE318670025B68A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC86AF301EE318670025B68A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC86AF371EE318670025B68A;
+			remoteInfo = Monocle;
+		};
+		AC86AF581EE318670025B68A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC86AF301EE318670025B68A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC86AF371EE318670025B68A;
+			remoteInfo = Monocle;
+		};
+		AC86AF711EE318E60025B68A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC86AF691EE318E60025B68A /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8B300C1F1944AA1A00993175;
+			remoteInfo = SwifterDemoiOS;
+		};
+		AC86AF731EE318E60025B68A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC86AF691EE318E60025B68A /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8B9F50EE1944A5AB00894629;
+			remoteInfo = SwifteriOS;
+		};
+		AC86AF751EE318E60025B68A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC86AF691EE318E60025B68A /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8B9F51131944A61D00894629;
+			remoteInfo = SwifterMac;
+		};
+		AC86AF771EE318E60025B68A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC86AF691EE318E60025B68A /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8B300C471944AECB00993175;
+			remoteInfo = SwifterDemoMac;
+		};
+		AC86AF791EE318E60025B68A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC86AF691EE318E60025B68A /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6B4D5751C7BAC4500E06514;
+			remoteInfo = SwifterTests;
+		};
+		AC86AF7D1EE318F30025B68A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC86AF691EE318E60025B68A /* Swifter.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B9F50ED1944A5AB00894629;
+			remoteInfo = SwifteriOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC86AF7F1EE318F30025B68A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AC86AF7C1EE318F30025B68A /* SwifteriOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1A4DD30A18DC49070B4E1386 /* Pods-Monocle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monocle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Monocle/Pods-Monocle.debug.xcconfig"; sourceTree = "<group>"; };
+		1AF570BAA952FFE745C4A712 /* Pods-MonocleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonocleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonocleUITests/Pods-MonocleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		23F71765F43E026B8AC239B1 /* Pods-MonocleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonocleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonocleTests/Pods-MonocleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		39ECA1B7ECC23994164BDFF1 /* Pods_MonocleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonocleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B3E377B7BA0BC8BA9053222 /* Pods-MonocleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonocleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonocleTests/Pods-MonocleTests.release.xcconfig"; sourceTree = "<group>"; };
+		5F6C3C540F9D1761C5C07340 /* Pods-MonocleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonocleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonocleUITests/Pods-MonocleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		67B9996AEFFE0722DC746D93 /* Pods_Monocle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monocle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8344F4C5CCC566C7B3E02673 /* Pods_MonocleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonocleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1802C96099415BEAFBFC25C /* Pods-Monocle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monocle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monocle/Pods-Monocle.release.xcconfig"; sourceTree = "<group>"; };
+		AC86AF381EE318670025B68A /* Monocle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monocle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC86AF3B1EE318670025B68A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC86AF401EE318670025B68A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC86AF421EE318670025B68A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC86AF451EE318670025B68A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC86AF471EE318670025B68A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC86AF4C1EE318670025B68A /* MonocleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonocleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC86AF501EE318670025B68A /* MonocleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonocleTests.swift; sourceTree = "<group>"; };
+		AC86AF521EE318670025B68A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC86AF571EE318670025B68A /* MonocleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonocleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC86AF5B1EE318670025B68A /* MonocleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonocleUITests.swift; sourceTree = "<group>"; };
+		AC86AF5D1EE318670025B68A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC86AF691EE318E60025B68A /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = "../Swifter-master 2/Swifter.xcodeproj"; sourceTree = "<group>"; };
+		AC86AF801EE321C80025B68A /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		AC86AF821EE323FB0025B68A /* TwitterLoginDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLoginDelegate.swift; sourceTree = "<group>"; };
+		AC86AF841EE326AE0025B68A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AC86AF881EE3276A0025B68A /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		AC86AF951EE44B8A0025B68A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AC86AFA11EE475460025B68A /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		AC86AFA71EE49C050025B68A /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC86AF351EE318670025B68A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC86AF7B1EE318F30025B68A /* SwifteriOS.framework in Frameworks */,
+				02257750BFB5DACF7BD3E638 /* Pods_Monocle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC86AF491EE318670025B68A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5254DC898A05A029E877F85D /* Pods_MonocleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC86AF541EE318670025B68A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				029449ECD859B7CA7643126D /* Pods_MonocleUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DD4FD3734912A783852805F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A4DD30A18DC49070B4E1386 /* Pods-Monocle.debug.xcconfig */,
+				A1802C96099415BEAFBFC25C /* Pods-Monocle.release.xcconfig */,
+				23F71765F43E026B8AC239B1 /* Pods-MonocleTests.debug.xcconfig */,
+				4B3E377B7BA0BC8BA9053222 /* Pods-MonocleTests.release.xcconfig */,
+				1AF570BAA952FFE745C4A712 /* Pods-MonocleUITests.debug.xcconfig */,
+				5F6C3C540F9D1761C5C07340 /* Pods-MonocleUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7723CB713F42376FF57DB73A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67B9996AEFFE0722DC746D93 /* Pods_Monocle.framework */,
+				39ECA1B7ECC23994164BDFF1 /* Pods_MonocleTests.framework */,
+				8344F4C5CCC566C7B3E02673 /* Pods_MonocleUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC86AF2F1EE318670025B68A = {
+			isa = PBXGroup;
+			children = (
+				AC86AF691EE318E60025B68A /* Swifter.xcodeproj */,
+				AC86AF3A1EE318670025B68A /* Monocle */,
+				AC86AF4F1EE318670025B68A /* MonocleTests */,
+				AC86AF5A1EE318670025B68A /* MonocleUITests */,
+				AC86AF391EE318670025B68A /* Products */,
+				2DD4FD3734912A783852805F /* Pods */,
+				7723CB713F42376FF57DB73A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AC86AF391EE318670025B68A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF381EE318670025B68A /* Monocle.app */,
+				AC86AF4C1EE318670025B68A /* MonocleTests.xctest */,
+				AC86AF571EE318670025B68A /* MonocleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC86AF3A1EE318670025B68A /* Monocle */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AFA01EE471FA0025B68A /* Helper */,
+				AC86AF8B1EE327AD0025B68A /* Delegates */,
+				AC86AF8A1EE327970025B68A /* Controllers */,
+				AC86AF3F1EE318670025B68A /* Main.storyboard */,
+				AC86AF421EE318670025B68A /* Assets.xcassets */,
+				AC86AF441EE318670025B68A /* LaunchScreen.storyboard */,
+				AC86AF471EE318670025B68A /* Info.plist */,
+				AC86AF8D1EE3285F0025B68A /* API */,
+				AC86AF8C1EE327BA0025B68A /* Model */,
+			);
+			path = Monocle;
+			sourceTree = "<group>";
+		};
+		AC86AF4F1EE318670025B68A /* MonocleTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF501EE318670025B68A /* MonocleTests.swift */,
+				AC86AF521EE318670025B68A /* Info.plist */,
+			);
+			path = MonocleTests;
+			sourceTree = "<group>";
+		};
+		AC86AF5A1EE318670025B68A /* MonocleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF5B1EE318670025B68A /* MonocleUITests.swift */,
+				AC86AF5D1EE318670025B68A /* Info.plist */,
+			);
+			path = MonocleUITests;
+			sourceTree = "<group>";
+		};
+		AC86AF6A1EE318E60025B68A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF721EE318E60025B68A /* SwifterDemoiOS.app */,
+				AC86AF741EE318E60025B68A /* SwifteriOS.framework */,
+				AC86AF761EE318E60025B68A /* SwifterMac.framework */,
+				AC86AF781EE318E60025B68A /* SwifterDemoMac.app */,
+				AC86AF7A1EE318E60025B68A /* SwifterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC86AF8A1EE327970025B68A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF801EE321C80025B68A /* SplashViewController.swift */,
+				AC86AF841EE326AE0025B68A /* LoginViewController.swift */,
+				AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */,
+				AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */,
+				AC86AFA71EE49C050025B68A /* TweetCell.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		AC86AF8B1EE327AD0025B68A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF3B1EE318670025B68A /* AppDelegate.swift */,
+				AC86AF821EE323FB0025B68A /* TwitterLoginDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		AC86AF8C1EE327BA0025B68A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF951EE44B8A0025B68A /* User.swift */,
+				AC86AFA11EE475460025B68A /* Tweet.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AC86AF8D1EE3285F0025B68A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF881EE3276A0025B68A /* TwitterClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		AC86AFA01EE471FA0025B68A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC86AF371EE318670025B68A /* Monocle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC86AF601EE318670025B68A /* Build configuration list for PBXNativeTarget "Monocle" */;
+			buildPhases = (
+				2B81C69E929C279CA0E6B3D5 /* [CP] Check Pods Manifest.lock */,
+				AC86AF341EE318670025B68A /* Sources */,
+				AC86AF351EE318670025B68A /* Frameworks */,
+				AC86AF361EE318670025B68A /* Resources */,
+				AC86AF7F1EE318F30025B68A /* Embed Frameworks */,
+				357045AB7F7EF1B7DCF7A2C4 /* [CP] Embed Pods Frameworks */,
+				B6430BA2E8606B8D7D0ACCB5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC86AF7E1EE318F30025B68A /* PBXTargetDependency */,
+			);
+			name = Monocle;
+			productName = Monocle;
+			productReference = AC86AF381EE318670025B68A /* Monocle.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC86AF4B1EE318670025B68A /* MonocleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC86AF631EE318670025B68A /* Build configuration list for PBXNativeTarget "MonocleTests" */;
+			buildPhases = (
+				ACAAEF77F4356C5D44757FFD /* [CP] Check Pods Manifest.lock */,
+				AC86AF481EE318670025B68A /* Sources */,
+				AC86AF491EE318670025B68A /* Frameworks */,
+				AC86AF4A1EE318670025B68A /* Resources */,
+				06A769B8F8C72C9BC5537888 /* [CP] Embed Pods Frameworks */,
+				3E25DCA85E32DCC331CE4B92 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC86AF4E1EE318670025B68A /* PBXTargetDependency */,
+			);
+			name = MonocleTests;
+			productName = MonocleTests;
+			productReference = AC86AF4C1EE318670025B68A /* MonocleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC86AF561EE318670025B68A /* MonocleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC86AF661EE318670025B68A /* Build configuration list for PBXNativeTarget "MonocleUITests" */;
+			buildPhases = (
+				07AA71399284F5CD5B831747 /* [CP] Check Pods Manifest.lock */,
+				AC86AF531EE318670025B68A /* Sources */,
+				AC86AF541EE318670025B68A /* Frameworks */,
+				AC86AF551EE318670025B68A /* Resources */,
+				BDFEEA011D23C3807304C0E4 /* [CP] Embed Pods Frameworks */,
+				A422708E2CA6E200F6A9FEB6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC86AF591EE318670025B68A /* PBXTargetDependency */,
+			);
+			name = MonocleUITests;
+			productName = MonocleUITests;
+			productReference = AC86AF571EE318670025B68A /* MonocleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC86AF301EE318670025B68A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = MrAliGorithm;
+				TargetAttributes = {
+					AC86AF371EE318670025B68A = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = U3FSDK5XFF;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					AC86AF4B1EE318670025B68A = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = U3FSDK5XFF;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AC86AF371EE318670025B68A;
+					};
+					AC86AF561EE318670025B68A = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = U3FSDK5XFF;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AC86AF371EE318670025B68A;
+					};
+				};
+			};
+			buildConfigurationList = AC86AF331EE318670025B68A /* Build configuration list for PBXProject "Monocle" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC86AF2F1EE318670025B68A;
+			productRefGroup = AC86AF391EE318670025B68A /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AC86AF6A1EE318E60025B68A /* Products */;
+					ProjectRef = AC86AF691EE318E60025B68A /* Swifter.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AC86AF371EE318670025B68A /* Monocle */,
+				AC86AF4B1EE318670025B68A /* MonocleTests */,
+				AC86AF561EE318670025B68A /* MonocleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AC86AF721EE318E60025B68A /* SwifterDemoiOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SwifterDemoiOS.app;
+			remoteRef = AC86AF711EE318E60025B68A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AC86AF741EE318E60025B68A /* SwifteriOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwifteriOS.framework;
+			remoteRef = AC86AF731EE318E60025B68A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AC86AF761EE318E60025B68A /* SwifterMac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwifterMac.framework;
+			remoteRef = AC86AF751EE318E60025B68A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AC86AF781EE318E60025B68A /* SwifterDemoMac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SwifterDemoMac.app;
+			remoteRef = AC86AF771EE318E60025B68A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AC86AF7A1EE318E60025B68A /* SwifterTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwifterTests.xctest;
+			remoteRef = AC86AF791EE318E60025B68A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC86AF361EE318670025B68A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC86AF461EE318670025B68A /* LaunchScreen.storyboard in Resources */,
+				AC86AF431EE318670025B68A /* Assets.xcassets in Resources */,
+				AC86AF411EE318670025B68A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC86AF4A1EE318670025B68A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC86AF551EE318670025B68A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06A769B8F8C72C9BC5537888 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonocleTests/Pods-MonocleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		07AA71399284F5CD5B831747 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2B81C69E929C279CA0E6B3D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		357045AB7F7EF1B7DCF7A2C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monocle/Pods-Monocle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E25DCA85E32DCC331CE4B92 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonocleTests/Pods-MonocleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A422708E2CA6E200F6A9FEB6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonocleUITests/Pods-MonocleUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACAAEF77F4356C5D44757FFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B6430BA2E8606B8D7D0ACCB5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monocle/Pods-Monocle-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDFEEA011D23C3807304C0E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonocleUITests/Pods-MonocleUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC86AF341EE318670025B68A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC86AF831EE323FB0025B68A /* TwitterLoginDelegate.swift in Sources */,
+				AC86AF811EE321C80025B68A /* SplashViewController.swift in Sources */,
+				AC86AFA61EE48D8F0025B68A /* TweetTableViewCell.swift in Sources */,
+				AC86AF891EE3276A0025B68A /* TwitterClient.swift in Sources */,
+				AC86AF851EE326AE0025B68A /* LoginViewController.swift in Sources */,
+				AC86AF3C1EE318670025B68A /* AppDelegate.swift in Sources */,
+				AC86AFA41EE47B990025B68A /* HomeTableViewController.swift in Sources */,
+				AC86AFA81EE49C050025B68A /* TweetCell.swift in Sources */,
+				AC86AF961EE44B8A0025B68A /* User.swift in Sources */,
+				AC86AFA21EE475460025B68A /* Tweet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC86AF481EE318670025B68A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC86AF511EE318670025B68A /* MonocleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC86AF531EE318670025B68A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC86AF5C1EE318670025B68A /* MonocleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC86AF4E1EE318670025B68A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC86AF371EE318670025B68A /* Monocle */;
+			targetProxy = AC86AF4D1EE318670025B68A /* PBXContainerItemProxy */;
+		};
+		AC86AF591EE318670025B68A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC86AF371EE318670025B68A /* Monocle */;
+			targetProxy = AC86AF581EE318670025B68A /* PBXContainerItemProxy */;
+		};
+		AC86AF7E1EE318F30025B68A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwifteriOS;
+			targetProxy = AC86AF7D1EE318F30025B68A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC86AF3F1EE318670025B68A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC86AF401EE318670025B68A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC86AF441EE318670025B68A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC86AF451EE318670025B68A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC86AF5E1EE318670025B68A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC86AF5F1EE318670025B68A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC86AF611EE318670025B68A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A4DD30A18DC49070B4E1386 /* Pods-Monocle.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U3FSDK5XFF;
+				INFOPLIST_FILE = Monocle/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.Monocle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AC86AF621EE318670025B68A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1802C96099415BEAFBFC25C /* Pods-Monocle.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U3FSDK5XFF;
+				INFOPLIST_FILE = Monocle/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.Monocle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AC86AF641EE318670025B68A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23F71765F43E026B8AC239B1 /* Pods-MonocleTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = U3FSDK5XFF;
+				INFOPLIST_FILE = MonocleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.MonocleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Monocle.app/Monocle";
+			};
+			name = Debug;
+		};
+		AC86AF651EE318670025B68A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B3E377B7BA0BC8BA9053222 /* Pods-MonocleTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = U3FSDK5XFF;
+				INFOPLIST_FILE = MonocleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.MonocleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Monocle.app/Monocle";
+			};
+			name = Release;
+		};
+		AC86AF671EE318670025B68A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AF570BAA952FFE745C4A712 /* Pods-MonocleUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = U3FSDK5XFF;
+				INFOPLIST_FILE = MonocleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.MonocleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Monocle;
+			};
+			name = Debug;
+		};
+		AC86AF681EE318670025B68A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F6C3C540F9D1761C5C07340 /* Pods-MonocleUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = U3FSDK5XFF;
+				INFOPLIST_FILE = MonocleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.MonocleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Monocle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC86AF331EE318670025B68A /* Build configuration list for PBXProject "Monocle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC86AF5E1EE318670025B68A /* Debug */,
+				AC86AF5F1EE318670025B68A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC86AF601EE318670025B68A /* Build configuration list for PBXNativeTarget "Monocle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC86AF611EE318670025B68A /* Debug */,
+				AC86AF621EE318670025B68A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC86AF631EE318670025B68A /* Build configuration list for PBXNativeTarget "MonocleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC86AF641EE318670025B68A /* Debug */,
+				AC86AF651EE318670025B68A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC86AF661EE318670025B68A /* Build configuration list for PBXNativeTarget "MonocleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC86AF671EE318670025B68A /* Debug */,
+				AC86AF681EE318670025B68A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC86AF301EE318670025B68A /* Project object */;
+}
