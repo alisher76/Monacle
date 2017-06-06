@@ -18,14 +18,14 @@ class Tweet {
     var author: String?
     var authorProfilePic: URL?
     var text: String?
-//    var timeStamp: Date?
+    //    var timeStamp: Date?
     var favoriteCount: Int = 0
     var retweetsCount: Int = 0
     var urls: [NSDictionary]?
     var media: [NSDictionary]?
     var userRef: NSDictionary?
     
-    
+    var precedingTweetID: Int?
     
     var retweeted: Bool {
         didSet {
@@ -44,10 +44,10 @@ class Tweet {
             }
         }
     }
-
+    
     init(dictionary: NSDictionary) {
         
-
+        precedingTweetID = dictionary["in_reply_to_status_id"] as? Int
         userRef = dictionary["user"] as? NSDictionary
         tweetID = dictionary["id"] as! NSNumber
         screenName = userRef?["screen_name"]! as? String
@@ -62,7 +62,7 @@ class Tweet {
         
         retweeted = (dictionary["retweeted"] as? Bool ?? false)
         favorited = (dictionary["favorited"] as? Bool ?? false)
-    
+        
         
     }
     

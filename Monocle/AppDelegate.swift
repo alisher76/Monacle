@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwifteriOS
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var splashDelay = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let INSTAGRAM_CLIENT_ID = "ac00ba2a3ad64cc8b4a180dcc5869e49"
+        let INSTAGRAM_REDIRECT_URI = "http://localhost//comeOnBroApp"
+        
+        let auth: NSMutableDictionary = ["client_id": INSTAGRAM_CLIENT_ID,
+                                         SimpleAuthRedirectURIKey: INSTAGRAM_REDIRECT_URI]
+        SimpleAuth.configuration()["instagram"] = auth
         return true
     }
 

@@ -43,14 +43,14 @@ class TweetTableViewCell: UITableViewCell {
         profilePicImageView.layer.cornerRadius = 5
         profilePicImageView.clipsToBounds = true
         
-        authorNameLabel.text = tweet.text
+        authorNameLabel.text = tweet.author
         authorUserNameLabel.text = "@" + tweet.screenName!
         
         tweetContentsLabel.text = tweet.text
         var displayURLS = [String]()
         
         let media = tweet.media
-        print(tweet.urls)
+        print(tweet.precedingTweetID)
 //         for url in urls {
 //                let urlText = url["url"] as! String
 //                print(urlText)
