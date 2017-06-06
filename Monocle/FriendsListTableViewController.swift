@@ -11,7 +11,7 @@ import UIKit
 class FriendsListTableViewController: UITableViewController {
 
     var users: [TwitterUser]?
-    
+    var indexNum = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,15 +36,28 @@ class FriendsListTableViewController: UITableViewController {
             return 0
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        indexNum = indexPath.row
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! FriendsTVCell
         
-
+        
         cell.user = users?[indexPath.row]
-
+        
         return cell
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTweets" {
+            let vc = segue.destination as! HomeTableViewController
+            vc.userID = self.users?[indexNum].uid
+        }
     }
     
     

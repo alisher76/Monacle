@@ -565,8 +565,8 @@
 				AC86AF801EE321C80025B68A /* SplashViewController.swift */,
 				AC86B3D61EE59E8E0025B68A /* FriendsListTableViewController.swift */,
 				AC28BF871EE64763006112CA /* FriendsTVCell.swift */,
-				AC86AF841EE326AE0025B68A /* LoginViewController.swift */,
 				AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */,
+				AC86AF841EE326AE0025B68A /* LoginViewController.swift */,
 				AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */,
 				AC86AFA71EE49C050025B68A /* TweetCell.swift */,
 			);

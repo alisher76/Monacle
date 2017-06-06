@@ -124,7 +124,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0e-0k-YNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="38"/>
+            <point key="canvasLocation" x="929" y="-616"/>
         </scene>
         <!--Twitter-->
         <scene sceneID="SE8-i2-DB3">
@@ -389,6 +389,7 @@
                                     <outlet property="imageViewOutlet" destination="STR-Sh-HoT" id="4a3-BG-jiT"/>
                                     <outlet property="nameLabel" destination="VBf-3i-kFc" id="cJ5-R9-AE5"/>
                                     <outlet property="userName" destination="Ltu-GC-Yw9" id="LaI-E5-WGX"/>
+                                    <segue destination="ivf-UV-W53" kind="show" identifier="showTweets" id="rGs-K9-Xcc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -401,7 +402,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XGm-n8-vPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="824"/>
+            <point key="canvasLocation" x="1727" y="36"/>
         </scene>
         <!--Instagram-->
         <scene sceneID="UfS-pk-izy">
@@ -490,7 +491,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgw-ww-5br" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="824"/>
+            <point key="canvasLocation" x="929" y="55"/>
         </scene>
     </scenes>
     <resources>

@@ -125,6 +125,25 @@ class TwitterClient: BDBOAuth1SessionManager {
 
     }
     
+    
+    //https://api.twitter.com/1.1/statuses/user_timeline.json
+    
+    func getUserTimeline(userID: String, success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
+        
+        let params = ["count": 1]
+        
+        get("1.1/statuses/user_timeline.json?user_id=\(userID)", parameters: params, progress: nil, success: { (task, responce) in
+            
+            let dictionary = responce as! [NSDictionary]
+            let tweets = Tweet.tweetWithArray(dictionaries: dictionary)
+            success(tweets)
+        }) { (task, error) in
+            print(error.localizedDescription)
+            
+        }
+        
+    }
+    
     func logOut() {
         User.currentUser = nil
         deauthorize()

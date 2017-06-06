@@ -10,6 +10,13 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
+    
+    var userID: String? {
+        didSet {
+            getUserTimeline()
+            print(userID!)
+        }
+    }
     var lastTweetID: Int?
     var tweets: [Tweet]?{
         didSet {
@@ -20,7 +27,6 @@ class HomeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         UIApplication.shared.statusBarStyle = .default
         let logo = UIImage(named: "Icon-Twitter")
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
@@ -29,18 +35,17 @@ class HomeTableViewController: UITableViewController {
         self.navigationItem.titleView = imageView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
-        reloadData()
+        getUserTimeline()
         //Set up refreshControll
         
-        refreshControll = UIRefreshControl()
-        refreshControll.addTarget(self, action: #selector(HomeTableViewController.reloadData), for: UIControlEvents.valueChanged)
-        tableView.insertSubview(refreshControll, at: 0)
+//        refreshControll = UIRefreshControl()
+//        refreshControll.addTarget(self, action: #selector(HomeTableViewController.reloadData), for: UIControlEvents.valueChanged)
+//        tableView.insertSubview(refreshControll, at: 0)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    
+    
     
     // MARK: - Table view data source
     
@@ -62,8 +67,7 @@ class HomeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! TweetCell
         
         cell.tweet = tweets![indexPath.row]
-        
-        
+
         return cell
     }
     
@@ -73,8 +77,6 @@ class HomeTableViewController: UITableViewController {
         TwitterClient.sharedInstance?.getHomeTimeline(maxID: lastTweetID, success: { (tweets) in
             self.tweets = tweets
             self.tableView.reloadData()
-            self.refreshControll.endRefreshing()
-            
             if (appending) {
                 var cleaned = tweets
                 if tweets.count > 0 {
@@ -96,6 +98,15 @@ class HomeTableViewController: UITableViewController {
        
     }
     
+    func getUserTimeline() {
+        
+        TwitterClient.sharedInstance?.getUserTimeline(userID: userID!, success: { (tweets) in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        }, failure: { (error) in
+            print("error")
+        })
+    }
 
     
     
