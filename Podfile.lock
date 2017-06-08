@@ -14,17 +14,29 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
+  - Alamofire (4.4.0)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
+  - BouncyLayout (1.1.0)
+  - SAMCache (0.3.3)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - AFNetworking
+  - Alamofire (~> 4.4)
   - BDBOAuth1Manager
+  - BouncyLayout
+  - SAMCache
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  BouncyLayout: f91c6504437a61acd733404f55f75bd8154f5840
+  SAMCache: 790b2623a3e087c903daff872c90c248726c4c82
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: a7584f6dc4b9a3a7293aae9e722394b33feadef8
+PODFILE CHECKSUM: 5bc8470117000ebe6c4982b786fb79908cc31af3
 
 COCOAPODS: 1.2.1

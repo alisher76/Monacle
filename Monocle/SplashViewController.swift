@@ -30,23 +30,41 @@ class SplashViewController: UIViewController, TwitterLoginDelegate {
         
     }
     
+    @IBAction func twitterButtonTaped(_ sender: Any) {
+        TwitterClient.sharedInstance?.login(success: {
+            print("Logged In")
+            self.dismiss(animated: true, completion: {
+                
+            })
+        }) { (error) in
+            print(error)
+        }
+    }
     
     func continueLogin() {
        appDelegate.splashDelay = false
-        if User.currentUser == nil {
-            self.goToLogin()
-        }else{
+        if User.currentUser != nil && User.Friends.currentListOfFriends == nil {
+            self.goToSelectFriendsPage()
+        }else if User.currentUser != nil && User.Friends.currentListOfFriends != nil{
             self.goToApp()
         }
     }
     
-    func goToLogin() {
-        self.performSegue(withIdentifier: "loginSegue", sender: self)
+    func goToSelectFriendsPage() {
+        self.performSegue(withIdentifier: "selectFriends", sender: self)
     }
     
     func goToApp() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "twitterHomePage") as! HomeTableViewController
+        if let savedData = UserDefaults.standard.array(forKey: "savedListOfFriends"){
+            vc.friendIDs = savedData as? [String]
+        }
         self.performSegue(withIdentifier: "showApp", sender: self)
+        
     }
+    
+    
 
    
 }

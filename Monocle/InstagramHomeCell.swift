@@ -8,14 +8,16 @@
 
 import UIKit
 
+
+
 class InstagramHomeCell: UITableViewCell {
 
     @IBOutlet var profileImageVIew: UIImageView!
     @IBOutlet var profileNameLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     
-    
-    var userCollection: InstagramUser! {
+   
+    var user: Instagram.User! {
         didSet {
             configTableViewCell()
         }
@@ -29,10 +31,12 @@ class InstagramHomeCell: UITableViewCell {
     }
     
     func configTableViewCell() {
+        OperationQueue.main.addOperation {
+            self.profileImageVIew.setImageWith(URL(string: self.user.image)!)
+            self.profileNameLabel.text = self.user.name
+            self.descriptionLabel.text = self.user.userName
+        }
         
-        profileImageVIew.setImageWith(URL(string: userCollection.image)!)
-        profileNameLabel.text = userCollection.username
-        descriptionLabel.text = userCollection.token
         
     }
 
@@ -42,4 +46,5 @@ class InstagramHomeCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
 }

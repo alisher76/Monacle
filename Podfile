@@ -9,6 +9,11 @@ target 'Monocle' do
 
    pod 'AFNetworking'
    pod 'BDBOAuth1Manager'
+   pod 'SwiftyJSON'
+   pod 'Alamofire', '~> 4.4'
+   pod 'SAMCache' 
+   pod 'BouncyLayout'
+
 
   target 'MonocleTests' do
     inherit! :search_paths

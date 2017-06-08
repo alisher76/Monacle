@@ -1,14 +1,14 @@
 //
-//  FriendsTVCell.swift
+//  FriendsSelectionCell.swift
 //  Monocle
 //
-//  Created by Alisher Abdukarimov on 6/5/17.
+//  Created by Alisher Abdukarimov on 6/7/17.
 //  Copyright © 2017 MrAliGorithm. All rights reserved.
 //
 
 import UIKit
 
-class FriendsTVCell: UITableViewCell {
+class FriendsSelectionCell: UITableViewCell {
 
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var userName: UILabel!
@@ -23,14 +23,15 @@ class FriendsTVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
     }
-
-    func tvcFriendsListSetConfigure() {
     
+    func tvcFriendsListSetConfigure() {
+        
         nameLabel.text = user.name
+        nameLabel.sizeToFit()
         userName.text = "@\(user.screenName)"
+        userName.sizeToFit()
         imageViewOutlet.setImageWith(URL(string: user.image)!)
     }
-
 }

@@ -9,7 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>BDBOAuth1Manager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BouncyLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -29,15 +39,40 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SAMCache.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0CA10A8878A0E2AB5EDDDA1DE6600DB6</key>
+		<key>1E1CDD5C6682F8C7F681C66F25377F22</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>48BA04B79777B5B7B39F3DC40ED34DC5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>596E2BF0D45B6D6BBF2898BEBD5295DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A1083DF3867844640E4E83CDDC5C536</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>DD08B071644C635261E151819F7F6FA8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F611241AF8868EA4AD0B1818804C3EC9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

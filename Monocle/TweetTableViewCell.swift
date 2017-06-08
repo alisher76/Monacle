@@ -10,7 +10,7 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
-   
+   @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet var authorUserNameLabel: UILabel!
     @IBOutlet var authorNameLabel: UILabel!
@@ -20,6 +20,8 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet var tweetContentsLabel: UILabel!
     @IBOutlet var favoriteCountLabel: UILabel!
     @IBOutlet weak var mediaImageView: UIImageView!
+    
+    var friends: [TwitterUser] = []
     
     var tweetID: NSNumber!
     var tweetTextFontSize: CGFloat { get { return 15.0 }}
@@ -51,16 +53,8 @@ class TweetTableViewCell: UITableViewCell {
         
         let media = tweet.media
         print(tweet.precedingTweetID)
-//         for url in urls {
-//                let urlText = url["url"] as! String
-//                print(urlText)
-//                tweetContentsLabel.text = tweetContentsLabel.text?.replcae(target: urlText, withString: "")
-//                var displayURL = url["display_url"] as? String
-//                if let expandedURL = url["expanded_url"] {
-//                    displayURL = expandedURL as? String
-//                }
-//                displayURLS.append(displayURL!)
-//            }
+
+
         
         
         print(displayURLS.count)
@@ -117,3 +111,4 @@ class TweetTableViewCell: UITableViewCell {
     }
 
 }
+

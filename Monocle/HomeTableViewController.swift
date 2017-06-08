@@ -10,10 +10,24 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
+    var friendIDs: [String]? {
+        didSet {
+            print(friendIDs)
+        }
+    }
+    
+    var friends = [TwitterUser]()
+    
+    struct Storyboard {
+        static let friendsCell = "friendsListCell"
+        static let homeCell = "HomeCell"
+        
+    }
+
     
     var userID: String? {
         didSet {
-            getUserTimeline()
+            getUserTimeline(userID: userID!)
             print(userID!)
         }
     }
@@ -35,7 +49,17 @@ class HomeTableViewController: UITableViewController {
         self.navigationItem.titleView = imageView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
-        getUserTimeline()
+        
+        
+        if self.friendIDs != nil {
+            OperationQueue.main.addOperation {
+            // if it is not nil, you have saved friends. Fetch data by friend IDs
+            for id in self.friendIDs! {
+                self.getUserTimeline(userID: id)
+            }
+           }
+        }
+        
         //Set up refreshControll
         
 //        refreshControll = UIRefreshControl()
@@ -43,11 +67,19 @@ class HomeTableViewController: UITableViewController {
 //        tableView.insertSubview(refreshControll, at: 0)
     }
     
-    
-    
+
     
     
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 100.0
+        } else {
+            return 80.0
+            
+        }
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -55,8 +87,10 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
         if (tweets == nil) {
-            return 0
+            return 1
         } else {
             return tweets!.count
         }
@@ -64,11 +98,21 @@ class HomeTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! TweetCell
         
-        cell.tweet = tweets![indexPath.row]
+        if indexPath.row == 0 {
+          let cell = tableView.dequeueReusableCell(withIdentifier: "friendsCell") as! FriendsListTableViewCell
+            cell.delegate = self
+          cell.friends = friends
+          return cell
+         }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.homeCell, for: indexPath) as! TweetCell
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.tweet = tweets![indexPath.row]
+            cell.friends = friends
 
-        return cell
+            return cell
+        }
     }
     
     
@@ -98,9 +142,9 @@ class HomeTableViewController: UITableViewController {
        
     }
     
-    func getUserTimeline() {
+    func getUserTimeline(userID: String) {
         
-        TwitterClient.sharedInstance?.getUserTimeline(userID: userID!, success: { (tweets) in
+        TwitterClient.sharedInstance?.getUserTimeline(userID: userID, success: { (tweets) in
             self.tweets = tweets
             self.tableView.reloadData()
         }, failure: { (error) in
@@ -116,8 +160,11 @@ class HomeTableViewController: UITableViewController {
             let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
             
             if scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging {
-                reloadData(appending: true)
+               // reloadData(appending: true)
             }
         }
     }
 }
+
+
+

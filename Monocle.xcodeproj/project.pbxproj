@@ -9,7 +9,19 @@
 /* Begin PBXBuildFile section */
 		029449ECD859B7CA7643126D /* Pods_MonocleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8344F4C5CCC566C7B3E02673 /* Pods_MonocleUITests.framework */; };
 		5254DC898A05A029E877F85D /* Pods_MonocleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39ECA1B7ECC23994164BDFF1 /* Pods_MonocleTests.framework */; };
-		AC28BF881EE64763006112CA /* FriendsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BF871EE64763006112CA /* FriendsTVCell.swift */; };
+		7A6264D3ECC6E70C1CECA641 /* Pods_Monocle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B9996AEFFE0722DC746D93 /* Pods_Monocle.framework */; };
+		AC28BF8C1EE6ECC9006112CA /* InstaPostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BF8B1EE6ECC9006112CA /* InstaPostsTableViewController.swift */; };
+		AC28BF8E1EE6FA1F006112CA /* InstagramAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BF8D1EE6FA1F006112CA /* InstagramAPI.swift */; };
+		AC28BF901EE72902006112CA /* InstagramPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BF8F1EE72902006112CA /* InstagramPostsTableViewCell.swift */; };
+		AC28BF921EE84360006112CA /* InstagramData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BF911EE84360006112CA /* InstagramData.swift */; };
+		AC28BFA41EE8F2F7006112CA /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC28BF9D1EE8F2F7006112CA /* BEMAnimationManager.m */; };
+		AC28BFA51EE8F2F7006112CA /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = AC28BF9F1EE8F2F7006112CA /* BEMCheckBox.m */; };
+		AC28BFA61EE8F2F7006112CA /* BEMCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFA11EE8F2F7006112CA /* BEMCheckBoxGroup.m */; };
+		AC28BFA71EE8F2F7006112CA /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFA31EE8F2F7006112CA /* BEMPathManager.m */; };
+		AC28BFAA1EE902AD006112CA /* FriendsSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */; };
+		AC28BFAC1EE902CF006112CA /* FriendsSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */; };
+		AC6071271EE9CE9A00F9E081 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */; };
+		AC70638D1EE99E63007C79D3 /* generateRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70638C1EE99E63007C79D3 /* generateRandom.swift */; };
 		AC86AF3C1EE318670025B68A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF3B1EE318670025B68A /* AppDelegate.swift */; };
 		AC86AF411EE318670025B68A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC86AF3F1EE318670025B68A /* Main.storyboard */; };
 		AC86AF431EE318670025B68A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC86AF421EE318670025B68A /* Assets.xcassets */; };
@@ -18,7 +30,6 @@
 		AC86AF5C1EE318670025B68A /* MonocleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF5B1EE318670025B68A /* MonocleUITests.swift */; };
 		AC86AF811EE321C80025B68A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF801EE321C80025B68A /* SplashViewController.swift */; };
 		AC86AF831EE323FB0025B68A /* TwitterLoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF821EE323FB0025B68A /* TwitterLoginDelegate.swift */; };
-		AC86AF851EE326AE0025B68A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF841EE326AE0025B68A /* LoginViewController.swift */; };
 		AC86AF891EE3276A0025B68A /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF881EE3276A0025B68A /* TwitterClient.swift */; };
 		AC86AF961EE44B8A0025B68A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF951EE44B8A0025B68A /* User.swift */; };
 		AC86AFA21EE475460025B68A /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AFA11EE475460025B68A /* Tweet.swift */; };
@@ -140,8 +151,6 @@
 		AC86B3CB1EE4F3BB0025B68A /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86B35A1EE4F3BB0025B68A /* Atomic.swift */; };
 		AC86B3CE1EE4FB520025B68A /* InstagramHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86B3CD1EE4FB520025B68A /* InstagramHomeTableViewController.swift */; };
 		AC86B3D01EE570A90025B68A /* InstagramHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86B3CF1EE570A90025B68A /* InstagramHomeCell.swift */; };
-		AC86B3D41EE5738C0025B68A /* InstagramUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86B3D31EE5738C0025B68A /* InstagramUser.swift */; };
-		AC86B3D71EE59E8E0025B68A /* FriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86B3D61EE59E8E0025B68A /* FriendsListTableViewController.swift */; };
 		AC86B3D91EE5C0EB0025B68A /* TwitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86B3D81EE5C0EA0025B68A /* TwitterUser.swift */; };
 /* End PBXBuildFile section */
 
@@ -185,7 +194,23 @@
 		67B9996AEFFE0722DC746D93 /* Pods_Monocle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monocle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8344F4C5CCC566C7B3E02673 /* Pods_MonocleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonocleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1802C96099415BEAFBFC25C /* Pods-Monocle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monocle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monocle/Pods-Monocle.release.xcconfig"; sourceTree = "<group>"; };
-		AC28BF871EE64763006112CA /* FriendsTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTVCell.swift; sourceTree = "<group>"; };
+		AC28BF8B1EE6ECC9006112CA /* InstaPostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaPostsTableViewController.swift; sourceTree = "<group>"; };
+		AC28BF8D1EE6FA1F006112CA /* InstagramAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramAPI.swift; sourceTree = "<group>"; };
+		AC28BF8F1EE72902006112CA /* InstagramPostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramPostsTableViewCell.swift; sourceTree = "<group>"; };
+		AC28BF911EE84360006112CA /* InstagramData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramData.swift; sourceTree = "<group>"; };
+		AC28BF9C1EE8F2F7006112CA /* BEMAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAnimationManager.h; sourceTree = "<group>"; };
+		AC28BF9D1EE8F2F7006112CA /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAnimationManager.m; sourceTree = "<group>"; };
+		AC28BF9E1EE8F2F7006112CA /* BEMCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCheckBox.h; sourceTree = "<group>"; };
+		AC28BF9F1EE8F2F7006112CA /* BEMCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCheckBox.m; sourceTree = "<group>"; };
+		AC28BFA01EE8F2F7006112CA /* BEMCheckBoxGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCheckBoxGroup.h; sourceTree = "<group>"; };
+		AC28BFA11EE8F2F7006112CA /* BEMCheckBoxGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCheckBoxGroup.m; sourceTree = "<group>"; };
+		AC28BFA21EE8F2F7006112CA /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMPathManager.h; sourceTree = "<group>"; };
+		AC28BFA31EE8F2F7006112CA /* BEMPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPathManager.m; sourceTree = "<group>"; };
+		AC28BFA81EE8F3E4006112CA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSelectionTableViewController.swift; sourceTree = "<group>"; };
+		AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSelectionCell.swift; sourceTree = "<group>"; };
+		AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
+		AC70638C1EE99E63007C79D3 /* generateRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = generateRandom.swift; sourceTree = "<group>"; };
 		AC86AF381EE318670025B68A /* Monocle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monocle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC86AF3B1EE318670025B68A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC86AF401EE318670025B68A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -200,7 +225,6 @@
 		AC86AF5D1EE318670025B68A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC86AF801EE321C80025B68A /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		AC86AF821EE323FB0025B68A /* TwitterLoginDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLoginDelegate.swift; sourceTree = "<group>"; };
-		AC86AF841EE326AE0025B68A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AC86AF881EE3276A0025B68A /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		AC86AF951EE44B8A0025B68A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AC86AFA11EE475460025B68A /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -441,11 +465,8 @@
 		AC86B3571EE4F3BB0025B68A /* SimpleAuthUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAuthUtilities.h; sourceTree = "<group>"; };
 		AC86B3581EE4F3BB0025B68A /* SimpleAuthUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAuthUtilities.m; sourceTree = "<group>"; };
 		AC86B35A1EE4F3BB0025B68A /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
-		AC86B3CC1EE4F3EA0025B68A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "../Bridging-Header.h"; sourceTree = "<group>"; };
 		AC86B3CD1EE4FB520025B68A /* InstagramHomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramHomeTableViewController.swift; sourceTree = "<group>"; };
 		AC86B3CF1EE570A90025B68A /* InstagramHomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramHomeCell.swift; sourceTree = "<group>"; };
-		AC86B3D31EE5738C0025B68A /* InstagramUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramUser.swift; sourceTree = "<group>"; };
-		AC86B3D61EE59E8E0025B68A /* FriendsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewController.swift; sourceTree = "<group>"; };
 		AC86B3D81EE5C0EA0025B68A /* TwitterUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -454,6 +475,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A6264D3ECC6E70C1CECA641 /* Pods_Monocle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,12 +521,63 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC28BF931EE8D5C1006112CA /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AF801EE321C80025B68A /* SplashViewController.swift */,
+			);
+			name = LoginController;
+			sourceTree = "<group>";
+		};
+		AC28BF941EE8D5EF006112CA /* TwitterController */ = {
+			isa = PBXGroup;
+			children = (
+				AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */,
+				AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */,
+				AC86AFA71EE49C050025B68A /* TweetCell.swift */,
+				AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */,
+			);
+			name = TwitterController;
+			sourceTree = "<group>";
+		};
+		AC28BF971EE8D638006112CA /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */,
+				AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		AC28BF9A1EE8F2DE006112CA /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AC28BF9B1EE8F2F7006112CA /* Classes */,
+				AC70638C1EE99E63007C79D3 /* generateRandom.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		AC28BF9B1EE8F2F7006112CA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AC28BF9C1EE8F2F7006112CA /* BEMAnimationManager.h */,
+				AC28BF9D1EE8F2F7006112CA /* BEMAnimationManager.m */,
+				AC28BF9E1EE8F2F7006112CA /* BEMCheckBox.h */,
+				AC28BF9F1EE8F2F7006112CA /* BEMCheckBox.m */,
+				AC28BFA01EE8F2F7006112CA /* BEMCheckBoxGroup.h */,
+				AC28BFA11EE8F2F7006112CA /* BEMCheckBoxGroup.m */,
+				AC28BFA21EE8F2F7006112CA /* BEMPathManager.h */,
+				AC28BFA31EE8F2F7006112CA /* BEMPathManager.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		AC86AF2F1EE318670025B68A = {
 			isa = PBXGroup;
 			children = (
 				AC86AF3A1EE318670025B68A /* Monocle */,
 				AC86AF4F1EE318670025B68A /* MonocleTests */,
-				AC86AFA91EE4EF3D0025B68A /* Suppoting files */,
 				AC86AF5A1EE318670025B68A /* MonocleUITests */,
 				AC86AF391EE318670025B68A /* Products */,
 				2DD4FD3734912A783852805F /* Pods */,
@@ -525,14 +598,14 @@
 		AC86AF3A1EE318670025B68A /* Monocle */ = {
 			isa = PBXGroup;
 			children = (
-				AC86AFA01EE471FA0025B68A /* Helper */,
+				AC28BF9A1EE8F2DE006112CA /* Helper */,
 				AC86AF8B1EE327AD0025B68A /* Delegates */,
 				AC86AF8A1EE327970025B68A /* Controllers */,
 				AC86AF3F1EE318670025B68A /* Main.storyboard */,
 				AC86AF421EE318670025B68A /* Assets.xcassets */,
 				AC86AF441EE318670025B68A /* LaunchScreen.storyboard */,
+				AC28BFA81EE8F3E4006112CA /* Bridging-Header.h */,
 				AC86AF471EE318670025B68A /* Info.plist */,
-				AC86B3CC1EE4F3EA0025B68A /* Bridging-Header.h */,
 				AC86B26C1EE4F3BA0025B68A /* SimpleAuthInstagram */,
 				AC86AF8D1EE3285F0025B68A /* API */,
 				AC86AF8C1EE327BA0025B68A /* Model */,
@@ -561,14 +634,10 @@
 		AC86AF8A1EE327970025B68A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AC28BF931EE8D5C1006112CA /* LoginController */,
 				AC86B3D51EE598650025B68A /* Instagram Controllers */,
-				AC86AF801EE321C80025B68A /* SplashViewController.swift */,
-				AC86B3D61EE59E8E0025B68A /* FriendsListTableViewController.swift */,
-				AC28BF871EE64763006112CA /* FriendsTVCell.swift */,
-				AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */,
-				AC86AF841EE326AE0025B68A /* LoginViewController.swift */,
-				AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */,
-				AC86AFA71EE49C050025B68A /* TweetCell.swift */,
+				AC28BF971EE8D638006112CA /* New Group */,
+				AC28BF941EE8D5EF006112CA /* TwitterController */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -587,8 +656,9 @@
 			children = (
 				AC86AF951EE44B8A0025B68A /* User.swift */,
 				AC86AFA11EE475460025B68A /* Tweet.swift */,
-				AC86B3D31EE5738C0025B68A /* InstagramUser.swift */,
 				AC86B3D81EE5C0EA0025B68A /* TwitterUser.swift */,
+				AC28BF8D1EE6FA1F006112CA /* InstagramAPI.swift */,
+				AC28BF911EE84360006112CA /* InstagramData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -600,21 +670,6 @@
 			);
 			name = API;
 			sourceTree = "<group>";
-		};
-		AC86AFA01EE471FA0025B68A /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helper;
-			sourceTree = "<group>";
-		};
-		AC86AFA91EE4EF3D0025B68A /* Suppoting files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Suppoting files";
-			path = MonocleTests;
-			sourceTree = SOURCE_ROOT;
 		};
 		AC86B26C1EE4F3BA0025B68A /* SimpleAuthInstagram */ = {
 			isa = PBXGroup;
@@ -895,6 +950,8 @@
 			children = (
 				AC86B3CD1EE4FB520025B68A /* InstagramHomeTableViewController.swift */,
 				AC86B3CF1EE570A90025B68A /* InstagramHomeCell.swift */,
+				AC28BF8B1EE6ECC9006112CA /* InstaPostsTableViewController.swift */,
+				AC28BF8F1EE72902006112CA /* InstagramPostsTableViewCell.swift */,
 			);
 			name = "Instagram Controllers";
 			sourceTree = "<group>";
@@ -1188,11 +1245,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC86B3D41EE5738C0025B68A /* InstagramUser.swift in Sources */,
 				AC86B3C21EE4F3BB0025B68A /* UITextView+RACSignalSupport.m in Sources */,
 				AC86B39B1EE4F3BB0025B68A /* RACScheduler.m in Sources */,
 				AC86B3961EE4F3BB0025B68A /* RACMulticastConnection.m in Sources */,
 				AC86B3B51EE4F3BB0025B68A /* UIControl+RACSignalSupport.m in Sources */,
+				AC28BFAC1EE902CF006112CA /* FriendsSelectionCell.swift in Sources */,
 				AC86B3B61EE4F3BB0025B68A /* UIControl+RACSignalSupportPrivate.m in Sources */,
 				AC86B3B91EE4F3BB0025B68A /* UIImagePickerController+RACSignalSupport.m in Sources */,
 				AC86B3BC1EE4F3BB0025B68A /* UISlider+RACSignalSupport.m in Sources */,
@@ -1213,6 +1270,7 @@
 				AC86AF831EE323FB0025B68A /* TwitterLoginDelegate.swift in Sources */,
 				AC86B38A1EE4F3BB0025B68A /* RACDynamicSignal.m in Sources */,
 				AC86B38C1EE4F3BB0025B68A /* RACEmptySequence.m in Sources */,
+				AC28BFA41EE8F2F7006112CA /* BEMAnimationManager.m in Sources */,
 				AC86B3C81EE4F3BB0025B68A /* SimpleAuthInstagramProvider.m in Sources */,
 				AC86B37D1EE4F3BB0025B68A /* NSURLConnection+RACSupport.m in Sources */,
 				AC86B3AC1EE4F3BB0025B68A /* RACTupleSequence.m in Sources */,
@@ -1221,6 +1279,7 @@
 				AC86B3721EE4F3BB0025B68A /* NSObject+RACDeallocating.m in Sources */,
 				AC86B3AF1EE4F3BB0025B68A /* RACValueTransformer.m in Sources */,
 				AC86B3B71EE4F3BB0025B68A /* UIDatePicker+RACSignalSupport.m in Sources */,
+				AC28BFA61EE8F2F7006112CA /* BEMCheckBoxGroup.m in Sources */,
 				AC86B3AB1EE4F3BB0025B68A /* RACTuple.m in Sources */,
 				AC86B3761EE4F3BB0025B68A /* NSObject+RACPropertySubscribing.m in Sources */,
 				AC86B39D1EE4F3BB0025B68A /* RACSequence.m in Sources */,
@@ -1236,12 +1295,15 @@
 				AC86B37A1EE4F3BB0025B68A /* NSString+RACKeyPathUtilities.m in Sources */,
 				AC86B36B1EE4F3BB0025B68A /* NSData+RACSupport.m in Sources */,
 				AC86B3781EE4F3BB0025B68A /* NSOrderedSet+RACSequenceAdditions.m in Sources */,
+				AC70638D1EE99E63007C79D3 /* generateRandom.swift in Sources */,
 				AC86B3BB1EE4F3BB0025B68A /* UISegmentedControl+RACSignalSupport.m in Sources */,
 				AC86B3971EE4F3BB0025B68A /* RACPassthroughSubscriber.m in Sources */,
 				AC86B3B81EE4F3BB0025B68A /* UIGestureRecognizer+RACSignalSupport.m in Sources */,
 				AC86B3981EE4F3BB0025B68A /* RACQueueScheduler.m in Sources */,
 				AC86B3691EE4F3BB0025B68A /* MKAnnotationView+RACSignalSupport.m in Sources */,
+				AC28BF8C1EE6ECC9006112CA /* InstaPostsTableViewController.swift in Sources */,
 				AC86B38E1EE4F3BB0025B68A /* RACErrorSignal.m in Sources */,
+				AC28BF901EE72902006112CA /* InstagramPostsTableViewCell.swift in Sources */,
 				AC86B3B31EE4F3BB0025B68A /* UIButton+RACCommandSupport.m in Sources */,
 				AC86B3C91EE4F3BB0025B68A /* SimpleAuthProvider.m in Sources */,
 				AC86B3601EE4F3BB0025B68A /* UIViewController+SimpleAuthAdditions.m in Sources */,
@@ -1252,6 +1314,7 @@
 				AC86B3901EE4F3BB0025B68A /* RACGroupedSignal.m in Sources */,
 				AC86B39A1EE4F3BB0025B68A /* RACReturnSignal.m in Sources */,
 				AC86B3A71EE4F3BB0025B68A /* RACSubscriptingAssignmentTrampoline.m in Sources */,
+				AC28BF921EE84360006112CA /* InstagramData.swift in Sources */,
 				AC86B3CA1EE4F3BB0025B68A /* SimpleAuthUtilities.m in Sources */,
 				AC86B3651EE4F3BB0025B68A /* NSObject+SimpleAuthAdditions.m in Sources */,
 				AC86B3C11EE4F3BB0025B68A /* UITextField+RACSignalSupport.m in Sources */,
@@ -1268,6 +1331,7 @@
 				AC86B3A31EE4F3BB0025B68A /* RACStream.m in Sources */,
 				AC86B3D01EE570A90025B68A /* InstagramHomeCell.swift in Sources */,
 				AC86B3AD1EE4F3BB0025B68A /* RACUnarySequence.m in Sources */,
+				AC28BF8E1EE6FA1F006112CA /* InstagramAPI.swift in Sources */,
 				AC86B3A91EE4F3BB0025B68A /* RACTargetQueueScheduler.m in Sources */,
 				AC86B3C71EE4F3BB0025B68A /* SimpleAuthInstagramLoginViewController.m in Sources */,
 				AC86B38F1EE4F3BB0025B68A /* RACEvent.m in Sources */,
@@ -1277,17 +1341,17 @@
 				AC86B3991EE4F3BB0025B68A /* RACReplaySubject.m in Sources */,
 				AC86B3C31EE4F3BB0025B68A /* Result.swift in Sources */,
 				AC86B3931EE4F3BB0025B68A /* RACKVOChannel.m in Sources */,
+				AC28BFA71EE8F2F7006112CA /* BEMPathManager.m in Sources */,
 				AC86B3BF1EE4F3BB0025B68A /* UITableViewCell+RACSignalSupport.m in Sources */,
 				AC86B3A41EE4F3BB0025B68A /* RACStringSequence.m in Sources */,
+				AC6071271EE9CE9A00F9E081 /* FriendsListTableViewCell.swift in Sources */,
 				AC86B3741EE4F3BB0025B68A /* NSObject+RACKVOWrapper.m in Sources */,
 				AC86B37B1EE4F3BB0025B68A /* NSString+RACSequenceAdditions.m in Sources */,
-				AC86AF851EE326AE0025B68A /* LoginViewController.swift in Sources */,
 				AC86B3A21EE4F3BB0025B68A /* RACSignalSequence.m in Sources */,
 				AC86B3731EE4F3BB0025B68A /* NSObject+RACDescription.m in Sources */,
 				AC86B35D1EE4F3BB0025B68A /* CMDQueryStringSerialization.m in Sources */,
 				AC86B36F1EE4F3BB0025B68A /* NSIndexSet+RACSequenceAdditions.m in Sources */,
 				AC86AF3C1EE318670025B68A /* AppDelegate.swift in Sources */,
-				AC28BF881EE64763006112CA /* FriendsTVCell.swift in Sources */,
 				AC86B37C1EE4F3BB0025B68A /* NSString+RACSupport.m in Sources */,
 				AC86B3951EE4F3BB0025B68A /* RACKVOTrampoline.m in Sources */,
 				AC86B39E1EE4F3BB0025B68A /* RACSerialDisposable.m in Sources */,
@@ -1301,15 +1365,16 @@
 				AC86B3831EE4F3BB0025B68A /* RACCommand.m in Sources */,
 				AC86B3AE1EE4F3BB0025B68A /* RACUnit.m in Sources */,
 				AC86B3941EE4F3BB0025B68A /* RACKVOProxy.m in Sources */,
-				AC86B3D71EE59E8E0025B68A /* FriendsListTableViewController.swift in Sources */,
 				AC86B3611EE4F3BB0025B68A /* UIWindow+SimpleAuthAdditions.m in Sources */,
 				AC86B3C61EE4F3BB0025B68A /* SimpleAuthDefines.m in Sources */,
 				AC86B36C1EE4F3BB0025B68A /* NSDictionary+RACSequenceAdditions.m in Sources */,
 				AC86B3A81EE4F3BB0025B68A /* RACSubscriptionScheduler.m in Sources */,
+				AC28BFAA1EE902AD006112CA /* FriendsSelectionTableViewController.swift in Sources */,
 				AC86B3B21EE4F3BB0025B68A /* UIBarButtonItem+RACCommandSupport.m in Sources */,
 				AC86B3641EE4F3BB0025B68A /* NSDate+ISO8601.m in Sources */,
 				AC86B3AA1EE4F3BB0025B68A /* RACTestScheduler.m in Sources */,
 				AC86AF961EE44B8A0025B68A /* User.swift in Sources */,
+				AC28BFA51EE8F2F7006112CA /* BEMCheckBox.m in Sources */,
 				AC86B3BE1EE4F3BB0025B68A /* UISwitch+RACSignalSupport.m in Sources */,
 				AC86B3C51EE4F3BB0025B68A /* SimpleAuth.m in Sources */,
 				AC86B39C1EE4F3BB0025B68A /* RACScopedDisposable.m in Sources */,

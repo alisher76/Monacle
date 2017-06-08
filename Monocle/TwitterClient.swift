@@ -130,7 +130,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func getUserTimeline(userID: String, success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
         
-        let params = ["count": 1]
+        let params = ["count": 10]
         
         get("1.1/statuses/user_timeline.json?user_id=\(userID)", parameters: params, progress: nil, success: { (task, responce) in
             

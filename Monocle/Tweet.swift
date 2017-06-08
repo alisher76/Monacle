@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-
-
 class Tweet {
     
     var tweetID: NSNumber!

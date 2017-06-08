@@ -48,4 +48,43 @@ class User {
             }
         }
     }
+    
+    class Friends {
+        var dictionary: [String]?
+        
+        init(dictionary: [String]) {
+            self.dictionary = dictionary
+        }
+        
+        static var _currentListOfFriends: User.Friends?
+        
+        class var currentListOfFriends: User.Friends? {
+            get {
+                if (_currentListOfFriends == nil) {
+                    let defaults = UserDefaults.standard
+                    let userData = defaults.object(forKey: "savedListOfFriends") as? Data
+                    
+                    if let userData = userData {
+                        let dictionary = try! JSONSerialization.jsonObject(with: userData, options: []) as! [String]
+                        
+                        _currentListOfFriends = User.Friends(dictionary: dictionary)
+                    }
+                }
+                return _currentListOfFriends
+            }
+            
+            set(userFriends) {
+                _currentListOfFriends = userFriends
+                
+                let defaults = UserDefaults.standard
+                
+                if let userFriend = userFriends {
+                    let data = try! JSONSerialization.data(withJSONObject: userFriend.dictionary!, options: [])
+                    defaults.set(data, forKey: "savedListOfFriends")
+                } else {
+                    defaults.set(nil, forKey: "savedListOfFriends")
+                }
+            }
+        }
+    }
 }

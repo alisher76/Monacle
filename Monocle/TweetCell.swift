@@ -9,6 +9,8 @@
 import UIKit
 
 class TweetCell: TweetTableViewCell {
+    
+   
 
     override func awakeFromNib() {
         super .awakeFromNib()
@@ -30,5 +32,4 @@ class TweetCell: TweetTableViewCell {
         favoriteCountLabel.text = tweet.favoriteCount > 0 ? String(tweet.favoriteCount) : ""
     }
     
-
 }
