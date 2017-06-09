@@ -21,6 +21,9 @@
 		AC28BFAA1EE902AD006112CA /* FriendsSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */; };
 		AC28BFAC1EE902CF006112CA /* FriendsSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */; };
 		AC6071271EE9CE9A00F9E081 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */; };
+		AC60712A1EEB54ED00F9E081 /* InstagramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */; };
+		AC60712C1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */; };
+		AC60712E1EEB630800F9E081 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC60712D1EEB630800F9E081 /* User.swift */; };
 		AC70638D1EE99E63007C79D3 /* generateRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70638C1EE99E63007C79D3 /* generateRandom.swift */; };
 		AC86AF3C1EE318670025B68A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF3B1EE318670025B68A /* AppDelegate.swift */; };
 		AC86AF411EE318670025B68A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC86AF3F1EE318670025B68A /* Main.storyboard */; };
@@ -31,7 +34,6 @@
 		AC86AF811EE321C80025B68A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF801EE321C80025B68A /* SplashViewController.swift */; };
 		AC86AF831EE323FB0025B68A /* TwitterLoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF821EE323FB0025B68A /* TwitterLoginDelegate.swift */; };
 		AC86AF891EE3276A0025B68A /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF881EE3276A0025B68A /* TwitterClient.swift */; };
-		AC86AF961EE44B8A0025B68A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF951EE44B8A0025B68A /* User.swift */; };
 		AC86AFA21EE475460025B68A /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AFA11EE475460025B68A /* Tweet.swift */; };
 		AC86AFA41EE47B990025B68A /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */; };
 		AC86AFA61EE48D8F0025B68A /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */; };
@@ -210,6 +212,9 @@
 		AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSelectionTableViewController.swift; sourceTree = "<group>"; };
 		AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSelectionCell.swift; sourceTree = "<group>"; };
 		AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
+		AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramTableViewController.swift; sourceTree = "<group>"; };
+		AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntagramFriendsTableViewCell.swift; sourceTree = "<group>"; };
+		AC60712D1EEB630800F9E081 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AC70638C1EE99E63007C79D3 /* generateRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = generateRandom.swift; sourceTree = "<group>"; };
 		AC86AF381EE318670025B68A /* Monocle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monocle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC86AF3B1EE318670025B68A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,7 +231,6 @@
 		AC86AF801EE321C80025B68A /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		AC86AF821EE323FB0025B68A /* TwitterLoginDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLoginDelegate.swift; sourceTree = "<group>"; };
 		AC86AF881EE3276A0025B68A /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
-		AC86AF951EE44B8A0025B68A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AC86AFA11EE475460025B68A /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
@@ -573,6 +577,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		AC6071281EEB545E00F9E081 /* InstagramCells */ = {
+			isa = PBXGroup;
+			children = (
+				AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */,
+				AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */,
+			);
+			name = InstagramCells;
+			sourceTree = "<group>";
+		};
 		AC86AF2F1EE318670025B68A = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +613,8 @@
 			children = (
 				AC28BF9A1EE8F2DE006112CA /* Helper */,
 				AC86AF8B1EE327AD0025B68A /* Delegates */,
+				AC86AF8C1EE327BA0025B68A /* Model */,
+				AC86AF8D1EE3285F0025B68A /* API */,
 				AC86AF8A1EE327970025B68A /* Controllers */,
 				AC86AF3F1EE318670025B68A /* Main.storyboard */,
 				AC86AF421EE318670025B68A /* Assets.xcassets */,
@@ -607,8 +622,6 @@
 				AC28BFA81EE8F3E4006112CA /* Bridging-Header.h */,
 				AC86AF471EE318670025B68A /* Info.plist */,
 				AC86B26C1EE4F3BA0025B68A /* SimpleAuthInstagram */,
-				AC86AF8D1EE3285F0025B68A /* API */,
-				AC86AF8C1EE327BA0025B68A /* Model */,
 			);
 			path = Monocle;
 			sourceTree = "<group>";
@@ -654,10 +667,9 @@
 		AC86AF8C1EE327BA0025B68A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AC86AF951EE44B8A0025B68A /* User.swift */,
+				AC60712D1EEB630800F9E081 /* User.swift */,
 				AC86AFA11EE475460025B68A /* Tweet.swift */,
 				AC86B3D81EE5C0EA0025B68A /* TwitterUser.swift */,
-				AC28BF8D1EE6FA1F006112CA /* InstagramAPI.swift */,
 				AC28BF911EE84360006112CA /* InstagramData.swift */,
 			);
 			name = Model;
@@ -666,6 +678,7 @@
 		AC86AF8D1EE3285F0025B68A /* API */ = {
 			isa = PBXGroup;
 			children = (
+				AC28BF8D1EE6FA1F006112CA /* InstagramAPI.swift */,
 				AC86AF881EE3276A0025B68A /* TwitterClient.swift */,
 			);
 			name = API;
@@ -952,6 +965,7 @@
 				AC86B3CF1EE570A90025B68A /* InstagramHomeCell.swift */,
 				AC28BF8B1EE6ECC9006112CA /* InstaPostsTableViewController.swift */,
 				AC28BF8F1EE72902006112CA /* InstagramPostsTableViewCell.swift */,
+				AC6071281EEB545E00F9E081 /* InstagramCells */,
 			);
 			name = "Instagram Controllers";
 			sourceTree = "<group>";
@@ -1259,6 +1273,7 @@
 				AC86B3A01EE4F3BB0025B68A /* RACSignal.m in Sources */,
 				AC86B3B11EE4F3BB0025B68A /* UIAlertView+RACSignalSupport.m in Sources */,
 				AC86B3661EE4F3BB0025B68A /* NSString+CMDQueryStringSerialization.m in Sources */,
+				AC60712E1EEB630800F9E081 /* User.swift in Sources */,
 				AC86B3BD1EE4F3BB0025B68A /* UIStepper+RACSignalSupport.m in Sources */,
 				AC86B3621EE4F3BB0025B68A /* ISO8601Serialization.m in Sources */,
 				AC86B3C41EE4F3BB0025B68A /* ResultType.swift in Sources */,
@@ -1271,6 +1286,7 @@
 				AC86B38A1EE4F3BB0025B68A /* RACDynamicSignal.m in Sources */,
 				AC86B38C1EE4F3BB0025B68A /* RACEmptySequence.m in Sources */,
 				AC28BFA41EE8F2F7006112CA /* BEMAnimationManager.m in Sources */,
+				AC60712C1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift in Sources */,
 				AC86B3C81EE4F3BB0025B68A /* SimpleAuthInstagramProvider.m in Sources */,
 				AC86B37D1EE4F3BB0025B68A /* NSURLConnection+RACSupport.m in Sources */,
 				AC86B3AC1EE4F3BB0025B68A /* RACTupleSequence.m in Sources */,
@@ -1295,6 +1311,7 @@
 				AC86B37A1EE4F3BB0025B68A /* NSString+RACKeyPathUtilities.m in Sources */,
 				AC86B36B1EE4F3BB0025B68A /* NSData+RACSupport.m in Sources */,
 				AC86B3781EE4F3BB0025B68A /* NSOrderedSet+RACSequenceAdditions.m in Sources */,
+				AC60712A1EEB54ED00F9E081 /* InstagramTableViewController.swift in Sources */,
 				AC70638D1EE99E63007C79D3 /* generateRandom.swift in Sources */,
 				AC86B3BB1EE4F3BB0025B68A /* UISegmentedControl+RACSignalSupport.m in Sources */,
 				AC86B3971EE4F3BB0025B68A /* RACPassthroughSubscriber.m in Sources */,
@@ -1373,7 +1390,6 @@
 				AC86B3B21EE4F3BB0025B68A /* UIBarButtonItem+RACCommandSupport.m in Sources */,
 				AC86B3641EE4F3BB0025B68A /* NSDate+ISO8601.m in Sources */,
 				AC86B3AA1EE4F3BB0025B68A /* RACTestScheduler.m in Sources */,
-				AC86AF961EE44B8A0025B68A /* User.swift in Sources */,
 				AC28BFA51EE8F2F7006112CA /* BEMCheckBox.m in Sources */,
 				AC86B3BE1EE4F3BB0025B68A /* UISwitch+RACSignalSupport.m in Sources */,
 				AC86B3C51EE4F3BB0025B68A /* SimpleAuth.m in Sources */,

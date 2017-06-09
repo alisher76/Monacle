@@ -10,33 +10,26 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
-    var friendIDs: [String]? {
-        didSet {
-            print(friendIDs)
-        }
-    }
-    
+    let userDeafaults = UserDefaults.standard
     var friends = [TwitterUser]()
     
     struct Storyboard {
         static let friendsCell = "friendsListCell"
         static let homeCell = "HomeCell"
-        
     }
-
     
     var userID: String? {
         didSet {
             getUserTimeline(userID: userID!)
-            print(userID!)
         }
     }
     var lastTweetID: Int?
-    var tweets: [Tweet]?{
+    var tweets: [Tweet] = [] {
         didSet {
-            lastTweetID = Int(tweets![(tweets?.endIndex)! - 1].tweetID as! Int)
+            tableView.reloadData()
         }
     }
+    
     var refreshControll: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -46,29 +39,21 @@ class HomeTableViewController: UITableViewController {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
         imageView.image = logo
-        self.navigationItem.titleView = imageView
+        tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 160.0
         
+        self.navigationItem.titleView = imageView
         
-        if self.friendIDs != nil {
-            OperationQueue.main.addOperation {
-            // if it is not nil, you have saved friends. Fetch data by friend IDs
-            for id in self.friendIDs! {
-                self.getUserTimeline(userID: id)
-            }
-           }
-        }
-        
+        fetchSavedData()
+    }
+
         //Set up refreshControll
         
 //        refreshControll = UIRefreshControl()
 //        refreshControll.addTarget(self, action: #selector(HomeTableViewController.reloadData), for: UIControlEvents.valueChanged)
 //        tableView.insertSubview(refreshControll, at: 0)
-    }
     
 
-    
     
     // MARK: - Table view data source
     
@@ -76,7 +61,7 @@ class HomeTableViewController: UITableViewController {
         if indexPath.row == 0 {
             return 100.0
         } else {
-            return 80.0
+            return UITableViewAutomaticDimension
             
         }
     }
@@ -87,12 +72,11 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        if (tweets == nil) {
-            return 1
-        } else {
-            return tweets!.count
+        if tweets.count == 0 {
+            fetchSavedData()
+            return tweets.count
+        }else{
+            return tweets.count
         }
     }
     
@@ -101,19 +85,19 @@ class HomeTableViewController: UITableViewController {
         
         if indexPath.row == 0 {
           let cell = tableView.dequeueReusableCell(withIdentifier: "friendsCell") as! FriendsListTableViewCell
-            cell.delegate = self
-          cell.friends = friends
-          return cell
+              cell.delegate = self
+              cell.friends = friends
+              return cell
          }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.homeCell, for: indexPath) as! TweetCell
-            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
-            cell.tweet = tweets![indexPath.row]
-            cell.friends = friends
-
-            return cell
+          let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.homeCell, for: indexPath) as! TweetCell
+              tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+              cell.selectionStyle = UITableViewCellSelectionStyle.none
+              cell.tweet = tweets[indexPath.row]
+              cell.friends = friends
+              return cell
         }
     }
+    
     
     
     func reloadData(appending: Bool = false)  {
@@ -128,7 +112,7 @@ class HomeTableViewController: UITableViewController {
                 }
                 
                 if cleaned.count > 0 {
-                    self.tweets?.append(contentsOf: cleaned)
+                    self.tweets.append(contentsOf: cleaned)
                     self.tableView.reloadData()
                 }
             }else{
@@ -139,7 +123,6 @@ class HomeTableViewController: UITableViewController {
             print(error)
         })
         
-       
     }
     
     func getUserTimeline(userID: String) {
@@ -150,6 +133,14 @@ class HomeTableViewController: UITableViewController {
         }, failure: { (error) in
             print("error")
         })
+    }
+    
+    func fetchSavedData() {
+        
+        let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
+        guard let userFriends = TwitterUser.array(json: savedData) else {return}
+        self.friends = userFriends
+        self.userID = userFriends.first?.uid
     }
 
     

@@ -69,15 +69,35 @@ class FriendsSelectionTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let userDefaults = UserDefaults.standard
+        var savedFriendID: NSDictionary?
+        
         if segue.identifier == "showTweets" {
             let vc = segue.destination as! HomeTableViewController
             OperationQueue.main.addOperation {
                 var sUsers: [TwitterUser] = []
+                var selectedFriends: [NSDictionary] = []
+                
                 for (_ , value) in self.selectedUsers {
                 sUsers.append(value)
+                    
+                    let dictioanry: NSDictionary = [
+                        "name": value.name,
+                        "id_str" : value.uid,
+                        "screen_name"  : value.screenName,
+                        "followers_count": value.followerCount,
+                        "friends_count" : value.followingCount,
+                        "description" : value.description,
+                        "location" : value.location,
+                        "profile_image_url_https" : value.image
+                    ]
+                selectedFriends.append(dictioanry)
                }
+                
+                userDefaults.set(selectedFriends, forKey: "savedFriends")
+                userDefaults.synchronize()
                 vc.friends = sUsers
-                vc.userID = sUsers.first?.uid
           }
         }
     }

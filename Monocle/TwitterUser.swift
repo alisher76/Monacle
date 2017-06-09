@@ -35,11 +35,11 @@ class TwitterUser {
         guard let name = json[TwitterUser.nameKey] as? String,
             let uid = json[TwitterUser.uidKey] as? String,
             let screenName = json[TwitterUser.screenNameKey] as? String,
-        let followerCount = json[TwitterUser.followerCountKey] as? Int,
-        let followingCount = json[TwitterUser.followingCounKey] as? Int,
-        let description = json[TwitterUser.descriptionKey] as? String,
-        let location = json[TwitterUser.locationKey] as? String,
-        let image = json[TwitterUser.imageKey] as? String
+            let followerCount = json[TwitterUser.followerCountKey] as? Int,
+            let followingCount = json[TwitterUser.followingCounKey] as? Int,
+            let description = json[TwitterUser.descriptionKey] as? String,
+            let location = json[TwitterUser.locationKey] as? String,
+            let image = json[TwitterUser.imageKey] as? String
             else {
                 return nil
         }
@@ -49,7 +49,7 @@ class TwitterUser {
     static func array(json: [NSDictionary]) -> [TwitterUser]? {
         var converted = [TwitterUser]()
         for i in json {
-            guard let user = TwitterUser.init(json: i) else { return nil }
+            guard let user = TwitterUser(json: i) else { return nil }
             converted.append(user)
         }
             return converted

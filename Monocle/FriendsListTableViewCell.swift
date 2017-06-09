@@ -67,12 +67,29 @@ class FriendsListTableViewCell: UITableViewCell {
         }
         
     }
-    
-    
-    
+ 
     class CustomCollectionCell: UICollectionViewCell  {
+        
+        
+        
         @IBOutlet var collectionImageView: UIImageView!
         @IBOutlet var collectionImageTitleLbl: UILabel!
+        
+       
+        
+        override func awakeFromNib() {
+          super.awakeFromNib()
+            setUpLayer()
+        }
+        
+        
+        func setUpLayer() {
+            
+            collectionImageView.layer.cornerRadius = 5
+            collectionImageView.clipsToBounds = true
+            collectionImageView.layer.shadowOpacity = 0.7
+            collectionImageView.layer.shadowRadius = 10.0
+        }
     }
 
 

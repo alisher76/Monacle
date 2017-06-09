@@ -10,7 +10,8 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
-   @IBOutlet var collectionView: UICollectionView!
+    
+    
     
     @IBOutlet var authorUserNameLabel: UILabel!
     @IBOutlet var authorNameLabel: UILabel!
@@ -22,8 +23,9 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var mediaImageView: UIImageView!
     
     var friends: [TwitterUser] = []
+    var indexPath: IndexPath!
     
-    var tweetID: NSNumber!
+    var tweetID: Int!
     var tweetTextFontSize: CGFloat { get { return 15.0 }}
     var tweetTextWeigth: CGFloat { get { return UIFontWeightRegular} }
     var tweet: Tweet! {
@@ -35,36 +37,57 @@ class TweetTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
-        
     }
     
+    
+    
     func tweetSetConfigure() {
+        
         tweetID = tweet.tweetID
-        profilePicImageView.setImageWith(tweet.authorProfilePic!)
+        profilePicImageView.setImageWith(tweet.authorProfilePic! as URL)
         profilePicImageView.layer.cornerRadius = 5
         profilePicImageView.clipsToBounds = true
-        
         authorNameLabel.text = tweet.author
         authorUserNameLabel.text = "@" + tweet.screenName!
         
         tweetContentsLabel.text = tweet.text
+        
+        let urls = tweet.urls
+        let media = tweet.media
+        var urlDictionary = [[String:Any]]()
         var displayURLS = [String]()
         
-        let media = tweet.media
-        print(tweet.precedingTweetID)
-
-
+        mediaImageView.image = nil
         
+        if let urls = urls {
+            for (key,value) in urls {
+                urlDictionary.append([key:value])
+            }
+            print(urls)
+            for url in urlDictionary {
+                var index = 0
+                let urlsData = url["urls"] as! [NSDictionary]
+                let urlText = urlsData[index]["url"] as! String
+                tweetContentsLabel.text = tweetContentsLabel.text?.replcae(target: urlText, withString: "")
+                var displayURL = urlsData[index]["display_url"] as! String
+                if let expancedURL = urlsData[index]["expanded_url"] {
+                    displayURL = expancedURL as! String
+                }
+                index += 1
+                displayURLS.append(displayURL)
+                
+            }
+        }
         
-        print(displayURLS.count)
-        
-        if(displayURLS.count > 0){
+        if let media = media {
+            print(media.count)
+        }
+   
+        if displayURLS.count > 0 {
+            
             
             let content = tweetContentsLabel.text ?? ""
-            
             let urlText = " " + displayURLS.joined(separator: " ")
-            
             let text = NSMutableAttributedString(string: content)
             
             text.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: tweetTextFontSize, weight: tweetTextFontSize), range: NSRange(location: 0, length: content.characters.count))
@@ -82,10 +105,12 @@ class TweetTableViewCell: UITableViewCell {
             text.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: text.string.characters.count))
             
             tweetContentsLabel.attributedText = text
-            
         }
-    
+        
     }
+    
+    
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -7,64 +7,71 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SplashViewController: UIViewController, TwitterLoginDelegate {
 
+    var delegate: HomeTableViewController?
+    let userDefaults = UserDefaults.standard
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var accessToken: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
        TwitterClient.sharedInstance?.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        if(!appDelegate.splashDelay) {
-            delay(delay: 1.0, closure: { 
-                self.continueLogin()
-            })
-        }
+    
         
     }
     
+    @IBAction func instagramButtonTapped(_ sender: Any) {
+        
+        goToInstaApp()    
+    }
+    
+    
     @IBAction func twitterButtonTaped(_ sender: Any) {
-        TwitterClient.sharedInstance?.login(success: {
-            print("Logged In")
-            self.dismiss(animated: true, completion: {
-                
-            })
-        }) { (error) in
-            print(error)
-        }
+        continueLogin()
+        
     }
     
     func continueLogin() {
-       appDelegate.splashDelay = false
-        if User.currentUser != nil && User.Friends.currentListOfFriends == nil {
+        let accessToken = userDefaults.object(forKey: "accessToken") as? String
+        let savedUsers = userDefaults.object(forKey: "savedFriends") as? [NSDictionary]
+        
+        
+        if accessToken != nil  && savedUsers == nil {
             self.goToSelectFriendsPage()
-        }else if User.currentUser != nil && User.Friends.currentListOfFriends != nil{
+        }else if accessToken != nil && savedUsers != nil{
             self.goToApp()
+        }else{
+        
+            TwitterClient.sharedInstance?.login(success: {
+                print("Logged In")
+                self.dismiss(animated: true, completion: {
+                    
+                })
+            }) { (error) in
+                print(error)
+            }
+        
         }
     }
     
     func goToSelectFriendsPage() {
         self.performSegue(withIdentifier: "selectFriends", sender: self)
     }
-    
-    func goToApp() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "twitterHomePage") as! HomeTableViewController
-        if let savedData = UserDefaults.standard.array(forKey: "savedListOfFriends"){
-            vc.friendIDs = savedData as? [String]
-        }
-        self.performSegue(withIdentifier: "showApp", sender: self)
+    func goToInstaApp() {
         
+        self.performSegue(withIdentifier: "showListOfFriends", sender: self)
+    }
+
+    func goToApp() {
+        
+        self.performSegue(withIdentifier: "showApp", sender: self)
     }
     
-    
-
-   
 }

@@ -16,7 +16,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     static let sharedInstance = TwitterClient(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "YJHFbPWaKlzWFW8MG1PFVBshS", consumerSecret: "HKco4y1pEpaupl2D3Vm4i1BG4CkhTCAVlJp5Q2cTsnsKuegZSL")
     
     //Getting request token to open up authorize link in safari
-    
+    var accessToken: String!
     var loginSuccess: (() ->())?
     var loginFailure: ((Error) ->())?
     weak var delegate: TwitterLoginDelegate?
@@ -42,7 +42,8 @@ class TwitterClient: BDBOAuth1SessionManager {
     //Get access token and save user
     func handleOpenURL(url: URL) {
         let  appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
+       
+        let userDefaults = UserDefaults.standard
         appDelegate.splashDelay = true
         
         //get access token
@@ -50,17 +51,14 @@ class TwitterClient: BDBOAuth1SessionManager {
         let requestToken = BDBOAuth1Credential(queryString: url.query)!
         
         fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken) in
-            self.currentAccount(success: { (user: User) in
-                
-                //Calling setter and saving user
-                
-                User.currentUser = user
+            
+                userDefaults.set(accessToken?.token, forKey: "accessToken")
+                userDefaults.synchronize()
+            
                 self.loginSuccess?()
                 self.delegate?.continueLogin()
-            }, failure: { (error) in
-                self.loginFailure?(error)
-            })
-            self.loginSuccess?()
+           
+                self.loginSuccess?()
         }) { (error) in
             self.loginFailure?(error!)
         }

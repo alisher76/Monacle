@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let auth: NSMutableDictionary = ["client_id": INSTAGRAM_CLIENT_ID,
                                          SimpleAuthRedirectURIKey: INSTAGRAM_REDIRECT_URI]
         SimpleAuth.configuration()["instagram"] = auth
+
         return true
     }
 

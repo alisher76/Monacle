@@ -27,7 +27,7 @@ class InstagramHomeTableViewController: UITableViewController {
     }
     var photoDictionaries = [[String:Any]]()
     struct StroryBoard {
-        static let exploreCell = "exploreCell"
+        static let exploreCell = "friendsList"
     }
    
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class InstagramHomeTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StroryBoard.exploreCell, for: indexPath) as! InstagramHomeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendsList", for: indexPath) as! InstagramHomeCell
          cell.user = listOfUser[indexPath.row]
         
         return cell
@@ -90,6 +90,7 @@ class InstagramHomeTableViewController: UITableViewController {
         
        Instagram().fetchUserFriends(accessToken) { (oUsers) in
         self.listOfUser = oUsers
+        print(oUsers)
         OperationQueue.main.addOperation {
             self.tableView?.reloadData()
         }
