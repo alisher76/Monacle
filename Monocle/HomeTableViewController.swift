@@ -21,6 +21,7 @@ class HomeTableViewController: UITableViewController {
     
     var userID: String? {
         didSet {
+            print(userID)
             getUserTimeline(userID: userID!)
         }
     }
@@ -42,7 +43,7 @@ class HomeTableViewController: UITableViewController {
         imageView.image = logo
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        self.tabBarController?.tabBar.isHidden = false
         self.navigationItem.titleView = imageView
         
         fetchSavedData()
@@ -140,6 +141,8 @@ class HomeTableViewController: UITableViewController {
         
         let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
         guard let userFriends = TwitterUser.array(json: savedData) else {return}
+        print(savedData)
+        print(userFriends)
         self.friends = userFriends
         self.userID = userFriends.first?.uid
     }

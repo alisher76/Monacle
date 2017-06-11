@@ -37,7 +37,7 @@ class InstagramTableViewController: UITableViewController {
     struct StoryboardCellIdentifier {
         static let friendsCell = "FriendsListCell"
         static let headerCell = "HeaderCell"
-        static let photoCell = "PhotoCell"
+        static let postCell = "PostCell"
         static let commentCell = "CommentCell"
     }
     
@@ -91,12 +91,12 @@ class InstagramTableViewController: UITableViewController {
             return cell
             
        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.photoCell , for: indexPath) as! PhotoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.postCell , for: indexPath) as! PostsTableViewCell
             cell.media = posts[indexPath.row]
             return cell
-            
-        }
+            }
     }
+    
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.headerCell) as! HeaderTableViewCell
@@ -104,6 +104,7 @@ class InstagramTableViewController: UITableViewController {
         frame.size.height = 100
         cell.frame = frame
         cell.header = posts[section]
+        print(posts[section])
         return cell
     }
     

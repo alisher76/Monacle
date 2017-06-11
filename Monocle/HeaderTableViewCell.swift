@@ -23,7 +23,7 @@ class HeaderTableViewCell: UITableViewCell {
             self.headPic.layer.borderWidth = 1
             self.headPic.layer.masksToBounds = false
             self.headPic.layer.borderColor = UIColor.black.cgColor
-            self.headPic.layer.cornerRadius = self.headPic.frame.height/2
+            self.headPic.layer.cornerRadius = self.headPic.bounds.width / 2.0
             self.headPic.clipsToBounds = true
             
             if let setHeader = header {

@@ -84,7 +84,7 @@ class CustomCollectionCellInstagram: UICollectionViewCell  {
     
     func setUpLayer() {
         
-        collectionImageView.layer.cornerRadius = 5
+        collectionImageView.layer.cornerRadius = collectionImageView.bounds.width / 2.0
         collectionImageView.clipsToBounds = true
         collectionImageView.layer.shadowOpacity = 0.7
         collectionImageView.layer.shadowRadius = 10.0

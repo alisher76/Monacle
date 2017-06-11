@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //Change the color of tab bar items
+        
+        UITabBar.appearance().tintColor = UIColor.black
+        
         let INSTAGRAM_CLIENT_ID = "ac00ba2a3ad64cc8b4a180dcc5869e49"
         let INSTAGRAM_REDIRECT_URI = "http://localhost//comeOnBroApp"
         
