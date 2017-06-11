@@ -11,47 +11,37 @@ import UIKit
 class InstagramTableViewController: UITableViewController {
 
     let userDeafaults = UserDefaults.standard
+    var accessToken: String?
     
-    
-    var accessToken: String!{
+    var friends: [InstagramUser]! {
         didSet {
-          // fetchUsersFollowed()
+        fetchUserPosts(userID: (friends.first?.uid)!)
         }
     }
     
-    var listOfUser:[Instagram.User] = [] {
+    
+    var tweets: [Instagram.Media] = [] {
         didSet {
-            print(listOfUser.count)
+            tableView.reloadData()
         }
     }
 
     var indexNum: Int! {
         didSet {
-         //   cellTapped()
+        
         }
     }
-
-    
     var photoDictionaries = [[String:Any]]()
-    struct StroryBoard {
-        static let exploreCell = "exploreCell"
-    }
 
     
-    var friends:[Instagram.User] = []
-    
-    struct Storyboard {
-        static let friendsCell = "friendsListCell"
-        static let homeCell = "media"
-        static let comment = "comment"
+    struct StoryboardCellIdentifier {
+        static let friendsCell = "FriendsListCell"
+        static let headerCell = "HeaderCell"
+        static let photoCell = "PhotoCell"
+        static let commentCell = "CommentCell"
     }
     
-    var userID: String? {
-        didSet {
-            getUserTimeline(userID: userID!)
-        }
-    }
-    var lastTweetID: Int?
+    
     var posts: [Instagram.Media] = [] {
         didSet {
             tableView.reloadData()
@@ -63,16 +53,12 @@ class InstagramTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
+        tableView.estimatedRowHeight = 450
+        tableView.rowHeight = UITableViewAutomaticDimension
         fetchSavedData()
     }
     
    
-    
-    
-    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -80,10 +66,8 @@ class InstagramTableViewController: UITableViewController {
             return 100.0
         } else {
             return UITableViewAutomaticDimension
-            
         }
     }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -91,7 +75,6 @@ class InstagramTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if posts.count == 0 {
-            fetchSavedData()
             return posts.count
         }else{
             return posts.count
@@ -101,42 +84,64 @@ class InstagramTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "friendsCell") as! IntagramFriendsTableViewCell
-                cell.delegate = self
-                cell.friends = friends
+       if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.friendsCell) as! IntagramFriendsTableViewCell
+            cell.delegate = self
+            cell.friends = friends
             return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.homeCell, for: indexPath) as! TweetCell
             
+       }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.photoCell , for: indexPath) as! PhotoTableViewCell
+            cell.media = posts[indexPath.row]
             return cell
+            
         }
     }
     
-    
-    
-    func reloadData(appending: Bool = false)  {
-        
-        
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.headerCell) as! HeaderTableViewCell
+        var frame = cell.frame
+        frame.size.height = 100
+        cell.frame = frame
+        cell.header = posts[section]
+        return cell
     }
     
-    func getUserTimeline(userID: String) {
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0,y: 0, width: tableView.frame.size.width, height: 40))
+        footerView.backgroundColor = UIColor.white
         
-        
+        return footerView
     }
     
     func fetchSavedData() {
         
-        let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
-        //guard let userFriends = TwitterUser.array(json: savedData) else {return}
-//        self.friends = userFriends
-//        self.userID = userFriends.first?.uid
+        let savedData = self.userDeafaults.object(forKey: "savedInstagramFriends") as! [NSDictionary]
+        let savedToken = self.userDeafaults.object(forKey: "accessTokenForInstagram") as! String
+        self.accessToken = savedToken
+        var savedFriends: [InstagramUser] = []
+        for friend in savedData {
+            let savedFriend = InstagramUser(fullName: friend["name"] as! String, userName: friend["userName"] as! String, uid: friend["uid"] as! String, image: friend["image"] as! String)
+            
+            savedFriends.append(savedFriend)
+        }
+        friends = savedFriends
+    }
+    
+    func fetchUserPosts(userID: String) {
+        Instagram().fetchRecentMediaForUser(userID, accessToken: accessToken!) { (posts) in
+            self.posts = posts
+            print(posts.count)
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
     
     
-    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if posts != nil {
+        if posts.count != 0 {
             let scrollViewContentHeight = tableView.contentSize.height
             let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
             

@@ -71,8 +71,7 @@ class FriendsSelectionTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let userDefaults = UserDefaults.standard
-        var savedFriendID: NSDictionary?
-        
+                
         if segue.identifier == "showTweets" {
             let vc = segue.destination as! HomeTableViewController
             OperationQueue.main.addOperation {

@@ -17,7 +17,7 @@ class InstagramHomeCell: UITableViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     
    
-    var user: Instagram.User! {
+    var user: InstagramUser! {
         didSet {
             configTableViewCell()
         }
@@ -33,7 +33,7 @@ class InstagramHomeCell: UITableViewCell {
     func configTableViewCell() {
         OperationQueue.main.addOperation {
             self.profileImageVIew.setImageWith(URL(string: self.user.image)!)
-            self.profileNameLabel.text = self.user.name
+            self.profileNameLabel.text = self.user.fullName
             self.descriptionLabel.text = self.user.userName
         }
         

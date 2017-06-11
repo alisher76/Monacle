@@ -30,28 +30,20 @@ class Instagram {
         let text: String
     }
     
-    struct User {
-        var name: String
-        var userName: String
-        var uid: String
-        var image: String
-        let posts: Int
-        let followers: Int
-        let follows: Int
-    }
+    
     // Turn friends list data into needed Type
-    func populateFriendsList(_ data: Any?, callback: ([User]) -> Void) {
+    func populateFriendsList(_ data: Any?, callback: ([InstagramUser]) -> Void) {
         let json = JSON(data!)
-        var users = [User]()
+        var users = [InstagramUser]()
         for _user in json["data"].arrayValue {
-            let user = User(name: _user["full_name"].stringValue, userName: _user["username"].stringValue, uid: _user["id"].stringValue, image: _user["profile_picture"].stringValue, posts: 10, followers: 10, follows: 10)
+            let user = InstagramUser(fullName: _user["full_name"].stringValue, userName: _user["username"].stringValue, uid: _user["id"].stringValue, image: _user["profile_picture"].stringValue)
             users.append(user)
         }
         callback(users)
     }
     
     //Get user lists data
-    func fetchUserFriends(_ accessToken: String, callBack: @escaping ([User]) -> Void) {
+    func fetchUserFriends(_ accessToken: String, callBack: @escaping ([InstagramUser]) -> Void) {
         request("https://api.instagram.com/v1/users/self/follows?access_token=\(accessToken)", method: .get).responseJSON { (responce) in
             self.populateFriendsList(responce.result.value, callback: callBack)
         }
@@ -79,7 +71,6 @@ class Instagram {
         request("https://api.instagram.com/v1/users/\(id)/media/recent/?access_token=\(accessToken)", method: .get).responseJSON { (responce) in
             self.populateFriendsRecentPosts(responce.result.value, callback: callback)
         }
-    }
-    
+      }
 
 }

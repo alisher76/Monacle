@@ -15,16 +15,17 @@ class InstagramHomeTableViewController: UITableViewController {
             fetchUsersFollowed()
         }
     }
-    var listOfUser:[Instagram.User] = [] {
+    var listOfUser:[InstagramUser] = [] {
         didSet {
-            print(listOfUser.count)
+            print("select Friends table view controller: count \(listOfUser.count)")
+            
         }
     }
-    var indexNum: Int! {
-        didSet {
-           cellTapped()
-        }
-    }
+    
+    var selectedUsers: [String:InstagramUser] = [:]
+    var indexNum = 0
+
+   
     var photoDictionaries = [[String:Any]]()
     struct StroryBoard {
         static let exploreCell = "friendsList"
@@ -34,7 +35,6 @@ class InstagramHomeTableViewController: UITableViewController {
         super.viewDidLoad()
 
         authInstagram()
-        
         
     }
 
@@ -57,7 +57,22 @@ class InstagramHomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        indexNum = indexPath.row
+        let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+        let user = listOfUser[indexPath.row]
+        if cell?.accessoryType == .checkmark{
+            self.selectedUsers.removeValue(forKey: user.fullName)
+            print(self.selectedUsers.count)
+            cell?.tintColor = UIColor.gray
+            cell?.accessoryType = .none
+            
+        } else {
+            cell?.tintColor = UIColor.blue
+            cell?.accessoryType = .checkmark
+            self.selectedUsers[user.fullName] = user
+            print(self.selectedUsers.count)
+        }
+
     }
 
     func authInstagram() {
@@ -65,7 +80,7 @@ class InstagramHomeTableViewController: UITableViewController {
         //SaveChanges
         let userDefaults = UserDefaults.standard
         
-        if let token = userDefaults.object(forKey: "accessToken") as? String {
+        if let token = userDefaults.object(forKey: "accessTokenForInstagram") as? String {
             self.accessToken = token
             print("Already logged in\(accessToken)")
            
@@ -78,7 +93,7 @@ class InstagramHomeTableViewController: UITableViewController {
                     let credentials = result["credentials"] as! [String:Any]
                     let accessToken = credentials["token"] as! String
                     self.accessToken = accessToken
-                    userDefaults.set(self.accessToken, forKey: "accessToken")
+                    userDefaults.set(self.accessToken, forKey: "accessTokenForInstagram")
                     userDefaults.synchronize()
                 }
             }
@@ -97,6 +112,35 @@ class InstagramHomeTableViewController: UITableViewController {
        }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let userDefaults = UserDefaults.standard
+        
+        if segue.identifier == "showPosts" {
+            let vc = segue.destination as! InstagramTableViewController
+            OperationQueue.main.addOperation {
+                var sUsers: [InstagramUser] = []
+                var selectedFriends: [NSDictionary] = []
+                
+                for (_ , value) in self.selectedUsers {
+                    sUsers.append(value)
+                    
+                    let dictioanry: NSDictionary = [
+                        "name": value.fullName,
+                        "userName" : value.userName,
+                        "uid"  : value.uid,
+                        "image": value.image
+                    ]
+                    selectedFriends.append(dictioanry)
+                }
+                
+                userDefaults.set(selectedFriends, forKey: "savedInstagramFriends")
+                userDefaults.synchronize()
+                vc.friends = sUsers
+            }
+        }
+    }
+/*
     func cellTapped() {
               let tappedUser = listOfUser[indexNum] 
               let id = tappedUser.uid
@@ -108,7 +152,7 @@ class InstagramHomeTableViewController: UITableViewController {
               self.navigationController?.pushViewController(controller, animated: true)
         
     }
-    
+*/
     
 }
 

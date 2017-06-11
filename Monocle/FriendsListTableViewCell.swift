@@ -22,8 +22,7 @@ class FriendsListTableViewCell: UITableViewCell {
             for friend in friends {
                 friendsDict.append(friend.uid)
             }
-            let savedFriends = User.Friends(dictionary: friendsDict)
-            User.Friends.currentListOfFriends = savedFriends
+            
         }
     }
 

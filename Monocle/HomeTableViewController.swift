@@ -10,6 +10,7 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
+    
     let userDeafaults = UserDefaults.standard
     var friends = [TwitterUser]()
     

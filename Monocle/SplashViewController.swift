@@ -52,21 +52,32 @@ class SplashViewController: UIViewController, TwitterLoginDelegate {
             TwitterClient.sharedInstance?.login(success: {
                 print("Logged In")
                 self.dismiss(animated: true, completion: {
+                self.goToSelectFriendsPage()
                     
                 })
             }) { (error) in
                 print(error)
             }
-        
         }
     }
     
     func goToSelectFriendsPage() {
         self.performSegue(withIdentifier: "selectFriends", sender: self)
     }
+    
     func goToInstaApp() {
         
-        self.performSegue(withIdentifier: "showListOfFriends", sender: self)
+        let accessToken = userDefaults.object(forKey: "accessTokenForInstagram") as? String
+        let savedUsers = userDefaults.object(forKey: "savedInstagramFriends") as? [NSDictionary]
+        
+        
+        if accessToken == nil  && savedUsers == nil {
+           self.performSegue(withIdentifier: "showListOfFriendsInstagram", sender: self)
+        }else if accessToken != nil && savedUsers != nil{
+            self.performSegue(withIdentifier: "showInstagramApp", sender: self)
+        }else{
+           
+        }
     }
 
     func goToApp() {
