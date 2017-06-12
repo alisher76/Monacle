@@ -25,12 +25,8 @@ class InstagramTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-
-    var indexNum: Int! {
-        didSet {
-        
-        }
-    }
+    var selectedUser: InstagramUser?
+    var indexNum: Int!
     var photoDictionaries = [[String:Any]]()
 
     
@@ -39,6 +35,8 @@ class InstagramTableViewController: UITableViewController {
         static let headerCell = "HeaderCell"
         static let postCell = "PostCell"
         static let commentCell = "CommentCell"
+        static let postHeaderHeight = 100.0
+        static let postCellDefaultHeight = 537.0
     }
     
     
@@ -50,13 +48,18 @@ class InstagramTableViewController: UITableViewController {
     
     var refreshControll: UIRefreshControl!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 450
+        tableView.estimatedRowHeight = CGFloat(StoryboardCellIdentifier.postCellDefaultHeight)
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorColor = UIColor.clear
         fetchSavedData()
     }
+    
+    
     
    
     // MARK: - Table view data source
@@ -77,43 +80,35 @@ class InstagramTableViewController: UITableViewController {
         if posts.count == 0 {
             return posts.count
         }else{
-            return posts.count
+            return posts.count + 1
         }
     }
     
+    func sUser(user: InstagramUser){
+        selectedUser = user
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.friendsCell) as! IntagramFriendsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.friendsCell) as! IntagramFriendsTableViewCell
             cell.delegate = self
+            cell.selectionStyle = .none
             cell.friends = friends
             return cell
             
        }else{
+
             let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.postCell , for: indexPath) as! PostsTableViewCell
-            cell.media = posts[indexPath.row]
+            cell.selectionStyle = .none
+            cell.media = posts[indexPath.row - 1]
+        if selectedUser != nil {
+            cell.user = selectedUser
+        }
             return cell
             }
     }
     
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.headerCell) as! HeaderTableViewCell
-        var frame = cell.frame
-        frame.size.height = 100
-        cell.frame = frame
-        cell.header = posts[section]
-        print(posts[section])
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0,y: 0, width: tableView.frame.size.width, height: 40))
-        footerView.backgroundColor = UIColor.white
-        
-        return footerView
-    }
     
     func fetchSavedData() {
         
@@ -132,7 +127,6 @@ class InstagramTableViewController: UITableViewController {
     func fetchUserPosts(userID: String) {
         Instagram().fetchRecentMediaForUser(userID, accessToken: accessToken!) { (posts) in
             self.posts = posts
-            print(posts.count)
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
             }

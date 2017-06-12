@@ -10,10 +10,20 @@ import UIKit
 
 class PostsTableViewCell: UITableViewCell {
 
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var likes: UILabel!
     @IBOutlet weak var postCaption: UILabel!
+    @IBOutlet var profileImageHeader: UIImageView!
     
+    var user: InstagramUser? {
+        didSet {
+            if let setUser = user {
+                nameLabel.text = setUser.fullName
+                }
+            }
+        }
     
     var media: Instagram.Media? {
         didSet {
@@ -23,13 +33,20 @@ class PostsTableViewCell: UITableViewCell {
                 if let url = URL(string: setMedia.takenPhoto) {
                     photo.setImageWith(url)
                 }
+                guard let urlAvatar = URL(string: (media?.avatarURL)!) else {return}
+                self.profileImageHeader.setImageWith(urlAvatar)
+                
             }
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        profileImageHeader.layer.borderWidth = 1
+        profileImageHeader.layer.masksToBounds = true
+        profileImageHeader.layer.borderColor = UIColor.black.cgColor
+        profileImageHeader.layer.cornerRadius = self.profileImageHeader.bounds.width / 2.0
+        profileImageHeader.clipsToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -61,6 +61,7 @@ extension IntagramFriendsTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        delegate?.sUser(user: friends[indexPath.row])
         delegate?.fetchUserPosts(userID: friends[indexPath.row].uid)
         
     }
@@ -86,7 +87,7 @@ class CustomCollectionCellInstagram: UICollectionViewCell  {
         
         collectionImageView.layer.cornerRadius = collectionImageView.bounds.width / 2.0
         collectionImageView.clipsToBounds = true
-        collectionImageView.layer.shadowOpacity = 0.7
-        collectionImageView.layer.shadowRadius = 10.0
+        collectionImageView.layer.shadowOpacity = 0.8
+        collectionImageView.layer.shadowRadius = 12.0
     }
 }
