@@ -137,9 +137,23 @@ class TwitterClient: BDBOAuth1SessionManager {
             success(tweets)
         }) { (task, error) in
             print(error.localizedDescription)
+        }
+    }
+    
+    
+    func getUserLikes(userID: String, success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
+        
+        let params = ["count": 10]
+        
+        get("1.1/favorites/list.json?user_id=\(userID)", parameters: params, progress: nil, success: { (task, responce) in
+            
+            let dictionary = responce as! [NSDictionary]
+            let tweets = Tweet.tweetWithArray(dictionaries: dictionary)
+            success(tweets)
+        }) { (task, error) in
+            print(error.localizedDescription)
             
         }
-        
     }
     
     func logOut() {
@@ -147,8 +161,5 @@ class TwitterClient: BDBOAuth1SessionManager {
         deauthorize()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
     }
-    
-    
-    
     
 }

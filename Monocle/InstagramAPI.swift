@@ -72,5 +72,12 @@ class Instagram {
             self.populateFriendsRecentPosts(responce.result.value, callback: callback)
         }
       }
+    
+    // https://api.instagram.com/v1/users/self/media/liked?access_token=ACCESS-TOKEN
 
+    func fetchRecentLikesForUser(_ id: String, accessToken: String, callback: @escaping ([Media]) -> Void) {
+        request("https://api.instagram.com/v1/users/\(id)/media/liked?access_token=\(accessToken)", method: .get).responseJSON { (responce) in
+            self.populateFriendsRecentPosts(responce.result.value, callback: callback)
+        }
+    }
 }

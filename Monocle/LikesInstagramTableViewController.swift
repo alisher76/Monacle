@@ -1,21 +1,21 @@
 //
-//  InstagramTableViewController.swift
+//  LikesInstagramTableViewController.swift
 //  Monocle
 //
-//  Created by Alisher Abdukarimov on 6/9/17.
+//  Created by Alisher Abdukarimov on 6/11/17.
 //  Copyright © 2017 MrAliGorithm. All rights reserved.
 //
 
 import UIKit
 
-class InstagramTableViewController: UITableViewController {
+class LikesInstagramTableViewController: UITableViewController {
 
     let userDeafaults = UserDefaults.standard
     var accessToken: String?
     
     var friends: [InstagramUser]! {
         didSet {
-        fetchUserPosts(userID: (friends.first?.uid)!)
+            fetchUserLikes(userID: (friends.first?.uid)!)
         }
     }
     
@@ -28,13 +28,11 @@ class InstagramTableViewController: UITableViewController {
     var selectedUser: InstagramUser?
     var indexNum: Int!
     var photoDictionaries = [[String:Any]]()
-
+    
     
     struct StoryboardCellIdentifier {
         static let friendsCell = "FriendsListCell"
-        static let headerCell = "HeaderCell"
         static let postCell = "PostCell"
-        static let commentCell = "CommentCell"
         static let postHeaderHeight = 100.0
         static let postCellDefaultHeight = 537.0
     }
@@ -61,7 +59,7 @@ class InstagramTableViewController: UITableViewController {
     
     
     
-   
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -90,23 +88,23 @@ class InstagramTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       if indexPath.row == 0 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.friendsCell) as! IntagramFriendsTableViewCell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.friendsCell) as! LikesFeedInstagramFriendsTableViewCell
             cell.delegate = self
             cell.selectionStyle = .none
             cell.friends = friends
             return cell
             
-       }else{
-
-            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.postCell , for: indexPath) as! PostsTableViewCell
+        }else{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardCellIdentifier.postCell , for: indexPath) as! LikesTableViewCell
             cell.selectionStyle = .none
             cell.media = posts[indexPath.row - 1]
-        if selectedUser != nil {
-            cell.user = selectedUser
-        }
-            return cell
+            if selectedUser != nil {
+                cell.user = selectedUser
             }
+            return cell
+        }
     }
     
     
@@ -122,12 +120,10 @@ class InstagramTableViewController: UITableViewController {
             savedFriends.append(savedFriend)
         }
         friends = savedFriends
-        print(savedFriends.first?.uid)
     }
     
-    func fetchUserPosts(userID: String) {
-        Instagram().fetchRecentMediaForUser(userID, accessToken: accessToken!) { (posts) in
-            print(self.accessToken)
+    func fetchUserLikes(userID: String) {
+        Instagram().fetchRecentLikesForUser(userID, accessToken: accessToken!) { (posts) in
             self.posts = posts
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
@@ -147,5 +143,6 @@ class InstagramTableViewController: UITableViewController {
             }
         }
     }
+
 
 }

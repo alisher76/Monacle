@@ -18,10 +18,16 @@
 		AC28BFA71EE8F2F7006112CA /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFA31EE8F2F7006112CA /* BEMPathManager.m */; };
 		AC28BFAA1EE902AD006112CA /* FriendsSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */; };
 		AC28BFAC1EE902CF006112CA /* FriendsSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */; };
-		AC3188AE1EEC9730003BF2CC /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188AD1EEC9730003BF2CC /* HeaderTableViewCell.swift */; };
 		AC3188B61EECCAD4003BF2CC /* InstagramUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188B51EECCAD4003BF2CC /* InstagramUser.swift */; };
 		AC3188B91EEDD527003BF2CC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3188B71EEDD527003BF2CC /* Home.storyboard */; };
 		AC3188BB1EEDF21F003BF2CC /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188BA1EEDF21F003BF2CC /* PostsTableViewCell.swift */; };
+		AC3188BD1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188BC1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift */; };
+		AC3188C01EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188BF1EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift */; };
+		AC3188C31EEE1FF2003BF2CC /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188C21EEE1FF2003BF2CC /* LikesTableViewCell.swift */; };
+		AC3188C51EEE2C57003BF2CC /* LikesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188C41EEE2C57003BF2CC /* LikesTableViewController.swift */; };
+		AC3188C91EEE2DAD003BF2CC /* TweetLikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188C81EEE2DAD003BF2CC /* TweetLikesTableViewCell.swift */; };
+		AC3188CB1EEE2DC1003BF2CC /* LikedTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188CA1EEE2DC1003BF2CC /* LikedTweetCell.swift */; };
+		AC3188CD1EEE2DD9003BF2CC /* FraindsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188CC1EEE2DD9003BF2CC /* FraindsListViewCell.swift */; };
 		AC6071271EE9CE9A00F9E081 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */; };
 		AC60712A1EEB54ED00F9E081 /* InstagramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */; };
 		AC60712C1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */; };
@@ -211,10 +217,16 @@
 		AC28BFA81EE8F3E4006112CA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSelectionTableViewController.swift; sourceTree = "<group>"; };
 		AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSelectionCell.swift; sourceTree = "<group>"; };
-		AC3188AD1EEC9730003BF2CC /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AC3188B51EECCAD4003BF2CC /* InstagramUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramUser.swift; sourceTree = "<group>"; };
 		AC3188B81EEDD527003BF2CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		AC3188BA1EEDF21F003BF2CC /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
+		AC3188BC1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesInstagramTableViewController.swift; sourceTree = "<group>"; };
+		AC3188BF1EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesFeedInstagramFriendsTableViewCell.swift; sourceTree = "<group>"; };
+		AC3188C21EEE1FF2003BF2CC /* LikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
+		AC3188C41EEE2C57003BF2CC /* LikesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesTableViewController.swift; sourceTree = "<group>"; };
+		AC3188C81EEE2DAD003BF2CC /* TweetLikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetLikesTableViewCell.swift; sourceTree = "<group>"; };
+		AC3188CA1EEE2DC1003BF2CC /* LikedTweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedTweetCell.swift; sourceTree = "<group>"; };
+		AC3188CC1EEE2DD9003BF2CC /* FraindsListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FraindsListViewCell.swift; sourceTree = "<group>"; };
 		AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
 		AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramTableViewController.swift; sourceTree = "<group>"; };
 		AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntagramFriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -540,8 +552,10 @@
 		AC28BF941EE8D5EF006112CA /* TwitterController */ = {
 			isa = PBXGroup;
 			children = (
-				AC3188B41EEC97AD003BF2CC /* FriendsSelectionControlelr */,
-				AC28BF971EE8D638006112CA /* TwitterCells */,
+				AC3188C61EEE2D4B003BF2CC /* AddFriendsController */,
+				AC3188C71EEE2D71003BF2CC /* TweetsHomeControllers */,
+				AC3188C41EEE2C57003BF2CC /* LikesTableViewController.swift */,
+				AC3188CE1EEE2DDE003BF2CC /* LikesTVCells */,
 			);
 			name = TwitterController;
 			sourceTree = "<group>";
@@ -551,7 +565,6 @@
 			children = (
 				AC86AFA51EE48D8F0025B68A /* TweetTableViewCell.swift */,
 				AC86AFA71EE49C050025B68A /* TweetCell.swift */,
-				AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */,
 				AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */,
 			);
 			name = TwitterCells;
@@ -594,26 +607,61 @@
 			isa = PBXGroup;
 			children = (
 				AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */,
-				AC3188AA1EEC96BB003BF2CC /* FriendsSelectionController */,
 				AC6071281EEB545E00F9E081 /* InstagramCells */,
 			);
 			name = HomeViewController;
 			sourceTree = "<group>";
 		};
-		AC3188B41EEC97AD003BF2CC /* FriendsSelectionControlelr */ = {
+		AC3188BE1EEE1EDC003BF2CC /* LikesFeedInstagramTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC3188BC1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift */,
+				AC3188C11EEE1FCC003BF2CC /* LikesInstagramTableViewCells */,
+			);
+			name = LikesFeedInstagramTableViewController;
+			sourceTree = "<group>";
+		};
+		AC3188C11EEE1FCC003BF2CC /* LikesInstagramTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				AC3188BF1EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift */,
+				AC3188C21EEE1FF2003BF2CC /* LikesTableViewCell.swift */,
+			);
+			name = LikesInstagramTableViewCells;
+			sourceTree = "<group>";
+		};
+		AC3188C61EEE2D4B003BF2CC /* AddFriendsController */ = {
+			isa = PBXGroup;
+			children = (
+				AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */,
+				AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */,
+			);
+			name = AddFriendsController;
+			sourceTree = "<group>";
+		};
+		AC3188C71EEE2D71003BF2CC /* TweetsHomeControllers */ = {
 			isa = PBXGroup;
 			children = (
 				AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */,
-				AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */,
+				AC28BF971EE8D638006112CA /* TwitterCells */,
 			);
-			name = FriendsSelectionControlelr;
+			name = TweetsHomeControllers;
+			sourceTree = "<group>";
+		};
+		AC3188CE1EEE2DDE003BF2CC /* LikesTVCells */ = {
+			isa = PBXGroup;
+			children = (
+				AC3188C81EEE2DAD003BF2CC /* TweetLikesTableViewCell.swift */,
+				AC3188CA1EEE2DC1003BF2CC /* LikedTweetCell.swift */,
+				AC3188CC1EEE2DD9003BF2CC /* FraindsListViewCell.swift */,
+			);
+			name = LikesTVCells;
 			sourceTree = "<group>";
 		};
 		AC6071281EEB545E00F9E081 /* InstagramCells */ = {
 			isa = PBXGroup;
 			children = (
 				AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */,
-				AC3188AD1EEC9730003BF2CC /* HeaderTableViewCell.swift */,
 				AC3188BA1EEDF21F003BF2CC /* PostsTableViewCell.swift */,
 			);
 			name = InstagramCells;
@@ -995,7 +1043,9 @@
 		AC86B3D51EE598650025B68A /* Instagram Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AC3188AA1EEC96BB003BF2CC /* FriendsSelectionController */,
 				AC3188AC1EEC96D9003BF2CC /* HomeViewController */,
+				AC3188BE1EEE1EDC003BF2CC /* LikesFeedInstagramTableViewController */,
 			);
 			name = "Instagram Controllers";
 			sourceTree = "<group>";
@@ -1291,6 +1341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC86B3C21EE4F3BB0025B68A /* UITextView+RACSignalSupport.m in Sources */,
+				AC3188CD1EEE2DD9003BF2CC /* FraindsListViewCell.swift in Sources */,
 				AC86B39B1EE4F3BB0025B68A /* RACScheduler.m in Sources */,
 				AC86B3961EE4F3BB0025B68A /* RACMulticastConnection.m in Sources */,
 				AC86B3B51EE4F3BB0025B68A /* UIControl+RACSignalSupport.m in Sources */,
@@ -1326,11 +1377,11 @@
 				AC86B3721EE4F3BB0025B68A /* NSObject+RACDeallocating.m in Sources */,
 				AC3188B61EECCAD4003BF2CC /* InstagramUser.swift in Sources */,
 				AC86B3AF1EE4F3BB0025B68A /* RACValueTransformer.m in Sources */,
+				AC3188C91EEE2DAD003BF2CC /* TweetLikesTableViewCell.swift in Sources */,
 				AC86B3B71EE4F3BB0025B68A /* UIDatePicker+RACSignalSupport.m in Sources */,
 				AC28BFA61EE8F2F7006112CA /* BEMCheckBoxGroup.m in Sources */,
 				AC86B3AB1EE4F3BB0025B68A /* RACTuple.m in Sources */,
 				AC86B3761EE4F3BB0025B68A /* NSObject+RACPropertySubscribing.m in Sources */,
-				AC3188AE1EEC9730003BF2CC /* HeaderTableViewCell.swift in Sources */,
 				AC86B39D1EE4F3BB0025B68A /* RACSequence.m in Sources */,
 				AC86B36D1EE4F3BB0025B68A /* NSEnumerator+RACSequenceAdditions.m in Sources */,
 				AC86B36A1EE4F3BB0025B68A /* NSArray+RACSequenceAdditions.m in Sources */,
@@ -1387,23 +1438,28 @@
 				AC86B35C1EE4F3BB0025B68A /* CMDQueryStringReader.m in Sources */,
 				AC86B3A11EE4F3BB0025B68A /* RACSignalProvider.d in Sources */,
 				AC86B3991EE4F3BB0025B68A /* RACReplaySubject.m in Sources */,
+				AC3188CB1EEE2DC1003BF2CC /* LikedTweetCell.swift in Sources */,
 				AC86B3C31EE4F3BB0025B68A /* Result.swift in Sources */,
 				AC86B3931EE4F3BB0025B68A /* RACKVOChannel.m in Sources */,
 				AC28BFA71EE8F2F7006112CA /* BEMPathManager.m in Sources */,
 				AC86B3BF1EE4F3BB0025B68A /* UITableViewCell+RACSignalSupport.m in Sources */,
 				AC86B3A41EE4F3BB0025B68A /* RACStringSequence.m in Sources */,
+				AC3188C31EEE1FF2003BF2CC /* LikesTableViewCell.swift in Sources */,
 				AC6071271EE9CE9A00F9E081 /* FriendsListTableViewCell.swift in Sources */,
 				AC86B3741EE4F3BB0025B68A /* NSObject+RACKVOWrapper.m in Sources */,
 				AC86B37B1EE4F3BB0025B68A /* NSString+RACSequenceAdditions.m in Sources */,
 				AC86B3A21EE4F3BB0025B68A /* RACSignalSequence.m in Sources */,
+				AC3188C51EEE2C57003BF2CC /* LikesTableViewController.swift in Sources */,
 				AC86B3731EE4F3BB0025B68A /* NSObject+RACDescription.m in Sources */,
 				AC86B35D1EE4F3BB0025B68A /* CMDQueryStringSerialization.m in Sources */,
 				AC86B36F1EE4F3BB0025B68A /* NSIndexSet+RACSequenceAdditions.m in Sources */,
 				AC86AF3C1EE318670025B68A /* AppDelegate.swift in Sources */,
 				AC86B37C1EE4F3BB0025B68A /* NSString+RACSupport.m in Sources */,
+				AC3188BD1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift in Sources */,
 				AC86B3951EE4F3BB0025B68A /* RACKVOTrampoline.m in Sources */,
 				AC86B39E1EE4F3BB0025B68A /* RACSerialDisposable.m in Sources */,
 				AC86B36E1EE4F3BB0025B68A /* NSFileHandle+RACSupport.m in Sources */,
+				AC3188C01EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift in Sources */,
 				AC86AFA41EE47B990025B68A /* HomeTableViewController.swift in Sources */,
 				AC3188BB1EEDF21F003BF2CC /* PostsTableViewCell.swift in Sources */,
 				AC86B3911EE4F3BB0025B68A /* RACImmediateScheduler.m in Sources */,
