@@ -15,7 +15,7 @@ class LikesInstagramTableViewController: UITableViewController {
     
     var friends: [InstagramUser]! {
         didSet {
-            fetchUserLikes(userID: (friends.first?.uid)!)
+            fetchUserLikes()
         }
     }
     
@@ -122,8 +122,8 @@ class LikesInstagramTableViewController: UITableViewController {
         friends = savedFriends
     }
     
-    func fetchUserLikes(userID: String) {
-        Instagram().fetchRecentLikesForUser(userID, accessToken: accessToken!) { (posts) in
+    func fetchUserLikes() {
+        Instagram().fetchRecentLikesForUser(accessToken!) { (posts) in
             self.posts = posts
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()

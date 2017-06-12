@@ -10,7 +10,8 @@ import UIKit
 import SwiftyJSON
 
 class SplashViewController: UIViewController, TwitterLoginDelegate {
-
+    
+    
     var delegate: HomeTableViewController?
     let userDefaults = UserDefaults.standard
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -74,7 +75,9 @@ class SplashViewController: UIViewController, TwitterLoginDelegate {
         if accessToken == nil  && savedUsers == nil {
            self.performSegue(withIdentifier: "showListOfFriendsInstagram", sender: self)
         }else if accessToken != nil && savedUsers != nil{
-            self.performSegue(withIdentifier: "showInstagramApp", sender: self)
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "InstagramHomePageController")
+            self.navigationController?.pushViewController(vc, animated: true)
         }else{
            
         }

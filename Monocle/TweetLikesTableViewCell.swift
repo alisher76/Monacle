@@ -62,7 +62,7 @@ class TweetLikesTableViewCell: UITableViewCell {
             for (key,value) in urls {
                 urlDictionary.append([key:value])
             }
-            print(urls)
+            
             for url in urlDictionary {
                 var index = 0
                 let urlsData = url["urls"] as! [NSDictionary]
@@ -79,7 +79,7 @@ class TweetLikesTableViewCell: UITableViewCell {
         }
         
         if let media = media {
-            print(media.count)
+            
         }
         
         if displayURLS.count > 0 {

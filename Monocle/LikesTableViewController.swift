@@ -13,7 +13,7 @@ class LikesTableViewController: UITableViewController {
     
     let userDeafaults = UserDefaults.standard
     var friends = [TwitterUser]()
-    
+    var delegate: SplashViewController?
     struct Storyboard {
         static let friendsCell = "friendsListCell"
         static let homeCell = "HomeCell"
@@ -21,7 +21,6 @@ class LikesTableViewController: UITableViewController {
     
     var userID: String? {
         didSet {
-            print(userID)
             getUserTimeline(userID: userID!)
         }
     }
@@ -141,8 +140,6 @@ class LikesTableViewController: UITableViewController {
         
         let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
         guard let userFriends = TwitterUser.array(json: savedData) else {return}
-        print(savedData)
-        print(userFriends)
         self.friends = userFriends
         self.userID = userFriends.first?.uid
     }
@@ -150,14 +147,20 @@ class LikesTableViewController: UITableViewController {
     
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if tweets != nil {
+        if tweets.count != 0 {
             let scrollViewContentHeight = tableView.contentSize.height
             let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
-            
+        
             if scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging {
                 // reloadData(appending: true)
             }
         }
     }
-
+    
+    @IBAction func instagramLogoTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "splash") as UIViewController
+        self.show(vc, sender: self)
+        print("tapped")
+    }
 }

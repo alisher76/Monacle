@@ -10,6 +10,8 @@ import UIKit
 
 class InstagramHomeTableViewController: UITableViewController {
     
+    let userDefaults = UserDefaults.standard
+    
     var accessToken: String!{
         didSet {
             fetchUsersFollowed()
@@ -17,7 +19,6 @@ class InstagramHomeTableViewController: UITableViewController {
     }
     var listOfUser:[InstagramUser] = [] {
         didSet {
-            print("select Friends table view controller: count \(listOfUser.count)")
             
         }
     }
@@ -33,9 +34,25 @@ class InstagramHomeTableViewController: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        authInstagram()
         
+        let savedUsers = userDefaults.object(forKey: "savedInstagramFriends") as? [NSDictionary]
+        
+        if accessToken == nil  && savedUsers == nil {
+            authInstagram()
+        }else if accessToken != nil && savedUsers != nil{
+            
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "InstagramHomePageController") as! InstagramTableViewController
+            let sUsers: [InstagramUser] = InstagramUser.array(json: savedUsers!)!
+        
+                OperationQueue.main.addOperation {
+                    vc.friends = sUsers
+                self.present(vc, animated: true, completion: nil)
+                }
+        }else{
+            
+        
+      }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

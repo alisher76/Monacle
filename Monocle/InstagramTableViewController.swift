@@ -12,7 +12,7 @@ class InstagramTableViewController: UITableViewController {
 
     let userDeafaults = UserDefaults.standard
     var accessToken: String?
-    
+    var splashDelegate: SplashViewController?
     var friends: [InstagramUser]! {
         didSet {
         fetchUserPosts(userID: (friends.first?.uid)!)
@@ -56,7 +56,15 @@ class InstagramTableViewController: UITableViewController {
         tableView.estimatedRowHeight = CGFloat(StoryboardCellIdentifier.postCellDefaultHeight)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.clear
-        fetchSavedData()
+        let savedUsers = userDeafaults.object(forKey: "savedInstagramFriends") as? [NSDictionary]
+        
+        if accessToken == nil  && savedUsers == nil {
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           let vc = storyboard.instantiateViewController(withIdentifier: "selectFriendsInstagram") as UIViewController
+           self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            fetchSavedData()
+        }
     }
     
     
@@ -112,7 +120,7 @@ class InstagramTableViewController: UITableViewController {
     
     func fetchSavedData() {
         
-        let savedData = self.userDeafaults.object(forKey: "savedInstagramFriends") as! [NSDictionary]
+        if let savedData = self.userDeafaults.object(forKey: "savedInstagramFriends") as? [NSDictionary] {
         let savedToken = self.userDeafaults.object(forKey: "accessTokenForInstagram") as! String
         self.accessToken = savedToken
         var savedFriends: [InstagramUser] = []
@@ -122,12 +130,14 @@ class InstagramTableViewController: UITableViewController {
             savedFriends.append(savedFriend)
         }
         friends = savedFriends
-        print(savedFriends.first?.uid)
+        }else{
+        splashDelegate?.goToInstaApp()
+        }
+        
     }
     
     func fetchUserPosts(userID: String) {
         Instagram().fetchRecentMediaForUser(userID, accessToken: accessToken!) { (posts) in
-            print(self.accessToken)
             self.posts = posts
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()

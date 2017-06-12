@@ -62,7 +62,7 @@ class FriendsListTableViewCell: UITableViewCell {
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             
             delegate?.getUserTimeline(userID: friends[indexPath.row].uid)
-            
+            // delegate?.updateNavigationImagge(image: friends[indexPath.row].image)
         }
         
     }

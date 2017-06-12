@@ -26,13 +26,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="OoL-7Z-9nF" kind="relationship" relationship="viewControllers" id="PjH-j2-FJh"/>
-                        <segue destination="qcf-bB-YYW" kind="relationship" relationship="viewControllers" id="KFk-HH-J8i"/>
-                        <segue destination="6sB-oN-Zlr" kind="relationship" relationship="viewControllers" id="7EF-1e-QzP"/>
+                        <segue destination="f7n-Io-1Ta" kind="relationship" relationship="viewControllers" id="8nl-tL-hAg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0e-0k-YNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2657" y="-982"/>
+            <point key="canvasLocation" x="-3834" y="-1358"/>
         </scene>
         <!--FeedTwitter-->
         <scene sceneID="JPd-hN-Nhz">
@@ -47,13 +46,15 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e6N-Pi-AlG" id="CXN-4c-UWM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qol-SH-1P7">
-                                            <rect key="frame" x="0.0" y="14" width="375" height="75"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qol-SH-1P7">
+                                            <rect key="frame" x="0.0" y="16.5" width="375" height="70"/>
                                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="8NV-td-Qsd"/>
+                                            </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="rwE-hf-CvY">
                                                 <size key="itemSize" width="60" height="59"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -62,7 +63,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="nM4-DQ-tg4" customClass="CustomCollectionCell" customModule="Monocle" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="60" height="59"/>
+                                                    <rect key="frame" x="8" y="5.5" width="60" height="59"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="59"/>
@@ -104,6 +105,11 @@
                                             </connections>
                                         </collectionView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="qol-SH-1P7" secondAttribute="trailing" id="7Sm-t8-7zG"/>
+                                        <constraint firstItem="qol-SH-1P7" firstAttribute="leading" secondItem="CXN-4c-UWM" secondAttribute="leading" id="LNx-9q-bqG"/>
+                                        <constraint firstItem="qol-SH-1P7" firstAttribute="centerY" secondItem="CXN-4c-UWM" secondAttribute="centerY" id="U0s-t5-486"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="qol-SH-1P7" id="Nv0-lL-3D8"/>
@@ -113,7 +119,7 @@
                                 <rect key="frame" x="0.0" y="132" width="375" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tXc-lR-fIl" id="xvD-ne-C1U">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alisher Abdukarimov" translatesAutoresizingMaskIntoConstraints="NO" id="eyP-1R-tQk">
@@ -308,23 +314,28 @@
                             <outlet property="delegate" destination="n08-9t-lbk" id="Law-so-vtf"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Feed" image="Activity Feed" selectedImage="Activity Feed Filled" id="oKp-6I-0dh">
+                    <tabBarItem key="tabBarItem" title="" image="Activity Feed" selectedImage="Activity Feed Filled" id="oKp-6I-0dh">
                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" id="jWE-My-zad"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics">
-                        <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </simulatedTabBarMetrics>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="jWE-My-zad">
+                        <barButtonItem key="leftBarButtonItem" image="icons8-Like" id="JOx-h7-VUI">
+                            <connections>
+                                <segue destination="UTa-aH-3hb" kind="show" id="GD3-a1-SA2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDg-af-Ig0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1183" y="570"/>
+            <point key="canvasLocation" x="-2929" y="570"/>
         </scene>
         <!--FeedTwitterNavigation-->
         <scene sceneID="r92-Yi-hJ3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OoL-7Z-9nF" userLabel="FeedTwitterNavigation" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="Activity Feed" selectedImage="Activity Feed Filled" id="Psu-b8-vSY">
+                    <tabBarItem key="tabBarItem" title="Twitter" image="Twitter" selectedImage="Twitter Filled" id="Psu-b8-vSY">
                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -339,14 +350,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qp-TW-bxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1183" y="-192"/>
+            <point key="canvasLocation" x="-2929" y="-192"/>
         </scene>
         <!--FeedInstagram-->
         <scene sceneID="gLQ-nr-pA1">
             <objects>
                 <tableViewController storyboardIdentifier="InstagramHomePageController" id="Eb1-pU-Sk0" userLabel="FeedInstagram" customClass="InstagramTableViewController" customModule="Monocle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ue5-TC-cxM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="851"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -354,13 +365,15 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G0O-Za-MKh" id="T4T-zL-8Xx">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xu3-L2-ozI">
-                                            <rect key="frame" x="0.0" y="14" width="375" height="75"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xu3-L2-ozI">
+                                            <rect key="frame" x="2" y="14" width="371" height="70"/>
                                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="xLO-Sw-CHO"/>
+                                            </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="8jn-rJ-bwd">
                                                 <size key="itemSize" width="60" height="59"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -369,7 +382,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InstagramCollectionCell" id="V5L-am-8pv" customClass="CustomCollectionCellInstagram" customModule="Monocle" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="60" height="59"/>
+                                                    <rect key="frame" x="8" y="5.5" width="60" height="59"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="59"/>
@@ -410,6 +423,11 @@
                                             </connections>
                                         </collectionView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Xu3-L2-ozI" firstAttribute="top" secondItem="T4T-zL-8Xx" secondAttribute="topMargin" constant="6" id="8Dn-rL-9Bj"/>
+                                        <constraint firstItem="Xu3-L2-ozI" firstAttribute="leading" secondItem="T4T-zL-8Xx" secondAttribute="leading" constant="2" id="Oxm-Xe-0hO"/>
+                                        <constraint firstAttribute="trailing" secondItem="Xu3-L2-ozI" secondAttribute="trailing" constant="2" id="q0T-EO-vPS"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="Xu3-L2-ozI" id="bnp-D2-Qnl"/>
@@ -419,7 +437,7 @@
                                 <rect key="frame" x="0.0" y="128" width="375" height="580"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ye7-tU-Qxi" id="FBx-dy-gqr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="579.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WUI-wb-cXC" userLabel="ActionButtons">
@@ -521,8 +539,8 @@
                                                 <constraint firstItem="oWZ-wJ-csG" firstAttribute="top" secondItem="aZq-EY-wiD" secondAttribute="top" constant="12" id="rlJ-6M-jNM"/>
                                             </constraints>
                                         </view>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="400" image="Alisher Abdukarimov" translatesAutoresizingMaskIntoConstraints="NO" id="Nbk-lU-KrN">
-                                            <rect key="frame" x="-4" y="44" width="375" height="375"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="400" image="Alisher Abdukarimov" translatesAutoresizingMaskIntoConstraints="NO" id="Nbk-lU-KrN">
+                                            <rect key="frame" x="0.0" y="44" width="375" height="375"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Nbk-lU-KrN" secondAttribute="height" multiplier="1:1" id="1YQ-7S-Ayg"/>
                                             </constraints>
@@ -575,22 +593,28 @@
                             <outlet property="delegate" destination="Eb1-pU-Sk0" id="v3T-eo-WIm"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Feed" image="Activity Feed" selectedImage="Activity Feed Filled" id="eP2-yN-FDK">
+                    <tabBarItem key="tabBarItem" title="Instagram" image="InstagramLogo" selectedImage="InstagramLogo Filled" id="eP2-yN-FDK">
                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" id="VhK-37-edv"/>
+                    <navigationItem key="navigationItem" id="VhK-37-edv">
+                        <barButtonItem key="leftBarButtonItem" image="User" id="Wtr-jT-j8j">
+                            <connections>
+                                <segue destination="xoF-oA-bEB" kind="show" id="v8M-n1-qbt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="900"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDK-uQ-WEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5079.1999999999998" y="569.41529235382313"/>
+            <point key="canvasLocation" x="-5079.1999999999998" y="650.37481259370315"/>
         </scene>
         <!--InstagramNavigationController-->
         <scene sceneID="agQ-BV-9ko">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f7n-Io-1Ta" userLabel="InstagramNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="Activity Feed" selectedImage="Activity Feed Filled" id="saH-AS-xHd">
+                <navigationController storyboardIdentifier="InstagramHomePageNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="f7n-Io-1Ta" userLabel="InstagramNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Instagram" image="InstagramLogo" selectedImage="InstagramLogo Filled" id="saH-AS-xHd">
                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -612,7 +636,7 @@
             <objects>
                 <tableViewController id="UTa-aH-3hb" userLabel="LikesTwitter Table View Controller" customClass="LikesTableViewController" customModule="Monocle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" id="RMX-xD-Jol">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -620,13 +644,15 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kwk-Mb-pFm" id="7uw-1p-IpV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbY-6z-TbQ">
-                                            <rect key="frame" x="0.0" y="14" width="375" height="75"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbY-6z-TbQ">
+                                            <rect key="frame" x="0.0" y="16.5" width="375" height="70"/>
                                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="vKh-mg-LBs"/>
+                                            </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="mKY-Hc-LdE">
                                                 <size key="itemSize" width="60" height="59"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -635,7 +661,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionLikesCell" id="CC6-hf-hrJ" customClass="CustomCollectionLikesCell" customModule="Monocle" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="60" height="59"/>
+                                                    <rect key="frame" x="8" y="5.5" width="60" height="59"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="59"/>
@@ -677,6 +703,11 @@
                                             </connections>
                                         </collectionView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="nbY-6z-TbQ" secondAttribute="trailing" id="20f-6M-rTh"/>
+                                        <constraint firstItem="nbY-6z-TbQ" firstAttribute="leading" secondItem="7uw-1p-IpV" secondAttribute="leading" id="BPc-lM-cVf"/>
+                                        <constraint firstItem="nbY-6z-TbQ" firstAttribute="centerY" secondItem="7uw-1p-IpV" secondAttribute="centerY" id="IjX-aB-aSA"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="nbY-6z-TbQ" id="q4k-cd-hBD"/>
@@ -686,7 +717,7 @@
                                 <rect key="frame" x="0.0" y="132" width="375" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rAe-hb-o9Y" id="Ecl-JN-wSq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alisher Abdukarimov" translatesAutoresizingMaskIntoConstraints="NO" id="Pfc-2F-Yqa">
@@ -881,46 +912,18 @@
                             <outlet property="delegate" destination="UTa-aH-3hb" id="T2C-FU-hnH"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Feed" image="icons8-Like" selectedImage="icons8-Like Filled" id="uUR-El-JQh">
-                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" id="PP2-lj-jux"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAR-oO-0nV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1991" y="570"/>
         </scene>
-        <!--Instagram-->
-        <scene sceneID="jGT-bE-pxh">
-            <objects>
-                <tabBarController storyboardIdentifier="InstagramTabViewController" title="Instagram" automaticallyAdjustsScrollViewInsets="NO" id="6sB-oN-Zlr" userLabel="Instagram" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Instagram" image="InstagramLogo" id="bfi-8m-GZZ">
-                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="t7p-An-ONT">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="f7n-Io-1Ta" kind="relationship" relationship="viewControllers" id="f9m-jE-QNU"/>
-                        <segue destination="4Lb-EN-rju" kind="relationship" relationship="viewControllers" id="htm-XE-lhI"/>
-                        <segue destination="szG-tU-5wY" kind="relationship" relationship="viewControllers" id="0f9-as-OPJ"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FbG-O3-PBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4399" y="-982"/>
-        </scene>
-        <!--Likes-->
+        <!--Navigation Controller-->
         <scene sceneID="90F-w7-VhH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qcf-bB-YYW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Likes" image="icons8-Like" selectedImage="icons8-Like Filled" id="slF-wW-dso">
-                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                    </tabBarItem>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dm3-gE-D8p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -968,7 +971,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="LikesInstagramTableViewController" id="xoF-oA-bEB" userLabel="FeedInstagram" customClass="LikesInstagramTableViewController" customModule="Monocle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jb2-bH-Z4X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="851"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -976,13 +979,15 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2qn-EB-KlE" id="3TK-au-gg7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QJu-Ko-Qq9">
-                                            <rect key="frame" x="0.0" y="14" width="375" height="75"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QJu-Ko-Qq9">
+                                            <rect key="frame" x="0.0" y="14" width="375" height="70"/>
                                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="bX5-Ei-Cbc"/>
+                                            </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="KYZ-KI-YUg">
                                                 <size key="itemSize" width="60" height="59"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -991,7 +996,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InstagramLikesCollectionCell" id="SqQ-vZ-1DA" customClass="LikesCustomCollectionCellInstagram" customModule="Monocle" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="60" height="59"/>
+                                                    <rect key="frame" x="8" y="5.5" width="60" height="59"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="59"/>
@@ -1028,6 +1033,11 @@
                                             </cells>
                                         </collectionView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QJu-Ko-Qq9" firstAttribute="top" secondItem="3TK-au-gg7" secondAttribute="topMargin" constant="6" id="Saa-FP-EOx"/>
+                                        <constraint firstItem="QJu-Ko-Qq9" firstAttribute="leading" secondItem="3TK-au-gg7" secondAttribute="leading" id="aJR-QP-mSV"/>
+                                        <constraint firstAttribute="trailing" secondItem="QJu-Ko-Qq9" secondAttribute="trailing" id="d7k-HH-2gg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="QJu-Ko-Qq9" id="4Te-Bf-Gw1"/>
@@ -1037,7 +1047,7 @@
                                 <rect key="frame" x="0.0" y="128" width="375" height="580"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CYk-RW-3rv" id="h70-dz-80I">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="579.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2Yo-KR-k9X" userLabel="ActionButtons">
@@ -1139,8 +1149,8 @@
                                                 <constraint firstAttribute="bottom" secondItem="0Ga-Ic-bg4" secondAttribute="bottom" constant="4" id="psM-sm-hmv"/>
                                             </constraints>
                                         </view>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="400" image="Alisher Abdukarimov" translatesAutoresizingMaskIntoConstraints="NO" id="GSA-As-GzC">
-                                            <rect key="frame" x="-4" y="44" width="375" height="375"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="400" image="Alisher Abdukarimov" translatesAutoresizingMaskIntoConstraints="NO" id="GSA-As-GzC">
+                                            <rect key="frame" x="0.0" y="44" width="375" height="375"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="GSA-As-GzC" secondAttribute="height" multiplier="1:1" id="dZ6-x1-sKn"/>
                                             </constraints>
@@ -1202,7 +1212,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHv-gD-pfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3834" y="652"/>
+            <point key="canvasLocation" x="-3834" y="721"/>
         </scene>
     </scenes>
     <resources>
@@ -1215,9 +1225,17 @@
         <image name="Icon-Reply" width="128" height="128"/>
         <image name="Icon-Retweet" width="128" height="128"/>
         <image name="InstagramLogo" width="37" height="37"/>
+        <image name="InstagramLogo Filled" width="37" height="37"/>
         <image name="LogoInstagram" width="50" height="50"/>
+        <image name="Twitter" width="37" height="37"/>
+        <image name="Twitter Filled" width="37" height="37"/>
+        <image name="User" width="38" height="38"/>
         <image name="icons8-Like" width="38" height="38"/>
         <image name="icons8-Like Filled" width="38" height="38"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="v8M-n1-qbt"/>
+        <segue reference="GD3-a1-SA2"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
 </document>

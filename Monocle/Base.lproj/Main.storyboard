@@ -13,7 +13,7 @@
         <!--Splash View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SplashViewController" customModule="Monocle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="splash" id="BYZ-38-t0r" customClass="SplashViewController" customModule="Monocle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -61,7 +61,6 @@
                         <segue destination="xvF-Eu-gdg" kind="presentation" identifier="showApp" id="G0p-XT-W6X"/>
                         <segue destination="dhm-wX-GLX" kind="show" identifier="selectFriends" id="ah6-pF-8Jh"/>
                         <segue destination="pe6-op-Nkv" kind="show" identifier="showListOfFriendsInstagram" id="x9V-cj-4Y8"/>
-                        <segue destination="r3Q-G6-8pK" kind="show" identifier="showInstagramApp" id="x16-ya-116"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,7 +70,7 @@
         <!--Instagram-->
         <scene sceneID="hEs-vo-0GC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pe6-op-Nkv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="instagramSelectFriendsController" automaticallyAdjustsScrollViewInsets="NO" id="pe6-op-Nkv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Instagram" id="54d-5z-5Lj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nnO-Mj-ZBb">
@@ -85,7 +84,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUZ-FR-Pr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3644" y="885"/>
+            <point key="canvasLocation" x="-4172" y="993"/>
         </scene>
         <!--Friends Selection Table View Controller-->
         <scene sceneID="FH0-di-QzS">
@@ -164,7 +163,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9g-Rn-b4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2794" y="-582"/>
+            <point key="canvasLocation" x="-2473" y="-592"/>
         </scene>
         <!--Twitter-->
         <scene sceneID="BGq-NX-ADm">
@@ -185,12 +184,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jzb-67-QJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3644" y="-581"/>
+            <point key="canvasLocation" x="-3322" y="-591"/>
         </scene>
         <!--Instagram Home Table View Controller-->
         <scene sceneID="igC-O0-2ea">
             <objects>
-                <tableViewController id="jKP-VW-bbJ" customClass="InstagramHomeTableViewController" customModule="Monocle" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="selectFriendsInstagram" id="jKP-VW-bbJ" customClass="InstagramHomeTableViewController" customModule="Monocle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="28" sectionFooterHeight="28" id="gdj-va-cVB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,7 +263,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5I9-f5-WsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2794" y="885"/>
+            <point key="canvasLocation" x="-3322" y="993"/>
         </scene>
         <!--TwitterTabBarController-->
         <scene sceneID="1EL-5l-I3a">
@@ -272,15 +271,7 @@
                 <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="TwitterTabBarController" id="xvF-Eu-gdg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVL-aj-rQ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1912" y="65"/>
-        </scene>
-        <!--InstagramTabViewController-->
-        <scene sceneID="UZq-9v-MJF">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="InstagramTabViewController" id="r3Q-G6-8pK" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vUP-6L-eId" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1901" y="197"/>
+            <point key="canvasLocation" x="-2384" y="112"/>
         </scene>
         <!--twitterHomePage-->
         <scene sceneID="9YX-3w-V0R">
@@ -288,7 +279,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="twitterHomePage" storyboardName="Home" referencedIdentifier="twitterHomePage" id="oLg-US-HnN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Co-9V-wJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1969" y="-66"/>
+            <point key="canvasLocation" x="-2417" y="-55"/>
         </scene>
         <!--InstagramHomePageController-->
         <scene sceneID="riv-kJ-UwO">
@@ -296,7 +287,7 @@
                 <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="InstagramHomePageController" id="TyT-an-bfO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1He-lS-OOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1882" y="280"/>
+            <point key="canvasLocation" x="-2351" y="325"/>
         </scene>
     </scenes>
     <resources>

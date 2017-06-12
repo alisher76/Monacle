@@ -58,7 +58,7 @@ extension LikesFeedInstagramFriendsTableViewCell: UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        delegate?.fetchUserLikes(userID: friends[indexPath.row].uid)
+        // delegate?.fetchUserLikes(userID: friends[indexPath.row].uid)
     }
     
 }

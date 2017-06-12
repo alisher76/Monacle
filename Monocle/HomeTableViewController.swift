@@ -21,7 +21,6 @@ class HomeTableViewController: UITableViewController {
     
     var userID: String? {
         didSet {
-            print(userID)
             getUserTimeline(userID: userID!)
         }
     }
@@ -100,6 +99,12 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
+    func updateNavigationImagge(image: String) {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        imageView.setImageWith(URL(string: image)!)
+        self.navigationItem.titleView = imageView
+    }
     
     
     func reloadData(appending: Bool = false)  {
@@ -158,6 +163,14 @@ class HomeTableViewController: UITableViewController {
                // reloadData(appending: true)
             }
         }
+    }
+    
+    @IBAction func instagramLogoTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "splash")
+        self.navigationController?.pushViewController(vc, animated: true)
+        print("tapped")
+        
     }
 }
 
