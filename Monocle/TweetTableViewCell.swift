@@ -9,9 +9,6 @@
 import UIKit
 
 class TweetTableViewCell: UITableViewCell {
-
-    
-    
     
     @IBOutlet var authorUserNameLabel: UILabel!
     @IBOutlet var authorNameLabel: UILabel!
@@ -21,18 +18,22 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet var tweetContentsLabel: UILabel!
     @IBOutlet var favoriteCountLabel: UILabel!
     @IBOutlet weak var mediaImageView: UIImageView!
-    
+    @IBOutlet var mediaImageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var mediaImageVerticalSpacingConstraint: NSLayoutConstraint!
+    weak var delegate: TwitterTableViewDelegate?
     var friends: [TwitterUser] = []
     var indexPath: IndexPath!
     
     var tweetID: Int!
     var tweetTextFontSize: CGFloat { get { return 15.0 }}
     var tweetTextWeigth: CGFloat { get { return UIFontWeightRegular} }
+    
     var tweet: Tweet! {
         didSet {
             tweetSetConfigure()
         }
     }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,52 +53,63 @@ class TweetTableViewCell: UITableViewCell {
         
         tweetContentsLabel.text = tweet.text
         
-        let urls = tweet.urls
-        let media = tweet.media
-        var urlDictionary = [[String:Any]]()
-        var displayURLS = [String]()
-        
-        mediaImageView.image = nil
-        
-        if let urls = urls {
-            for (key,value) in urls {
-                urlDictionary.append([key:value])
-            }
-                for url in urlDictionary {
-                var index = 0
-                let urlsData = url["urls"] as! [NSDictionary]
-                let urlText = urlsData[index]["url"] as! String
-                tweetContentsLabel.text = tweetContentsLabel.text?.replcae(target: urlText, withString: "")
-                var displayURL = urlsData[index]["display_url"] as! String
-                if let expancedURL = urlsData[index]["expanded_url"] {
-                    displayURL = expancedURL as! String
-                }
-                index += 1
-                displayURLS.append(displayURL)
+        var urls = tweet.urls
+        var media = tweet.media {
+            didSet {
                 
             }
         }
         
+        
+        var displayURLS = [String]()
+        mediaImageView.image = nil
+        if let urls = urls {
+            for _url in urls {
+                let urlText = _url["url"] as! String
+                tweetContentsLabel.text = tweetContentsLabel.text?.replcae(target: urlText, withString: "")
+                
+                var displayURL = _url["display_url"] as! String
+                if let expancedURL = _url["expanded_url"] {
+                    displayURL = expancedURL as! String
+                }
+                displayURLS.append(displayURL)
+            }
+            
+        }
+        
         if let media = media {
-           
+            for medium in media {
+                
+                let urltext = medium["url"] as! String
+                tweetContentsLabel.text = tweetContentsLabel.text?.replcae(target: urltext, withString: " ")
+                if((medium["type"] as? String) == "photo") {
+                    displayPhoto()
+                    
+                    let mediaurl = medium["media_url_https"] as! String
+                    mediaImageHeightConstraint.isActive = false
+                    
+                    mediaImageView.layer.cornerRadius = 5
+                    mediaImageView.clipsToBounds = true;
+                    mediaImageView.setImageWith(URLRequest(url: URL(string: mediaurl)!), placeholderImage: nil, success: { (request, response, image) -> Void in
+                        // success
+                        self.mediaImageView.image = image
+                        self.delegate?.reloadTableCellAtIndex(self, indexPath: self.indexPath)
+                    }, failure: { (request, response, error) -> Void in
+                        // error
+                    });
+                }
+            }
         }
    
         if displayURLS.count > 0 {
             
             
             let content = tweetContentsLabel.text ?? ""
-            let urlText = " " + displayURLS.joined(separator: " ")
+            let urlText = "\n" + displayURLS.joined(separator: "")
             let text = NSMutableAttributedString(string: content)
-            
-            text.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: tweetTextFontSize, weight: tweetTextFontSize), range: NSRange(location: 0, length: content.characters.count))
-            
             let links = NSMutableAttributedString(string: urlText)
-            links.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: tweetTextFontSize, weight: tweetTextFontSize), range: NSRange(location: 0, length: urlText.characters.count))
-            
             links.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 36/255.0, green: 144/255.0, blue: 212/255.0, alpha: 1), range: NSRange(location: 0, length: urlText.characters.count))
-            
             text.append(links)
-            
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 5
             style.lineBreakMode = .byCharWrapping
@@ -107,17 +119,13 @@ class TweetTableViewCell: UITableViewCell {
         }
         
     }
-    
-    
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
-    
+
     
     @IBAction func favoritedButtonTapped(_ sender: Any) {
         if tweet.favorited == false {
@@ -132,6 +140,11 @@ class TweetTableViewCell: UITableViewCell {
         }else{
         retweetCountTabel.text = String(tweet.retweetsCount)
         }
+    }
+    
+    func displayPhoto() {
+        self.mediaImageVerticalSpacingConstraint.constant = 8
+        self.mediaImageView.isHidden = false
     }
 
 }

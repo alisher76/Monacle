@@ -146,8 +146,6 @@ class HomeTableViewController: UITableViewController {
         
         let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
         guard let userFriends = TwitterUser.array(json: savedData) else {return}
-        print(savedData)
-        print(userFriends)
         self.friends = userFriends
         self.userID = userFriends.first?.uid
     }

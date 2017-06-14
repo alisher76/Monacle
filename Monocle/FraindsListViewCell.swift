@@ -49,7 +49,7 @@ extension FraindsListViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         
         indexNum = indexPath.row
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionLikesCell", for: indexPath) as! CustomCollectionLikesCell
-        cell.collectionImageTitleLbl.text = friends[indexPath.row].name
+        
         cell.collectionImageView.setImageWith(URL(string: friends[indexPath.row].image)!)
         
         
@@ -73,6 +73,8 @@ class CustomCollectionLikesCell: UICollectionViewCell  {
     @IBOutlet var collectionImageView: UIImageView!
     @IBOutlet var collectionImageTitleLbl: UILabel!
     
+    @IBOutlet var twitterButtonOutlet: UIButton!
+    @IBOutlet var instagramButtonOutlet: UIButton!
     
     
     override func awakeFromNib() {
@@ -88,6 +90,17 @@ class CustomCollectionLikesCell: UICollectionViewCell  {
         collectionImageView.layer.shadowOpacity = 0.7
         collectionImageView.layer.shadowRadius = 10.0
     }
+    
+    @IBAction func twitterButtonTapped(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func instagramButtonTapped(_ sender: Any) {
+        
+        
+    }
+    
 }
 
 

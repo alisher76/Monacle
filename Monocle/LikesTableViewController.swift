@@ -9,11 +9,19 @@
 import UIKit
 
 class LikesTableViewController: UITableViewController {
-
+    
     
     let userDeafaults = UserDefaults.standard
     var friends = [TwitterUser]()
+    
+    var media = [MonoclePost]() {
+        didSet {
+            print(media)
+        }
+    }
+    
     var delegate: SplashViewController?
+    
     struct Storyboard {
         static let friendsCell = "friendsListCell"
         static let homeCell = "HomeCell"
@@ -22,9 +30,11 @@ class LikesTableViewController: UITableViewController {
     var userID: String? {
         didSet {
             getUserTimeline(userID: userID!)
+            getMonocleData(userID: userID!)
         }
     }
     var lastTweetID: Int?
+    
     var tweets: [Tweet] = [] {
         didSet {
             tableView.reloadData()
@@ -124,6 +134,14 @@ class LikesTableViewController: UITableViewController {
             print(error)
         })
         
+    }
+    
+    func getMonocleData(userID: String) {
+        TwitterClient.sharedInstance?.getUserTimelineMonocle(userID: userID, success: { (monocleTweet) in
+            self.media = monocleTweet
+        }, failure: { (error) in
+            print(error)
+        })
     }
     
     func getUserTimeline(userID: String) {

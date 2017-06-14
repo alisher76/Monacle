@@ -25,7 +25,7 @@ class LikesTableViewCell: UITableViewCell {
         }
     }
     
-    var media: Instagram.Media? {
+    var media: Media? {
         didSet {
             if let setMedia = media {
                 postCaption.text = setMedia.caption

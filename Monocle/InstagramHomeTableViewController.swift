@@ -146,7 +146,8 @@ class InstagramHomeTableViewController: UITableViewController {
                         "name": value.fullName,
                         "userName" : value.userName,
                         "uid"  : value.uid,
-                        "image": value.image
+                        "image": value.image,
+                        "accountType" : value.accountType
                     ]
                     selectedFriends.append(dictioanry)
                 }

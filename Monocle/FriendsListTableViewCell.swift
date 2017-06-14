@@ -53,8 +53,6 @@ class FriendsListTableViewCell: UITableViewCell {
             cell.collectionImageTitleLbl.text = friends[indexPath.row].name
             cell.collectionImageView.setImageWith(URL(string: friends[indexPath.row].image)!)
             
-            
-            
             return cell
             
         }

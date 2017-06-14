@@ -12,9 +12,13 @@ class FriendsSelectionTableViewController: UITableViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    var userss: [MonocolAccount]?
+    
+    
     var isCompleted = false
     var users: [TwitterUser]?
     var selectedUsers: [String:TwitterUser] = [:]
+    
     var indexNum = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +53,13 @@ class FriendsSelectionTableViewController: UITableViewController {
         guard let user = users?[indexPath.row] else { return }
         if cell?.accessoryType == .checkmark{
             self.selectedUsers.removeValue(forKey: user.name)
-            print(self.selectedUsers.count)
+            print("\(user.accountType)")
+            print("\(user.name)")
             cell?.accessoryType = .none
         } else {
             cell?.accessoryType = .checkmark
+            print("\(user.accountType)")
+            print("\(user.name)")
             self.selectedUsers[user.name] = user
             print(self.selectedUsers.count)
         }
@@ -89,7 +96,8 @@ class FriendsSelectionTableViewController: UITableViewController {
                         "friends_count" : value.followingCount,
                         "description" : value.description,
                         "location" : value.location,
-                        "profile_image_url_https" : value.image
+                        "profile_image_url_https" : value.image,
+                        "accountType" : value.accountType
                     ]
                 selectedFriends.append(dictioanry)
                }

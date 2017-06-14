@@ -53,6 +53,7 @@ extension IntagramFriendsTableViewCell: UICollectionViewDelegate, UICollectionVi
         indexNum = indexPath.row
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InstagramCollectionCell", for: indexPath) as! CustomCollectionCellInstagram
         cell.collectionImageTitleLbl.text = friends[indexPath.row].fullName
+        print(friends[indexPath.row].accountType)
         cell.collectionImageView.setImageWith(URL(string: friends[indexPath.row].image)!)
         
         return cell

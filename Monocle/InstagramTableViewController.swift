@@ -13,14 +13,22 @@ class InstagramTableViewController: UITableViewController {
     let userDeafaults = UserDefaults.standard
     var accessToken: String?
     var splashDelegate: SplashViewController?
+    
+   
     var friends: [InstagramUser]! {
         didSet {
         fetchUserPosts(userID: (friends.first?.uid)!)
+        fetchInstaMonoclePost(userID: (friends.first?.uid)!)
+            
         }
     }
     
-    
-    var tweets: [Instagram.Media] = [] {
+    var monoclePosts: [MonoclePost] = []{
+        didSet {
+            print(monoclePosts.count)
+        }
+    }
+    var tweets: [Media] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -40,7 +48,7 @@ class InstagramTableViewController: UITableViewController {
     }
     
     
-    var posts: [Instagram.Media] = [] {
+    var posts: [Media] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -125,7 +133,7 @@ class InstagramTableViewController: UITableViewController {
         self.accessToken = savedToken
         var savedFriends: [InstagramUser] = []
         for friend in savedData {
-            let savedFriend = InstagramUser(fullName: friend["name"] as! String, userName: friend["userName"] as! String, uid: friend["uid"] as! String, image: friend["image"] as! String)
+            let savedFriend = InstagramUser(fullName: friend["name"] as! String, userName: friend["userName"] as! String, uid: friend["uid"] as! String, image: friend["image"] as! String, accountType: friend["accountType"] as! String)
             
             savedFriends.append(savedFriend)
         }
@@ -134,6 +142,14 @@ class InstagramTableViewController: UITableViewController {
         splashDelegate?.goToInstaApp()
         }
         
+    }
+    // FetchMonacleFeed
+    func fetchInstaMonoclePost(userID: String) {
+        Instagram().fetchRecentMediaForUserMonocle(userID, accessToken: accessToken!) { (monocleFeed) in
+            for feed in monocleFeed {
+                self.monoclePosts.append(feed)
+            }
+        }
     }
     
     func fetchUserPosts(userID: String) {

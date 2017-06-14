@@ -19,8 +19,9 @@ class TwitterUser {
     var description: String
     var location: String
     var image: String
+    var accountType: String
     
-    init(name: String, uid: String, screenName: String, followerCount: Int, followingCount: Int, description: String, location: String, image: String) {
+    init(name: String, uid: String, screenName: String, followerCount: Int, followingCount: Int, description: String, location: String, image: String, accountType: String) {
         self.name = name
         self.uid = uid
         self.screenName = screenName
@@ -29,9 +30,10 @@ class TwitterUser {
         self.description = description
         self.location = location
         self.image = image
+        self.accountType = accountType
     }
     
-    convenience init?(json: NSDictionary) {
+    convenience init?(json: NSDictionary, accountType: String?) {
         guard let name = json[TwitterUser.nameKey] as? String,
             let uid = json[TwitterUser.uidKey] as? String,
             let screenName = json[TwitterUser.screenNameKey] as? String,
@@ -39,17 +41,18 @@ class TwitterUser {
             let followingCount = json[TwitterUser.followingCounKey] as? Int,
             let description = json[TwitterUser.descriptionKey] as? String,
             let location = json[TwitterUser.locationKey] as? String,
-            let image = json[TwitterUser.imageKey] as? String
+            let image = json[TwitterUser.imageKey] as? String,
+            let accountType = accountType
             else {
                 return nil
         }
-        self.init(name: name, uid: uid, screenName: screenName, followerCount: followerCount, followingCount: followingCount, description: description, location: location, image: image)
+        self.init(name: name, uid: uid, screenName: screenName, followerCount: followerCount, followingCount: followingCount, description: description, location: location, image: image, accountType: accountType)
     }
     
-    static func array(json: [NSDictionary]) -> [TwitterUser]? {
+    static func array(json: [NSDictionary], accountType: String = "twitter") -> [TwitterUser]? {
         var converted = [TwitterUser]()
         for i in json {
-            guard let user = TwitterUser(json: i) else { return nil }
+            guard let user = TwitterUser(json: i, accountType: accountType) else { return nil }
             converted.append(user)
         }
             return converted

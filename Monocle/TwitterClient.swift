@@ -65,13 +65,13 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     
-    func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
+    func currentAccount(success: @escaping (TwitterUser) -> (), failure: @escaping (Error) -> ()) {
         
         
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task, responce) in
             let userDict = responce as! NSDictionary
-            let user = User(dictionary: userDict)
-            success(user)
+            let user = TwitterUser(json: userDict, accountType: "twitter")
+            success(user!)
         }) { (task, error) in
             print(error.localizedDescription)
             failure(error)
@@ -111,8 +111,8 @@ class TwitterClient: BDBOAuth1SessionManager {
         get("1.1/friends/list.json", parameters: params, progress: nil, success: { (task, responce) in
             
             if let usersDictionary = responce as? [String:Any] {
-                let anime = usersDictionary["users"] as? [NSDictionary]
-                guard let user = TwitterUser.array(json: anime!) else {return}
+                let friends = usersDictionary["users"] as? [NSDictionary]
+                guard let user = TwitterUser.array(json: friends!) else {return}
                 success(user)
                 print(user.count)
             }
@@ -140,6 +140,20 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func getUserTimelineMonocle(userID: String, success: @escaping ([MonoclePost]) -> (), failure: @escaping (NSError) -> ()) {
+        
+        let params = ["count": 10]
+        
+        get("1.1/statuses/user_timeline.json?user_id=\(userID)", parameters: params, progress: nil, success: { (task, responce) in
+            
+            let dictionary = responce as! [NSDictionary]
+            guard let monocleTweets = MonoclePost.array(json: dictionary) else {return}
+            success(monocleTweets)
+        }) { (task, error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     
     func getUserLikes(userID: String, success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
         
@@ -156,10 +170,6 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
-    func logOut() {
-        User.currentUser = nil
-        deauthorize()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
-    }
+    
     
 }

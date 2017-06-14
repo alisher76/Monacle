@@ -9,7 +9,8 @@
 import UIKit
 
 class LikesInstagramTableViewController: UITableViewController {
-
+    
+    
     let userDeafaults = UserDefaults.standard
     var accessToken: String?
     
@@ -20,7 +21,7 @@ class LikesInstagramTableViewController: UITableViewController {
     }
     
     
-    var tweets: [Instagram.Media] = [] {
+    var tweets: [Tweet] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -38,7 +39,7 @@ class LikesInstagramTableViewController: UITableViewController {
     }
     
     
-    var posts: [Instagram.Media] = [] {
+    var posts: [Media] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -56,9 +57,6 @@ class LikesInstagramTableViewController: UITableViewController {
         tableView.separatorColor = UIColor.clear
         fetchSavedData()
     }
-    
-    
-    
     
     // MARK: - Table view data source
     
@@ -115,7 +113,7 @@ class LikesInstagramTableViewController: UITableViewController {
         self.accessToken = savedToken
         var savedFriends: [InstagramUser] = []
         for friend in savedData {
-            let savedFriend = InstagramUser(fullName: friend["name"] as! String, userName: friend["userName"] as! String, uid: friend["uid"] as! String, image: friend["image"] as! String)
+            let savedFriend = InstagramUser(fullName: friend["name"] as! String, userName: friend["userName"] as! String, uid: friend["uid"] as! String, image: friend["image"] as! String, accountType: friend["accountType"] as! String)
             
             savedFriends.append(savedFriend)
         }
