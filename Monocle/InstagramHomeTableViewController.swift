@@ -12,22 +12,27 @@ class InstagramHomeTableViewController: UITableViewController {
     
     let userDefaults = UserDefaults.standard
     
-    var accessToken: String!{
+    var monocleFriends: [MonocleUser]?
+    var twitterID: String!
+    var accessToken: String! {
         didSet {
-            fetchUsersFollowed()
+        fetchUsersFollowed()
         }
     }
+    
     var listOfUser:[InstagramUser] = [] {
         didSet {
             
         }
     }
     
-    var selectedUsers: [String:InstagramUser] = [:]
+    var selectedUsersRegular: [String : InstagramUser] = [:]
+    
     var indexNum = 0
 
    
     var photoDictionaries = [[String:Any]]()
+    
     struct StroryBoard {
         static let exploreCell = "friendsList"
     }
@@ -35,24 +40,14 @@ class InstagramHomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let savedUsers = userDefaults.object(forKey: "savedInstagramFriends") as? [NSDictionary]
+       // let savedUsers = userDefaults.object(forKey: "savedInstagramFriends") as? [NSDictionary]
         
-        if accessToken == nil  && savedUsers == nil {
+        if accessToken == nil {
             authInstagram()
-        }else if accessToken != nil && savedUsers != nil{
-            
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "InstagramHomePageController") as! InstagramTableViewController
-            let sUsers: [InstagramUser] = InstagramUser.array(json: savedUsers!)!
+        }else if accessToken != nil {
+            fetchUsersFollowed()
+        }
         
-                OperationQueue.main.addOperation {
-                    vc.friends = sUsers
-                self.present(vc, animated: true, completion: nil)
-                }
-        }else{
-            
-        
-      }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,24 +69,59 @@ class InstagramHomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexNum = indexPath.row
         let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         let user = listOfUser[indexPath.row]
         if cell?.accessoryType == .checkmark{
-            self.selectedUsers.removeValue(forKey: user.fullName)
-            print(self.selectedUsers.count)
-            cell?.tintColor = UIColor.gray
+            self.selectedUsersRegular.removeValue(forKey: user.userName)
+            print("\(user.userName)")
+            print(selectedUsersRegular)
             cell?.accessoryType = .none
-            
         } else {
-            cell?.tintColor = UIColor.blue
             cell?.accessoryType = .checkmark
-            self.selectedUsers[user.fullName] = user
-            print(self.selectedUsers.count)
+            self.selectedUsersRegular[user.userName] = user
+            print(selectedUsersRegular)
+            print(self.selectedUsersRegular.count)
         }
 
     }
 
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "twitterHomePage")  as! HomeTableViewController
+        
+        
+            var sUsers: [InstagramUser] = []
+            var selectedFriends: [NSDictionary] = []
+            for (_ , value) in self.selectedUsersRegular {
+                sUsers.append(value)
+                
+                let dictioanry: NSDictionary = [
+                    "name" : value.fullName,
+                    "userName" : value.userName,
+                    "uid"  : value.uid,
+                    "image": value.image,
+                    "accountType" : value.accountType
+                ]
+                selectedFriends.append(dictioanry)
+            }
+        
+        for friend in monocleFriends! {
+                if friend.twitterID == self.twitterID {
+                friend.accounts?.append(MonocolAccount.instagram(self.selectedUsersRegular[listOfUser[indexNum].userName]!))
+                    friend.instagramID = listOfUser[indexNum].uid
+                    vc.instagramAccessToken = accessToken
+                    vc.selectedFriend = friend
+                }
+            }
+            vc.monocleFriends = self.monocleFriends!
+            self.userDefaults.set(selectedFriends, forKey: "savedInstagramFriends")
+            self.userDefaults.synchronize()
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     func authInstagram() {
         
         //SaveChanges
@@ -100,7 +130,7 @@ class InstagramHomeTableViewController: UITableViewController {
         if let token = userDefaults.object(forKey: "accessTokenForInstagram") as? String {
             self.accessToken = token
             print("Already logged in\(accessToken)")
-           
+            
         } else {
             
             SimpleAuth.authorize("instagram", options: ["scope": ["follower_list public_content"]]) { (oResult: Any?, error: Error?) -> Void in
@@ -120,44 +150,15 @@ class InstagramHomeTableViewController: UITableViewController {
     
     func fetchUsersFollowed() {
         
-       Instagram().fetchUserFriends(accessToken) { (oUsers) in
-        self.listOfUser = oUsers
-        print(oUsers)
-        OperationQueue.main.addOperation {
-            self.tableView?.reloadData()
-        }
-       }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let userDefaults = UserDefaults.standard
-        
-        if segue.identifier == "showPosts" {
-            let vc = segue.destination as! InstagramTableViewController
+        Instagram().fetchUserFriends(accessToken) { (oUsers) in
+            self.listOfUser = oUsers
             OperationQueue.main.addOperation {
-                var sUsers: [InstagramUser] = []
-                var selectedFriends: [NSDictionary] = []
-                
-                for (_ , value) in self.selectedUsers {
-                    sUsers.append(value)
-                    
-                    let dictioanry: NSDictionary = [
-                        "name": value.fullName,
-                        "userName" : value.userName,
-                        "uid"  : value.uid,
-                        "image": value.image,
-                        "accountType" : value.accountType
-                    ]
-                    selectedFriends.append(dictioanry)
-                }
-                
-                userDefaults.set(selectedFriends, forKey: "savedInstagramFriends")
-                userDefaults.synchronize()
-                vc.friends = sUsers
+                self.tableView?.reloadData()
             }
         }
     }
+    
+    
 /*
     func cellTapped() {
               let tappedUser = listOfUser[indexNum] 

@@ -14,6 +14,7 @@ class FriendsSelectionTableViewController: UITableViewController {
     
     var userss: [MonocolAccount]?
     
+    var listOfUserMonocleUser:[MonocleUser] = []
     
     var isCompleted = false
     var users: [TwitterUser]?
@@ -102,9 +103,14 @@ class FriendsSelectionTableViewController: UITableViewController {
                 selectedFriends.append(dictioanry)
                }
                 
+                for user in sUsers {
+                    let monocleUser = MonocleUser(name: user.name, userName: user.screenName, twitterID: user.uid, instagramID: "nil", profileImage: user.image, accounts: [MonocolAccount.twitter(user)], posts: [])
+                    self.listOfUserMonocleUser.append(monocleUser)
+                }
                 userDefaults.set(selectedFriends, forKey: "savedFriends")
                 userDefaults.synchronize()
                 vc.friends = sUsers
+                vc.monocleFriends = self.listOfUserMonocleUser
           }
         }
     }

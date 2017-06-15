@@ -13,15 +13,12 @@ class FriendsListTableViewCell: UITableViewCell {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    
     var delegate: HomeTableViewController?
     var indexNum: Int?
-//    var friendIDs: [Int]?
-    var friends = [TwitterUser]() {
-        didSet {
-            var friendsDict: [String] = []
-            for friend in friends {
-                friendsDict.append(friend.uid)
-            }
+    var monocleFriends = [MonocleUser]() {
+        didSet{
+            print(monocleFriends.count)
             
         }
     }
@@ -43,42 +40,36 @@ class FriendsListTableViewCell: UITableViewCell {
     extension FriendsListTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return friends.count
+            return monocleFriends.count
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             
             indexNum = indexPath.row
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CustomCollectionCell
-            cell.collectionImageTitleLbl.text = friends[indexPath.row].name
-            cell.collectionImageView.setImageWith(URL(string: friends[indexPath.row].image)!)
-            
+            cell.collectionImageTitleLbl.text = monocleFriends[indexPath.row].name
+            cell.collectionImageView.setImageWith(URL(string: monocleFriends[indexPath.row].profileImage)!)
             return cell
             
         }
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             
-            delegate?.getUserTimeline(userID: friends[indexPath.row].uid)
-            // delegate?.updateNavigationImagge(image: friends[indexPath.row].image)
+            // delegate?.userID = monocleFriends[indexPath.row].userID
+            delegate?.selectedFriend = monocleFriends[indexPath.row]
         }
         
     }
  
     class CustomCollectionCell: UICollectionViewCell  {
         
-        
-        
         @IBOutlet var collectionImageView: UIImageView!
         @IBOutlet var collectionImageTitleLbl: UILabel!
-        
-       
         
         override func awakeFromNib() {
           super.awakeFromNib()
             setUpLayer()
         }
-        
         
         func setUpLayer() {
             

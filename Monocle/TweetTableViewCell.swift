@@ -20,10 +20,14 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet var mediaImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet var mediaImageVerticalSpacingConstraint: NSLayoutConstraint!
+    
     weak var delegate: TwitterTableViewDelegate?
+    
+    var homeDelegate: HomeTableViewController?
     var friends: [TwitterUser] = []
     var indexPath: IndexPath!
     
+    var postID: Int!
     var tweetID: Int!
     var tweetTextFontSize: CGFloat { get { return 15.0 }}
     var tweetTextWeigth: CGFloat { get { return UIFontWeightRegular} }
@@ -33,14 +37,31 @@ class TweetTableViewCell: UITableViewCell {
             tweetSetConfigure()
         }
     }
-
+    
+    var instaPost: Media! {
+        didSet {
+            instaPostSetConfigure()
+        }
+    }
+    var monoclePost: MonoclePost! {
+        didSet {
+            switch monoclePost {
+            case .some(.tweet(let value)):
+                tweet = value
+                print(value)
+            case .some(.instagram(let value)):
+                 instaPost = value
+                print(value)
+            case .none:
+                print("something went wrong")
+            }
+         }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
-    
-    
     
     func tweetSetConfigure() {
         
@@ -59,7 +80,6 @@ class TweetTableViewCell: UITableViewCell {
                 
             }
         }
-        
         
         var displayURLS = [String]()
         mediaImageView.image = nil
@@ -100,7 +120,7 @@ class TweetTableViewCell: UITableViewCell {
                 }
             }
         }
-   
+        
         if displayURLS.count > 0 {
             
             
@@ -119,11 +139,29 @@ class TweetTableViewCell: UITableViewCell {
         }
         
     }
+    
+    func instaPostSetConfigure() {
+        
+        postID = Int(instaPost.uid)
+        profilePicImageView.setImageWith(URL(string: instaPost.avatarURL)!)
+        profilePicImageView.layer.cornerRadius = 5
+        profilePicImageView.clipsToBounds = true
+        authorNameLabel.text = instaPost.username
+        authorUserNameLabel.text = "@" + instaPost.username
+        
+        tweetContentsLabel.text = instaPost.caption
+        mediaImageHeightConstraint.isActive = false
+        mediaImageView.layer.cornerRadius = 5
+        mediaImageView.clipsToBounds = true;
+        mediaImageView.setImageWith(URL(string: instaPost.takenPhoto)!)
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
     }
 
     

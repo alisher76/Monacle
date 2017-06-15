@@ -36,6 +36,23 @@ class Instagram {
             self.populateFriendsList(responce.result.value, callback: callBack)
         }
     }
+    // Get Monocle Converted list of friends
+    func populateFriendsListMonacle(accessToken: String, callback: @escaping ([MonocolAccount]) -> Void) {
+        
+        request("https://api.instagram.com/v1/users/self/follows?access_token=\(accessToken)", method: .get).responseJSON { (responce) in
+            
+            var friendsInstaAccount: [NSDictionary] = []
+            let list = JSON(responce.result.value!)
+            for data in list["data"].arrayValue {
+                
+            let friendAccount: [String:Any] = ["fullName" : data["full_name"].stringValue, "userName" : data["username"].stringValue, "uid" : data["id"].stringValue, "image" : data["profile_picture"].stringValue, "accountType" : "instagram"]
+            friendsInstaAccount.append(friendAccount as NSDictionary)
+        }
+            guard let back = MonocolAccount.array(json: friendsInstaAccount) else {return}
+            callback(back)
+      }
+    }
+    
     // Turn media Data into needed type
     func populateFriendsRecentPosts(_ data: Any?, callback: ([Media]) -> Void) {
     

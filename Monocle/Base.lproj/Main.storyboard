@@ -9,6 +9,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNextCondensed.ttc">
+            <string>AvenirNextCondensed-DemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Splash View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -23,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ouV-NO-LbU">
-                                <rect key="frame" x="26" y="487" width="323" height="130"/>
+                                <rect key="frame" x="26" y="497" width="323" height="130"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vf-ZA-qu0">
                                         <rect key="frame" x="0.0" y="0.0" width="323" height="60"/>
@@ -49,11 +54,21 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M o n o c l e" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p0-1D-IWK">
+                                <rect key="frame" x="69" y="45" width="237" height="48"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="35"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="30"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="0.9140625" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7p0-1D-IWK" secondAttribute="trailing" constant="69" id="HLM-1A-w2j"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ouV-NO-LbU" secondAttribute="trailing" constant="10" id="K5V-fA-pmd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ouV-NO-LbU" secondAttribute="bottom" constant="50" id="brP-aD-gXN"/>
+                            <constraint firstItem="7p0-1D-IWK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="69" id="QDa-Iv-axK"/>
+                            <constraint firstItem="7p0-1D-IWK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="Rm8-EO-0zn"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ouV-NO-LbU" secondAttribute="bottom" constant="40" id="brP-aD-gXN"/>
                             <constraint firstItem="ouV-NO-LbU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="fdN-Gz-X4Q"/>
                         </constraints>
                     </view>
@@ -65,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4171" y="133"/>
+            <point key="canvasLocation" x="-4172" y="132.68365817091455"/>
         </scene>
         <!--Instagram-->
         <scene sceneID="hEs-vo-0GC">
@@ -256,7 +271,7 @@
                     <navigationItem key="navigationItem" id="suE-0H-biz">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="TPd-AM-Idd">
                             <connections>
-                                <segue destination="TyT-an-bfO" kind="show" identifier="showPosts" id="ODt-WG-NLf"/>
+                                <action selector="doneButtonTapped:" destination="jKP-VW-bbJ" id="RxT-cj-aA7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -280,14 +295,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Co-9V-wJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2417" y="-55"/>
-        </scene>
-        <!--InstagramHomePageController-->
-        <scene sceneID="riv-kJ-UwO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="InstagramHomePageController" id="TyT-an-bfO" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1He-lS-OOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2351" y="325"/>
         </scene>
     </scenes>
     <resources>

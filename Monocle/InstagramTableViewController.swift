@@ -13,7 +13,11 @@ class InstagramTableViewController: UITableViewController {
     let userDeafaults = UserDefaults.standard
     var accessToken: String?
     var splashDelegate: SplashViewController?
-    
+    var monocleUser: [MonocleUser]! {
+        didSet {
+            print(monocleUser.count)
+        }
+    }
    
     var friends: [InstagramUser]! {
         didSet {
@@ -55,9 +59,7 @@ class InstagramTableViewController: UITableViewController {
     }
     
     var refreshControll: UIRefreshControl!
-    
-    
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,8 +76,6 @@ class InstagramTableViewController: UITableViewController {
             fetchSavedData()
         }
     }
-    
-    
     
    
     // MARK: - Table view data source
@@ -130,6 +130,7 @@ class InstagramTableViewController: UITableViewController {
         
         if let savedData = self.userDeafaults.object(forKey: "savedInstagramFriends") as? [NSDictionary] {
         let savedToken = self.userDeafaults.object(forKey: "accessTokenForInstagram") as! String
+ 
         self.accessToken = savedToken
         var savedFriends: [InstagramUser] = []
         for friend in savedData {
@@ -147,6 +148,7 @@ class InstagramTableViewController: UITableViewController {
     func fetchInstaMonoclePost(userID: String) {
         Instagram().fetchRecentMediaForUserMonocle(userID, accessToken: accessToken!) { (monocleFeed) in
             for feed in monocleFeed {
+                print(feed)
                 self.monoclePosts.append(feed)
             }
         }

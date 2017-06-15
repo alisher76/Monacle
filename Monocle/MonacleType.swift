@@ -27,7 +27,7 @@ enum MonoclePost {
         
         var converted = [MonoclePost]()
         for feed in json {
-            print(feed)
+            
             if let feedType = MonoclePost(json: feed){
                 converted.append(feedType)
             }else{
