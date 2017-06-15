@@ -8,11 +8,15 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController, InstagramHomeTableViewControllerDelegate {
+    
+    var twitterDelegate: FriendsSelectionTableViewController?
     
     let userDeafaults = UserDefaults.standard
     var instagramAccessToken: String?
     var monocleFriends: [MonocleUser] = []
+    
+    var delegate: InstagramHomeTableViewController?
     
     var selectedFriend: MonocleUser? {
         didSet {
@@ -24,7 +28,7 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
-    var monoclePosts: [MonoclePost] = []{
+    var monoclePosts: [MonoclePost] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -53,7 +57,7 @@ class HomeTableViewController: UITableViewController {
         
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .default
-        let logo = UIImage(named: "Icon-Twitter")
+        let logo = UIImage(named: "M")
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
         imageView.image = logo
@@ -62,9 +66,14 @@ class HomeTableViewController: UITableViewController {
         self.tabBarController?.tabBar.isHidden = false
         self.navigationItem.titleView = imageView
         
-        fetchSavedData()
+        
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchSavedData()
+        tableView.reloadData()
+    }
         //Set up refreshControll
         
 //        refreshControll = UIRefreshControl()
@@ -169,6 +178,14 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
+    func showFriendsSelectionVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "friendsSelectionTableViewController") as! FriendsSelectionTableViewController
+        vc.listOfCurrentMonocleUser = monocleFriends
+        vc.delegate = self
+        self.show(vc, sender: self)
+        
+    }
     
     
     @IBAction func instagramLogoTapped(_ sender: Any) {
@@ -181,6 +198,14 @@ class HomeTableViewController: UITableViewController {
         print("tapped")
         
     }
+    
+    func instagramHomeTableViewController(_ viewController: InstagramHomeTableViewController, didSelectFriends: [MonocleUser]) {
+        delegate?.delegate = self
+        monocleFriends = didSelectFriends
+        
+    }
+    
+    
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //        if tweets.count != 0 {
@@ -224,5 +249,16 @@ class HomeTableViewController: UITableViewController {
      */
 }
 
-
+extension HomeTableViewController : FriendsSelectionTableViewControllerDelegate {
+    func friendsSelectionTableViewController(_ viewController: FriendsSelectionTableViewController, didUpdateFriendsList lists: ([TwitterUser], [MonocleUser])) {
+        friends = lists.0
+        monocleFriends = lists.1
+        tableView.reloadData()
+        
+        // added by TJ. 
+        selectedFriend = monocleFriends.first
+        navigationController?.popViewController(animated: true)
+        
+    }
+}
 

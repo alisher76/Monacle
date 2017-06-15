@@ -8,22 +8,37 @@
 
 import UIKit
 
-class FriendsSelectionTableViewController: UITableViewController {
+protocol TwitterFriendsSelectionTableViewController: class {
+    func twitterTableViewController(_ viewController: FriendsSelectionTableViewController)
+}
+
+protocol FriendsSelectionTableViewControllerDelegate: class {
+    func friendsSelectionTableViewController(_ viewController: FriendsSelectionTableViewController, didUpdateFriendsList lists: ([TwitterUser], [MonocleUser]))
+}
+
+class FriendsSelectionTableViewController: UITableViewController  {
     
+    weak var delegate: FriendsSelectionTableViewControllerDelegate?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let userDefault = UserDefaults.standard
     
-    var userss: [MonocolAccount]?
+    var listOfCurrentMonocleUser: [MonocleUser] = [] {
+        didSet{
+        fetchSavedData()
+        }
+    }
+    var listOfMonocleUser:[MonocleUser] = []
     
-    var listOfUserMonocleUser:[MonocleUser] = []
+    var selectedFriends: [NSDictionary] = []
     
     var isCompleted = false
     var users: [TwitterUser]?
     var selectedUsers: [String:TwitterUser] = [:]
     
     var indexNum = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getFriendsList()
     }
     
@@ -52,77 +67,83 @@ class FriendsSelectionTableViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         guard let user = users?[indexPath.row] else { return }
-        if cell?.accessoryType == .checkmark{
-            self.selectedUsers.removeValue(forKey: user.name)
-            print("\(user.accountType)")
-            print("\(user.name)")
+        
+        if cell?.accessoryType == .checkmark {
+            self.selectedUsers.removeValue(forKey: user.uid)
             cell?.accessoryType = .none
         } else {
             cell?.accessoryType = .checkmark
-            print("\(user.accountType)")
-            print("\(user.name)")
-            self.selectedUsers[user.name] = user
-            print(self.selectedUsers.count)
+            self.selectedUsers[user.uid] = user
         }
     }
     
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FriendsSelectionCell
         
+        if selectedUsers[(users?[indexPath.row].uid)!] != nil {
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
         cell.user = users?[indexPath.row]
         
         return cell
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        save()
+    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let userDefaults = UserDefaults.standard
-                
-        if segue.identifier == "showTweets" {
-            let vc = segue.destination as! HomeTableViewController
-            OperationQueue.main.addOperation {
-                var sUsers: [TwitterUser] = []
-                var selectedFriends: [NSDictionary] = []
-                
-                for (_ , value) in self.selectedUsers {
+    func save() {
+        OperationQueue.main.addOperation { [weak self] in
+            guard let strongSelf = self else { return }
+            var sUsers: [TwitterUser] = []
+            
+            for (_ , value) in strongSelf.selectedUsers {
                 sUsers.append(value)
-                    
-                    let dictioanry: NSDictionary = [
-                        "name": value.name,
-                        "id_str" : value.uid,
-                        "screen_name"  : value.screenName,
-                        "followers_count": value.followerCount,
-                        "friends_count" : value.followingCount,
-                        "description" : value.description,
-                        "location" : value.location,
-                        "profile_image_url_https" : value.image,
-                        "accountType" : value.accountType
-                    ]
-                selectedFriends.append(dictioanry)
-               }
                 
-                for user in sUsers {
-                    let monocleUser = MonocleUser(name: user.name, userName: user.screenName, twitterID: user.uid, instagramID: "nil", profileImage: user.image, accounts: [MonocolAccount.twitter(user)], posts: [])
-                    self.listOfUserMonocleUser.append(monocleUser)
-                }
-                userDefaults.set(selectedFriends, forKey: "savedFriends")
-                userDefaults.synchronize()
-                vc.friends = sUsers
-                vc.monocleFriends = self.listOfUserMonocleUser
-          }
+                let dictioanry: NSDictionary = [
+                    "name": value.name,
+                    "id_str" : value.uid,
+                    "screen_name"  : value.screenName,
+                    "followers_count": value.followerCount,
+                    "friends_count" : value.followingCount,
+                    "description" : value.description,
+                    "location" : value.location,
+                    "profile_image_url_https" : value.image,
+                    "accountType" : value.accountType
+                ]
+                strongSelf.selectedFriends.append(dictioanry)
+            }
+            
+            for user in sUsers {
+                let monocleUser = MonocleUser(name: user.name, userName: user.screenName, twitterID: user.uid, instagramID: "nil", profileImage: user.image, accounts: [MonocolAccount.twitter(user)], posts: [])
+                strongSelf.listOfMonocleUser.append(monocleUser)
+            }
+            let userDefaults = UserDefaults.standard
+            
+            userDefaults.set(strongSelf.selectedFriends, forKey: "savedFriends")
+            userDefaults.synchronize()
+            strongSelf.delegate?.friendsSelectionTableViewController(strongSelf, didUpdateFriendsList: (sUsers, strongSelf.listOfMonocleUser))
         }
     }
     
-    
-    
-    
+    func fetchSavedData() {
+        
+        let savedData = userDefault.object(forKey: "savedFriends") as! [NSDictionary]
+        guard let userFriends = TwitterUser.array(json: savedData) else {return}
+        for friend in userFriends {
+            self.selectedUsers[friend.uid] = friend
+        }
+        
+    }
     func getFriendsList()  {
         
         TwitterClient.sharedInstance?.getListOfFollowedFriends(success: { (twitterUser) in
-            
             self.users = twitterUser
+            
             self.tableView.reloadData()
             
         }, failure: { (error) in

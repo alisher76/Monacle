@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol InstagramHomeTableViewControllerDelegate: class {
+    func instagramHomeTableViewController(_ viewController: InstagramHomeTableViewController, didSelectFriends: [MonocleUser])
+}
+
 class InstagramHomeTableViewController: UITableViewController {
     
     let userDefaults = UserDefaults.standard
-    
+    var homeTableViewDelegate: HomeTableViewController?
     var monocleFriends: [MonocleUser]?
     var twitterID: String!
+    weak var delegate: InstagramHomeTableViewControllerDelegate?
+    
     var accessToken: String! {
         didSet {
         fetchUsersFollowed()
@@ -80,8 +86,8 @@ class InstagramHomeTableViewController: UITableViewController {
             cell?.accessoryType = .none
         } else {
             cell?.accessoryType = .checkmark
-            self.selectedUsersRegular[user.userName] = user
             print(selectedUsersRegular)
+            self.selectedUsersRegular[user.userName] = user
             print(self.selectedUsersRegular.count)
         }
 
@@ -89,13 +95,15 @@ class InstagramHomeTableViewController: UITableViewController {
 
     
     @IBAction func doneButtonTapped(_ sender: Any) {
+        
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "twitterHomePage")  as! HomeTableViewController
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "twitterHomePage") as! HomeTableViewController
         
+        var sUsers: [InstagramUser] = []
+        var selectedFriends: [NSDictionary] = []
         
-            var sUsers: [InstagramUser] = []
-            var selectedFriends: [NSDictionary] = []
             for (_ , value) in self.selectedUsersRegular {
+                
                 sUsers.append(value)
                 
                 let dictioanry: NSDictionary = [
@@ -105,22 +113,26 @@ class InstagramHomeTableViewController: UITableViewController {
                     "image": value.image,
                     "accountType" : value.accountType
                 ]
+                
                 selectedFriends.append(dictioanry)
             }
         
         for friend in monocleFriends! {
                 if friend.twitterID == self.twitterID {
                 friend.accounts?.append(MonocolAccount.instagram(self.selectedUsersRegular[listOfUser[indexNum].userName]!))
-                    friend.instagramID = listOfUser[indexNum].uid
-                    vc.instagramAccessToken = accessToken
-                    vc.selectedFriend = friend
+                    print(listOfUser[indexNum].userName)
+                    friend.instagramID = listOfUser.first?.uid
+                    
+                    self.homeTableViewDelegate?.instagramAccessToken = accessToken
+                    self.homeTableViewDelegate?.selectedFriend = friend
                 }
             }
-            vc.monocleFriends = self.monocleFriends!
+            
+            homeViewController.monocleFriends = self.monocleFriends!
             self.userDefaults.set(selectedFriends, forKey: "savedInstagramFriends")
             self.userDefaults.synchronize()
+            self.navigationController?.popViewController(animated: true)
         
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     func authInstagram() {
         
