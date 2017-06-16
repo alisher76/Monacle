@@ -8,16 +8,14 @@
 
 import UIKit
 
-protocol TwitterFriendsSelectionTableViewController: class {
-    func twitterTableViewController(_ viewController: FriendsSelectionTableViewController)
-}
-
 protocol FriendsSelectionTableViewControllerDelegate: class {
     func friendsSelectionTableViewController(_ viewController: FriendsSelectionTableViewController, didUpdateFriendsList lists: ([TwitterUser], [MonocleUser]))
 }
 
 class FriendsSelectionTableViewController: UITableViewController  {
     
+    
+    @IBOutlet var nextBUttonOutlet: UIButton!
     weak var delegate: FriendsSelectionTableViewControllerDelegate?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let userDefault = UserDefaults.standard
@@ -68,6 +66,7 @@ class FriendsSelectionTableViewController: UITableViewController  {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let user = users?[indexPath.row] else { return }
         
+        
         if cell?.accessoryType == .checkmark {
             self.selectedUsers.removeValue(forKey: user.uid)
             cell?.accessoryType = .none
@@ -75,6 +74,7 @@ class FriendsSelectionTableViewController: UITableViewController  {
             cell?.accessoryType = .checkmark
             self.selectedUsers[user.uid] = user
         }
+        
     }
     
     
@@ -126,6 +126,7 @@ class FriendsSelectionTableViewController: UITableViewController  {
             
             userDefaults.set(strongSelf.selectedFriends, forKey: "savedFriends")
             userDefaults.synchronize()
+            
             strongSelf.delegate?.friendsSelectionTableViewController(strongSelf, didUpdateFriendsList: (sUsers, strongSelf.listOfMonocleUser))
         }
     }
@@ -137,8 +138,19 @@ class FriendsSelectionTableViewController: UITableViewController  {
         for friend in userFriends {
             self.selectedUsers[friend.uid] = friend
         }
-        
+        print(self.selectedUsers.count)
     }
+    
+    @IBAction func cake(_ sender: Any) {
+        print("CAKE")
+        print("hello!!!!!!")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "twitterHomePage") as! HomeTableViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    
     func getFriendsList()  {
         
         TwitterClient.sharedInstance?.getListOfFollowedFriends(success: { (twitterUser) in

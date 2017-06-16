@@ -43,10 +43,9 @@ class SplashViewController: UIViewController, TwitterLoginDelegate {
         let accessToken = userDefaults.object(forKey: "accessToken") as? String
         let savedUsers = userDefaults.object(forKey: "savedFriends") as? [NSDictionary]
         
-        
-        if accessToken != nil  && savedUsers == nil {
+        if savedUsers == nil {
             self.goToSelectFriendsPage()
-        }else if accessToken != nil && savedUsers != nil{
+        }else if accessToken != nil && savedUsers != nil {
             self.goToApp()
         }else{
         
@@ -86,6 +85,17 @@ class SplashViewController: UIViewController, TwitterLoginDelegate {
     func goToApp() {
         
         self.performSegue(withIdentifier: "showApp", sender: self)
+    }
+    
+    func reloadData(appending: Bool = false)  {
+        
+        TwitterClient.sharedInstance?.getHomeTimeline(success: { (tweets) in
+            
+            
+        }, failure: { (error) in
+            print(error)
+        })
+        
     }
     
 }

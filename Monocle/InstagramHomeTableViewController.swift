@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol InstagramHomeTableViewControllerDelegate: class {
-    func instagramHomeTableViewController(_ viewController: InstagramHomeTableViewController, didSelectFriends: [MonocleUser])
+
+protocol InstagramHomeFriendsTableViewControllerDelegate: class {
+    func InstagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser])
 }
 
 class InstagramHomeTableViewController: UITableViewController {
@@ -18,7 +19,7 @@ class InstagramHomeTableViewController: UITableViewController {
     var homeTableViewDelegate: HomeTableViewController?
     var monocleFriends: [MonocleUser]?
     var twitterID: String!
-    weak var delegate: InstagramHomeTableViewControllerDelegate?
+    weak var delegate: InstagramHomeFriendsTableViewControllerDelegate?
     
     var accessToken: String! {
         didSet {
@@ -96,13 +97,13 @@ class InstagramHomeTableViewController: UITableViewController {
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "twitterHomePage") as! HomeTableViewController
-        
+        OperationQueue.main.addOperation {[weak self] in
+            
+        guard let strongSelf = self else { return }
         var sUsers: [InstagramUser] = []
         var selectedFriends: [NSDictionary] = []
         
-            for (_ , value) in self.selectedUsersRegular {
+            for (_ , value) in strongSelf.selectedUsersRegular {
                 
                 sUsers.append(value)
                 
@@ -117,22 +118,20 @@ class InstagramHomeTableViewController: UITableViewController {
                 selectedFriends.append(dictioanry)
             }
         
-        for friend in monocleFriends! {
-                if friend.twitterID == self.twitterID {
-                friend.accounts?.append(MonocolAccount.instagram(self.selectedUsersRegular[listOfUser[indexNum].userName]!))
-                    print(listOfUser[indexNum].userName)
-                    friend.instagramID = listOfUser.first?.uid
+        for friend in strongSelf.monocleFriends! {
+                if friend.twitterID == strongSelf.twitterID {
+                friend.accounts?.append(MonocolAccount.instagram(strongSelf.selectedUsersRegular[strongSelf.listOfUser[strongSelf.indexNum].userName]!))
+                    friend.instagramID = strongSelf.listOfUser.first?.uid
                     
-                    self.homeTableViewDelegate?.instagramAccessToken = accessToken
-                    self.homeTableViewDelegate?.selectedFriend = friend
+                    strongSelf.homeTableViewDelegate?.instagramAccessToken = strongSelf.accessToken
+                    strongSelf.homeTableViewDelegate?.selectedFriend = friend
                 }
             }
             
-            homeViewController.monocleFriends = self.monocleFriends!
-            self.userDefaults.set(selectedFriends, forKey: "savedInstagramFriends")
-            self.userDefaults.synchronize()
-            self.navigationController?.popViewController(animated: true)
-        
+            strongSelf.userDefaults.set(selectedFriends, forKey: "savedInstagramFriends")
+            strongSelf.userDefaults.synchronize()
+            strongSelf.delegate?.InstagramHomeFriendsTableViewController(strongSelf, didUpdateFriendsList: strongSelf.monocleFriends!)
+        }
     }
     func authInstagram() {
         

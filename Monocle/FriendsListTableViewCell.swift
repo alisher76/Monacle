@@ -13,7 +13,6 @@ class FriendsListTableViewCell: UITableViewCell {
     
     @IBOutlet var collectionView: UICollectionView!
     
-    
     var delegate: HomeTableViewController?
     var indexNum: Int?
     var monocleFriends = [MonocleUser]() {
@@ -62,6 +61,7 @@ class FriendsListTableViewCell: UITableViewCell {
                 delegate?.selectedFriend = monocleFriends[indexPath.row - 1]
             }else{
                 delegate?.showFriendsSelectionVC()
+                
             }
         }
         

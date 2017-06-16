@@ -16,33 +16,12 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Twitter-->
-        <scene sceneID="4tX-Xj-sif">
-            <objects>
-                <tabBarController storyboardIdentifier="TwitterTabBarController" id="8zK-WW-mtC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Twitter" image="LogoInstagram" id="Ljz-fG-Zji">
-                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                    </tabBarItem>
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="AHg-rG-r4m">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="OoL-7Z-9nF" kind="relationship" relationship="viewControllers" id="PjH-j2-FJh"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x0e-0k-YNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3834" y="-1358"/>
-        </scene>
         <!--FeedTwitter-->
         <scene sceneID="JPd-hN-Nhz">
             <objects>
-                <tableViewController storyboardIdentifier="twitterHomePage" id="n08-9t-lbk" userLabel="FeedTwitter" customClass="HomeTableViewController" customModule="Monocle" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="n08-9t-lbk" userLabel="FeedTwitter" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ocu-xI-p8x">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -669,7 +648,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDK-uQ-WEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5079.1999999999998" y="650.37481259370315"/>
+            <point key="canvasLocation" x="-6866" y="552"/>
         </scene>
         <!--InstagramNavigationController-->
         <scene sceneID="agQ-BV-9ko">
@@ -690,7 +669,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ST1-pZ-M1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5078" y="-192"/>
+            <point key="canvasLocation" x="-6864" y="-290"/>
         </scene>
         <!--LikesTwitter Table View Controller-->
         <scene sceneID="ab6-cF-BQS">
@@ -1016,7 +995,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAR-oO-0nV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1991.2" y="569.86506746626696"/>
+            <point key="canvasLocation" x="-467" y="570"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="90F-w7-VhH">
@@ -1035,7 +1014,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lwT-WN-ZGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1991" y="-192"/>
+            <point key="canvasLocation" x="-467" y="-192"/>
         </scene>
         <!--Likes-->
         <scene sceneID="mL5-33-JRp">
@@ -1056,7 +1035,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8h-1o-69f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3834" y="-192"/>
+            <point key="canvasLocation" x="-5620" y="-290"/>
         </scene>
         <!--UINavigationController-dhm-wX-GLX-->
         <scene sceneID="rbt-7O-RUg">
@@ -1312,7 +1291,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHv-gD-pfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3834" y="650"/>
+            <point key="canvasLocation" x="-5620" y="552"/>
         </scene>
     </scenes>
     <resources>
@@ -1326,7 +1305,6 @@
         <image name="Icon-Retweet" width="128" height="128"/>
         <image name="InstagramLogo" width="33" height="33"/>
         <image name="InstagramLogo Filled" width="33" height="33"/>
-        <image name="LogoInstagram" width="25" height="25"/>
         <image name="Twitter Filled" width="33" height="33"/>
         <image name="User" width="33" height="33"/>
         <image name="add" width="50" height="50"/>
@@ -1336,7 +1314,7 @@
         <image name="share" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v8M-n1-qbt"/>
+        <segue reference="Wra-vQ-3QQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
 </document>

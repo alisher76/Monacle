@@ -8,13 +8,17 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController, InstagramHomeTableViewControllerDelegate {
-    
+class HomeTableViewController: UITableViewController {
+    var instagramDelegate: InstagramHomeFriendsTableViewControllerDelegate?
     var twitterDelegate: FriendsSelectionTableViewController?
     
     let userDeafaults = UserDefaults.standard
     var instagramAccessToken: String?
-    var monocleFriends: [MonocleUser] = []
+    var monocleFriends: [MonocleUser] = [] {
+        didSet {
+            
+        }
+    }
     
     var delegate: InstagramHomeTableViewController?
     
@@ -45,17 +49,20 @@ class HomeTableViewController: UITableViewController, InstagramHomeTableViewCont
     
     var userID: String? {
         didSet {
+            if userID == nil {
+                fetchSavedData()
+            }else{
             getMonacleFriendTimeline(userID: userID!)
+            }
         }
     }
     var lastTweetID: Int?
     
-    
     var refreshControll: UIRefreshControl!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         UIApplication.shared.statusBarStyle = .default
         let logo = UIImage(named: "M")
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
@@ -63,16 +70,17 @@ class HomeTableViewController: UITableViewController, InstagramHomeTableViewCont
         imageView.image = logo
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.titleView = imageView
-        
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        fetchSavedData()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchSavedData()
         tableView.reloadData()
+        
     }
         //Set up refreshControll
         
@@ -100,7 +108,7 @@ class HomeTableViewController: UITableViewController, InstagramHomeTableViewCont
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if monoclePosts.count == 0 {
-            fetchSavedData()
+            
             return monoclePosts.count
         }else{
             return monoclePosts.count
@@ -136,6 +144,8 @@ class HomeTableViewController: UITableViewController, InstagramHomeTableViewCont
         
         TwitterClient.sharedInstance?.getUserTimelineMonocle(userID: userID, success: { (monoclePost) in
             self.monoclePosts = monoclePost
+            print(monoclePost)
+            print(userID)
         }, failure: { (error) in
             print(error)
         })
@@ -162,8 +172,8 @@ class HomeTableViewController: UITableViewController, InstagramHomeTableViewCont
     
     func fetchSavedData() {
         
-        if monocleFriends.count == 0{
-        let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
+        if monocleFriends.count == 0 {
+        let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary] 
         guard let userFriends = TwitterUser.array(json: savedData) else {return}
         self.friends = userFriends
         self.userID = userFriends.first?.uid
@@ -183,6 +193,7 @@ class HomeTableViewController: UITableViewController, InstagramHomeTableViewCont
         let vc = storyboard.instantiateViewController(withIdentifier: "friendsSelectionTableViewController") as! FriendsSelectionTableViewController
         vc.listOfCurrentMonocleUser = monocleFriends
         vc.delegate = self
+        vc.nextBUttonOutlet.alpha = 0
         self.show(vc, sender: self)
         
     }
@@ -198,14 +209,6 @@ class HomeTableViewController: UITableViewController, InstagramHomeTableViewCont
         print("tapped")
         
     }
-    
-    func instagramHomeTableViewController(_ viewController: InstagramHomeTableViewController, didSelectFriends: [MonocleUser]) {
-        delegate?.delegate = self
-        monocleFriends = didSelectFriends
-        
-    }
-    
-    
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //        if tweets.count != 0 {
@@ -249,7 +252,14 @@ class HomeTableViewController: UITableViewController, InstagramHomeTableViewCont
      */
 }
 
-extension HomeTableViewController : FriendsSelectionTableViewControllerDelegate {
+extension HomeTableViewController : FriendsSelectionTableViewControllerDelegate, InstagramHomeFriendsTableViewControllerDelegate {
+    func InstagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser]) {
+        
+        monocleFriends = lists
+        tableView.reloadData()
+        navigationController?.popViewController(animated: true)
+    }
+    
     func friendsSelectionTableViewController(_ viewController: FriendsSelectionTableViewController, didUpdateFriendsList lists: ([TwitterUser], [MonocleUser])) {
         friends = lists.0
         monocleFriends = lists.1
@@ -260,5 +270,7 @@ extension HomeTableViewController : FriendsSelectionTableViewControllerDelegate 
         navigationController?.popViewController(animated: true)
         
     }
+    
+    
 }
 
