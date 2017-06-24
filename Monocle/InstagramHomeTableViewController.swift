@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol InstagramHomeFriendsTableViewControllerDelegate: class {
-    func instagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser])
+    func instagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: ([MonocleUser], String))
 }
 
 class InstagramHomeTableViewController: UITableViewController {
@@ -116,7 +116,7 @@ class InstagramHomeTableViewController: UITableViewController {
             strongSelf.homeTableViewDelegate?.monocleFriends = strongSelf.monocleFriends!
             strongSelf.userDefaults.set(selectedFriends, forKey: "savedInstagramFriends")
             strongSelf.userDefaults.synchronize()
-            strongSelf.delegate?.instagramHomeFriendsTableViewController(strongSelf, didUpdateFriendsList: strongSelf.monocleFriends!)
+            strongSelf.delegate?.instagramHomeFriendsTableViewController(strongSelf, didUpdateFriendsList: (strongSelf.monocleFriends!, strongSelf.accessToken))
             
         }
         

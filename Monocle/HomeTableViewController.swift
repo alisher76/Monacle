@@ -13,14 +13,10 @@ class HomeTableViewController: UITableViewController {
     var selectedPost: MonoclePost?
     var indexNum = 0
     var twitterDelegate: FriendsSelectionTableViewController?
-    
     let userDeafaults = UserDefaults.standard
     var instagramAccessToken: String?
-    
     var monocleFriends: [MonocleUser] = []
-    
     var delegate: InstagramHomeTableViewController?
-    
     var selectedFriend: MonocleUser? {
         didSet {
             getMonocleTimeline()
@@ -186,10 +182,8 @@ class HomeTableViewController: UITableViewController {
             
         Instagram().fetchRecentMediaForUserMonocle(instagramID, accessToken: self.instagramAccessToken!) { (monocleFeed) in
             for feed in monocleFeed {
-                print(feed)
                 self.monoclePosts.append(feed)
-            }
-            print(self.monoclePosts.count)
+              }
             }
         }
     }
@@ -281,22 +275,22 @@ class HomeTableViewController: UITableViewController {
      */
 }
 
-extension HomeTableViewController : InstagramHomeFriendsTableViewControllerDelegate, FriendsSelectionTableViewControllerDelegate{
-    
+extension HomeTableViewController : InstagramHomeFriendsTableViewControllerDelegate, FriendsSelectionTableViewControllerDelegate {
     
     func friendsSelectionTableViewController(_ viewController: FriendsSelectionTableViewController, didUpdateFriendsList lists: ([TwitterUser], [MonocleUser])) {
         friends = lists.0
         monocleFriends = lists.1
-        tableView.reloadData()
         
         // added by TJ.
         selectedFriend = monocleFriends.first
+        tableView.reloadData()
     }
     
-    func instagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser]) {
-        monocleFriends = lists
-        tableView.reloadData()
+    func instagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: ([MonocleUser], String)) {
+        monocleFriends = lists.0
+        instagramAccessToken = lists.1
         selectedFriend = monocleFriends.first
+        tableView.reloadData()
     }
 }
 
