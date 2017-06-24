@@ -36,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TwitterClient.sharedInstance?.handleOpenURL(url: url)
         return true
     }
-
-
 }
 
 

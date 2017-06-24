@@ -23,7 +23,6 @@ class DetailCell: UITableViewCell {
         
         didSet {
             updateUI()
-            
         }
     }
     var media: Media? {

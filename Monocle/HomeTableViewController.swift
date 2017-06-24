@@ -68,14 +68,15 @@ class HomeTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.titleView = imageView
-        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
         fetchSavedData()
-        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         tableView.reloadData()
     }
 
@@ -150,7 +151,7 @@ class HomeTableViewController: UITableViewController {
     func getMonocleTimeline() {
         if selectedFriend?.accounts?.count == 1 {
             getTwitterFriendTimeline(userID: (selectedFriend?.twitterID)!)
-        }else{
+        }else if selectedFriend?.accounts?.count == 2 {
             getMonacleFriendTimelineForBothAccounts(twitterID: (selectedFriend?.twitterID)!, instagramID: (selectedFriend?.instagramID)!)
         }
     }
@@ -196,21 +197,20 @@ class HomeTableViewController: UITableViewController {
     func fetchSavedData() {
         
         if monocleFriends.count == 0 {
-        let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
-        guard let savedToken = self.userDeafaults.object(forKey: "accessTokenForInstagram") as? String else {return}
-        guard let userFriends = TwitterUser.array(json: savedData) else {return}
-        self.friends = userFriends
-        self.userID = userFriends.first?.uid
-        self.instagramAccessToken = savedToken
-        var savedMonacleFriends = [MonocleUser]()
-        
-        for friends in userFriends {
-            let monocleUser = MonocleUser(name: friends.name, userName: friends.screenName, twitterID: friends.uid, instagramID: "nil", profileImage: friends.image, accounts: [MonocolAccount.twitter(friends)], posts: [])
-            savedMonacleFriends.append(monocleUser)
-        }
-            self.monocleFriends = savedMonacleFriends
+            let savedData = self.userDeafaults.object(forKey: "savedFriends") as? [NSDictionary]
+            let savedToken = self.userDeafaults.object(forKey: "accessTokenForInstagram") as? String ?? "not logged in"
+            let userFriends = TwitterUser.array(json: savedData!)!
+            self.friends = userFriends
+            self.userID = userFriends.first?.uid
+            self.instagramAccessToken = savedToken
+            var savedMonacleFriends = [MonocleUser]()
             
-        }
+            for friends in userFriends {
+                let monocleUser = MonocleUser(name: friends.name, userName: friends.screenName, twitterID: friends.uid, instagramID: "nil", profileImage: friends.image, accounts: [MonocolAccount.twitter(friends)], posts: [])
+                savedMonacleFriends.append(monocleUser)
+             }
+            self.monocleFriends = savedMonacleFriends
+            }
     }
     
     func showFriendsSelectionVC() {
@@ -281,7 +281,7 @@ class HomeTableViewController: UITableViewController {
      */
 }
 
-extension HomeTableViewController : InstagramHomeFriendsTableViewControllerDelegate, FriendsSelectionTableViewControllerDelegate {
+extension HomeTableViewController : InstagramHomeFriendsTableViewControllerDelegate, FriendsSelectionTableViewControllerDelegate{
     
     
     func friendsSelectionTableViewController(_ viewController: FriendsSelectionTableViewController, didUpdateFriendsList lists: ([TwitterUser], [MonocleUser])) {
@@ -291,14 +291,12 @@ extension HomeTableViewController : InstagramHomeFriendsTableViewControllerDeleg
         
         // added by TJ.
         selectedFriend = monocleFriends.first
-        navigationController?.popViewController(animated: true)
     }
     
     func instagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser]) {
         monocleFriends = lists
         tableView.reloadData()
         selectedFriend = monocleFriends.first
-        navigationController?.popViewController(animated: true)
     }
 }
 

@@ -52,9 +52,8 @@ class TwitterClient: BDBOAuth1SessionManager {
         
         fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken) in
             
-                userDefaults.set(accessToken?.token, forKey: "accessToken")
+                userDefaults.set(accessToken?.token, forKey: "twitterAccessToken")
                 userDefaults.synchronize()
-            
                 self.loginSuccess?()
                 self.delegate?.continueLogin()
            

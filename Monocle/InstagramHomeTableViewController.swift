@@ -20,7 +20,6 @@ class InstagramHomeTableViewController: UITableViewController {
     var homeTableViewDelegate: HomeTableViewController?
     var monocleFriends: [MonocleUser]?
     var listOfUser:[InstagramUser] = []
-    var sUsers: InstagramUser!
     var twitterID: String!
     
     var accessToken: String! {
@@ -29,18 +28,12 @@ class InstagramHomeTableViewController: UITableViewController {
         }
     }
     
-    
-    
-    
-    
     var indexNum = 0
     var selectedUsersRegular: [String : InstagramUser] = [:]
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       // let savedUsers = userDefaults.object(forKey: "savedInstagramFriends") as? [NSDictionary]
         
         if accessToken == nil {
             authInstagram()
@@ -52,7 +45,9 @@ class InstagramHomeTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        save()
+        if accessToken != nil {
+            save()
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,7 +79,6 @@ class InstagramHomeTableViewController: UITableViewController {
         } else {
             cell?.accessoryType = .checkmark
             self.selectedUsersRegular[user.userName] = user
-            print(selectedUsersRegular)
         }
 
     }
@@ -96,10 +90,10 @@ class InstagramHomeTableViewController: UITableViewController {
             
             guard let strongSelf = self else { return }
             var selectedFriends: [NSDictionary] = []
-            
+            var sUsers: InstagramUser!
             for (_ , value) in strongSelf.selectedUsersRegular {
                 
-                strongSelf.sUsers = value
+                sUsers = value
                 let dictioanry: NSDictionary = [
                     "name" : value.fullName,
                     "userName" : value.userName,
@@ -113,9 +107,8 @@ class InstagramHomeTableViewController: UITableViewController {
             
             for friend in strongSelf.monocleFriends! {
                 if friend.twitterID == strongSelf.twitterID {
-                friend.accounts?.append(MonocolAccount.instagram(strongSelf.sUsers))
-                    friend.instagramID = strongSelf.sUsers.uid
-                    print(strongSelf.listOfUser.first ?? "Nothing")
+                friend.accounts?.append(MonocolAccount.instagram(sUsers))
+                    friend.instagramID = sUsers.uid
                     strongSelf.homeTableViewDelegate?.instagramAccessToken = strongSelf.accessToken
                     strongSelf.homeTableViewDelegate?.selectedFriend = friend
                 }
@@ -134,8 +127,6 @@ class InstagramHomeTableViewController: UITableViewController {
     func authInstagram() {
         
         //SaveChanges
-        let userDefaults = UserDefaults.standard
-        
         if let token = userDefaults.object(forKey: "accessTokenForInstagram") as? String {
             self.accessToken = token
             print("Already logged in\(accessToken)")
@@ -149,8 +140,8 @@ class InstagramHomeTableViewController: UITableViewController {
                     let credentials = result["credentials"] as! [String:Any]
                     let accessToken = credentials["token"] as! String
                     self.accessToken = accessToken
-                    userDefaults.set(self.accessToken, forKey: "accessTokenForInstagram")
-                    userDefaults.synchronize()
+                    self.userDefaults.set(self.accessToken, forKey: "accessTokenForInstagram")
+                    self.userDefaults.synchronize()
                 }
             }
         }

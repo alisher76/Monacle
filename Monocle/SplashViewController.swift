@@ -24,8 +24,6 @@ class SplashViewController: UIViewController, TwitterLoginDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    
-        
     }
     
     @IBAction func instagramButtonTapped(_ sender: Any) {
@@ -36,28 +34,23 @@ class SplashViewController: UIViewController, TwitterLoginDelegate {
     
     @IBAction func twitterButtonTaped(_ sender: Any) {
         continueLogin()
-        
     }
     
     func continueLogin() {
-        let accessToken = userDefaults.object(forKey: "accessToken") as? String
+        
+        let accessToken = userDefaults.object(forKey: "twitterAccessToken") as? String
         let savedUsers = userDefaults.object(forKey: "savedFriends") as? [NSDictionary]
         
-        if savedUsers == nil {
-            self.goToSelectFriendsPage()
-        }else if accessToken != nil && savedUsers != nil {
-            self.goToApp()
-        }else{
         
+        if accessToken == nil {
             TwitterClient.sharedInstance?.login(success: {
                 print("Logged In")
-                self.dismiss(animated: true, completion: {
                 self.goToSelectFriendsPage()
-                    
-                })
             }) { (error) in
                 print(error)
             }
+        }else if accessToken != nil && savedUsers != nil{
+            self.goToApp()
         }
     }
     
@@ -83,19 +76,6 @@ class SplashViewController: UIViewController, TwitterLoginDelegate {
     }
 
     func goToApp() {
-        
         self.performSegue(withIdentifier: "showApp", sender: self)
     }
-    
-    func reloadData(appending: Bool = false)  {
-        
-        TwitterClient.sharedInstance?.getHomeTimeline(success: { (tweets) in
-            
-            
-        }, failure: { (error) in
-            print(error)
-        })
-        
-    }
-    
 }

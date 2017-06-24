@@ -66,7 +66,6 @@ class FriendsSelectionTableViewController: UITableViewController  {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let user = users?[indexPath.row] else { return }
         
-        
         if cell?.accessoryType == .checkmark {
             self.selectedUsers.removeValue(forKey: user.uid)
             cell?.accessoryType = .none
@@ -83,6 +82,7 @@ class FriendsSelectionTableViewController: UITableViewController  {
         
         if selectedUsers[(users?[indexPath.row].uid)!] != nil {
             cell.accessoryType = .checkmark
+            
         }else{
             cell.accessoryType = .none
         }
@@ -122,13 +122,12 @@ class FriendsSelectionTableViewController: UITableViewController  {
                 let monocleUser = MonocleUser(name: user.name, userName: user.screenName, twitterID: user.uid, instagramID: "nil", profileImage: user.image, accounts: [MonocolAccount.twitter(user)], posts: [])
                 strongSelf.listOfMonocleUser.append(monocleUser)
             }
-            let userDefaults = UserDefaults.standard
             
-            userDefaults.set(strongSelf.selectedFriends, forKey: "savedFriends")
-            userDefaults.synchronize()
+           strongSelf.userDefault.set(strongSelf.selectedFriends, forKey: "savedFriends")
+           strongSelf.userDefault.synchronize()
             
-            strongSelf.delegate?.friendsSelectionTableViewController(strongSelf, didUpdateFriendsList: (sUsers, strongSelf.listOfMonocleUser))
-        }
+           strongSelf.delegate?.friendsSelectionTableViewController(strongSelf, didUpdateFriendsList: (sUsers, strongSelf.listOfMonocleUser))
+            }
     }
     
     func fetchSavedData() {
@@ -138,14 +137,39 @@ class FriendsSelectionTableViewController: UITableViewController  {
         for friend in userFriends {
             self.selectedUsers[friend.uid] = friend
         }
-        print(self.selectedUsers.count)
     }
     
     @IBAction func cake(_ sender: Any) {
-        print("CAKE")
-        print("hello!!!!!!")
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "twitterHomePage") as! HomeTableViewController
+        
+        var sUsers: [TwitterUser] = []
+        
+        for (_ , value) in self.selectedUsers {
+            sUsers.append(value)
+            
+            let dictioanry: NSDictionary = [
+                "name": value.name,
+                "id_str" : value.uid,
+                "screen_name"  : value.screenName,
+                "followers_count": value.followerCount,
+                "friends_count" : value.followingCount,
+                "description" : value.description,
+                "location" : value.location,
+                "profile_image_url_https" : value.image,
+                "accountType" : value.accountType
+            ]
+            self.selectedFriends.append(dictioanry)
+        }
+        
+        for user in sUsers {
+            let monocleUser = MonocleUser(name: user.name, userName: user.screenName, twitterID: user.uid, instagramID: "nil", profileImage: user.image, accounts: [MonocolAccount.twitter(user)], posts: [])
+            self.listOfMonocleUser.append(monocleUser)
+        }
+        
+        self.userDefault.set(self.selectedFriends, forKey: "savedFriends")
+        self.userDefault.synchronize()
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -155,13 +179,10 @@ class FriendsSelectionTableViewController: UITableViewController  {
         
         TwitterClient.sharedInstance?.getListOfFollowedFriends(success: { (twitterUser) in
             self.users = twitterUser
-            
             self.tableView.reloadData()
-            
         }, failure: { (error) in
             print("error")
         })
-        
         
     }
     
