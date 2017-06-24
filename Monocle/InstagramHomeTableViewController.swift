@@ -10,16 +10,18 @@ import UIKit
 
 
 protocol InstagramHomeFriendsTableViewControllerDelegate: class {
-    func InstagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser])
+    func instagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser])
 }
 
 class InstagramHomeTableViewController: UITableViewController {
     
     let userDefaults = UserDefaults.standard
+    weak var delegate: InstagramHomeFriendsTableViewControllerDelegate?
     var homeTableViewDelegate: HomeTableViewController?
     var monocleFriends: [MonocleUser]?
+    var listOfUser:[InstagramUser] = []
+    var sUsers: InstagramUser!
     var twitterID: String!
-    weak var delegate: InstagramHomeFriendsTableViewControllerDelegate?
     
     var accessToken: String! {
         didSet {
@@ -27,22 +29,13 @@ class InstagramHomeTableViewController: UITableViewController {
         }
     }
     
-    var listOfUser:[InstagramUser] = [] {
-        didSet {
-            
-        }
-    }
     
-    var selectedUsersRegular: [String : InstagramUser] = [:]
+    
+    
     
     var indexNum = 0
-
-   
-    var photoDictionaries = [[String:Any]]()
+    var selectedUsersRegular: [String : InstagramUser] = [:]
     
-    struct StroryBoard {
-        static let exploreCell = "friendsList"
-    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +48,11 @@ class InstagramHomeTableViewController: UITableViewController {
             fetchUsersFollowed()
         }
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        save()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,31 +80,26 @@ class InstagramHomeTableViewController: UITableViewController {
         let user = listOfUser[indexPath.row]
         if cell?.accessoryType == .checkmark{
             self.selectedUsersRegular.removeValue(forKey: user.userName)
-            print("\(user.userName)")
-            print(selectedUsersRegular)
             cell?.accessoryType = .none
         } else {
             cell?.accessoryType = .checkmark
-            print(selectedUsersRegular)
             self.selectedUsersRegular[user.userName] = user
-            print(self.selectedUsersRegular.count)
+            print(selectedUsersRegular)
         }
 
     }
-
     
-    @IBAction func doneButtonTapped(_ sender: Any) {
+    
+    func save() {
         
         OperationQueue.main.addOperation {[weak self] in
             
-        guard let strongSelf = self else { return }
-        var sUsers: [InstagramUser] = []
-        var selectedFriends: [NSDictionary] = []
-        
+            guard let strongSelf = self else { return }
+            var selectedFriends: [NSDictionary] = []
+            
             for (_ , value) in strongSelf.selectedUsersRegular {
                 
-                sUsers.append(value)
-                
+                strongSelf.sUsers = value
                 let dictioanry: NSDictionary = [
                     "name" : value.fullName,
                     "userName" : value.userName,
@@ -117,22 +110,27 @@ class InstagramHomeTableViewController: UITableViewController {
                 
                 selectedFriends.append(dictioanry)
             }
-        
-        for friend in strongSelf.monocleFriends! {
+            
+            for friend in strongSelf.monocleFriends! {
                 if friend.twitterID == strongSelf.twitterID {
-                friend.accounts?.append(MonocolAccount.instagram(strongSelf.selectedUsersRegular[strongSelf.listOfUser[strongSelf.indexNum].userName]!))
-                    friend.instagramID = strongSelf.listOfUser.first?.uid
-                    
+                friend.accounts?.append(MonocolAccount.instagram(strongSelf.sUsers))
+                    friend.instagramID = strongSelf.sUsers.uid
+                    print(strongSelf.listOfUser.first ?? "Nothing")
                     strongSelf.homeTableViewDelegate?.instagramAccessToken = strongSelf.accessToken
                     strongSelf.homeTableViewDelegate?.selectedFriend = friend
                 }
             }
-            
+            strongSelf.homeTableViewDelegate?.monocleFriends = strongSelf.monocleFriends!
             strongSelf.userDefaults.set(selectedFriends, forKey: "savedInstagramFriends")
             strongSelf.userDefaults.synchronize()
-            strongSelf.delegate?.InstagramHomeFriendsTableViewController(strongSelf, didUpdateFriendsList: strongSelf.monocleFriends!)
+            strongSelf.delegate?.instagramHomeFriendsTableViewController(strongSelf, didUpdateFriendsList: strongSelf.monocleFriends!)
+            
         }
+        
     }
+
+    
+    
     func authInstagram() {
         
         //SaveChanges

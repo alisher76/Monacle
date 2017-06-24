@@ -81,12 +81,11 @@ class TweetLikesTableViewCell: UITableViewCell {
                 let urltext = medium["url"] as! String
                 tweetContentsLabel.text = tweetContentsLabel.text?.replcae(target: urltext, withString: " ")
                 if((medium["type"] as? String) == "photo") {
-                    
-                    displayPhoto()
-                    
+                    OperationQueue.main.addOperation {
+                    self.displayPhoto()
+                    }
                     let mediaurl = medium["media_url_https"] as! String
                     mediaImageHeightConstraint.isActive = false
-                    
                     mediaImageView.layer.cornerRadius = 5
                     mediaImageView.clipsToBounds = true;
                     mediaImageView.setImageWith(URLRequest(url: URL(string: mediaurl)!), placeholderImage: nil, success: { (request, response, image) -> Void in
@@ -127,6 +126,7 @@ class TweetLikesTableViewCell: UITableViewCell {
     }
     
     func displayPhoto() {
+        self.mediaImageHeightConstraint.constant = CGFloat(autoresizingMask.rawValue)
         self.mediaImageVerticalSpacingConstraint.constant = 8
         self.mediaImageView.isHidden = false
     }

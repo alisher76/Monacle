@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import SAMCache
 
 struct Comment {
     let fromUserName: String
@@ -83,8 +84,6 @@ class Instagram {
             self.populateFriendsRecentPosts(responce.result.value, callback: callback)
         }
     }
-    
-    
     
     func fetchRecentMediaForUserMonocle(_ id: String, accessToken: String, callback: @escaping ([MonoclePost]) -> Void) {
         

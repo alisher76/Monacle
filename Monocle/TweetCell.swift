@@ -10,8 +10,6 @@ import UIKit
 
 class TweetCell: TweetTableViewCell {
     
-   
-
     override func awakeFromNib() {
         super .awakeFromNib()
         

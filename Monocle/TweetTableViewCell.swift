@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SAMCache
 
 class TweetTableViewCell: UITableViewCell {
     
+    @IBOutlet var instagramLogoOutlet: UIButton!
+    @IBOutlet var twitterLogoOutlet: UIButton!
     @IBOutlet var authorUserNameLabel: UILabel!
     @IBOutlet var authorNameLabel: UILabel!
     @IBOutlet var profilePicImageView: UIImageView!
@@ -34,13 +37,13 @@ class TweetTableViewCell: UITableViewCell {
     
     var tweet: Tweet! {
         didSet {
-            tweetSetConfigure()
+            
         }
     }
     
     var instaPost: Media! {
         didSet {
-            instaPostSetConfigure()
+            
         }
     }
     var monoclePost: MonoclePost! {
@@ -48,9 +51,11 @@ class TweetTableViewCell: UITableViewCell {
             switch monoclePost {
             case .some(.tweet(let value)):
                 tweet = value
+                tweetSetConfigure()
                 print(value)
             case .some(.instagram(let value)):
                  instaPost = value
+                 instaPostSetConfigure()
                 print(value)
             case .none:
                 print("something went wrong")
@@ -65,6 +70,8 @@ class TweetTableViewCell: UITableViewCell {
     
     func tweetSetConfigure() {
         
+        instagramLogoOutlet.imageView?.image = UIImage(named: "InstagramLogo")
+        twitterLogoOutlet.imageView?.image = UIImage(named: "Twitter Filled")
         tweetID = tweet.tweetID
         profilePicImageView.setImageWith(tweet.authorProfilePic! as URL)
         profilePicImageView.layer.cornerRadius = 5
@@ -96,31 +103,32 @@ class TweetTableViewCell: UITableViewCell {
             }
             
         }
-        
+        OperationQueue.main.addOperation {
+            
         if let media = media {
             for medium in media {
                 
                 let urltext = medium["url"] as! String
-                tweetContentsLabel.text = tweetContentsLabel.text?.replcae(target: urltext, withString: " ")
+                self.tweetContentsLabel.text = self.tweetContentsLabel.text?.replcae(target: urltext, withString: " ")
                 if((medium["type"] as? String) == "photo") {
-                    displayPhoto()
                     
                     let mediaurl = medium["media_url_https"] as! String
-                    mediaImageHeightConstraint.isActive = false
-                    
-                    mediaImageView.layer.cornerRadius = 5
-                    mediaImageView.clipsToBounds = true;
-                    mediaImageView.setImageWith(URLRequest(url: URL(string: mediaurl)!), placeholderImage: nil, success: { (request, response, image) -> Void in
+                    self.mediaImageHeightConstraint.isActive = false
+                    self.mediaImageView.sizeToFit()
+                    self.mediaImageView.layer.cornerRadius = 5
+                    self.mediaImageView.clipsToBounds = true;
+                    self.mediaImageView.setImageWith(URLRequest(url: URL(string: mediaurl)!), placeholderImage: nil, success: { (request, response, image) -> Void in
                         // success
                         self.mediaImageView.image = image
                         self.delegate?.reloadTableCellAtIndex(self, indexPath: self.indexPath)
+                    self.displayPhoto()
                     }, failure: { (request, response, error) -> Void in
                         // error
                     });
                 }
             }
         }
-        
+      }
         if displayURLS.count > 0 {
             
             
@@ -140,23 +148,29 @@ class TweetTableViewCell: UITableViewCell {
         
     }
     
+    
+    
     func instaPostSetConfigure() {
-        
-        postID = Int(instaPost.uid)
-        profilePicImageView.setImageWith(URL(string: instaPost.avatarURL)!)
-        profilePicImageView.layer.cornerRadius = 5
-        profilePicImageView.clipsToBounds = true
-        authorNameLabel.text = instaPost.username
-        authorUserNameLabel.text = "@" + instaPost.username
-        
-        tweetContentsLabel.text = instaPost.caption
-        mediaImageHeightConstraint.isActive = false
-        mediaImageView.layer.cornerRadius = 5
-        mediaImageView.clipsToBounds = true;
-        mediaImageView.setImageWith(URL(string: instaPost.takenPhoto)!)
-        
+        OperationQueue.main.addOperation {
+        self.homeDelegate?.selectedPost = self.monoclePost
+        self.postID = Int(self.instaPost.uid)
+        self.profilePicImageView.setImageWith(URL(string: self.instaPost.avatarURL)!)
+        self.profilePicImageView.layer.cornerRadius = 5
+        self.profilePicImageView.clipsToBounds = true
+        self.authorNameLabel.text = self.instaPost.username
+        self.authorUserNameLabel.text = "@" + self.instaPost.username
+        self.tweetContentsLabel.text = self.instaPost.caption
+        self.mediaImageHeightConstraint.isActive = false
+        self.mediaImageView.layer.cornerRadius = 5
+        self.mediaImageView.clipsToBounds = true;
+        self.mediaImageView.setImageWith(URL(string: self.instaPost.takenPhoto)!)
+        self.displayPhoto()
+        self.instagramLogoOutlet.imageView?.image = UIImage(named: "InstagramLogo Filled")
+        self.twitterLogoOutlet.imageView?.image = UIImage(named: "Twitter")
+      }
     }
-
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -183,7 +197,8 @@ class TweetTableViewCell: UITableViewCell {
     func displayPhoto() {
         self.mediaImageVerticalSpacingConstraint.constant = 8
         self.mediaImageView.isHidden = false
+        self.mediaImageView.alpha = 1
     }
-
+    
 }
 

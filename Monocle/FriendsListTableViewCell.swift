@@ -11,10 +11,16 @@ import UIKit
 class FriendsListTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var segmentedControll: UISegmentedControl!
+    
     @IBOutlet var collectionView: UICollectionView!
     
     var delegate: HomeTableViewController?
+    var instagramDelegate: FriendsSelectionTableViewController?
     var indexNum: Int?
+    
+    var selectedFriend: MonocleUser?
+    
     var monocleFriends = [MonocleUser]() {
         didSet{
             collectionView.reloadData()
@@ -24,7 +30,6 @@ class FriendsListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,6 +39,25 @@ class FriendsListTableViewCell: UITableViewCell {
     }
     
     
+    @IBAction func segmentedChangedValue(_ sender: Any) {
+        
+        if selectedFriend == nil {
+            selectedFriend = monocleFriends.first
+        }
+        switch (segmentedControll.selectedSegmentIndex){
+        case 0:
+            delegate?.getMonocleTimeline()
+        case 1:
+            guard let twitterID = selectedFriend?.twitterID else{return}
+            delegate?.getTwitterFriendTimeline(userID: twitterID)
+        case 2:
+            guard let instagramID = selectedFriend?.instagramID else{return}
+            delegate?.getInstagramFriendTimeline(userID: instagramID)
+        default:
+            delegate?.selectedFriend = selectedFriend
+        }
+        delegate?.tableView.reloadData()
+    }
 }
     extension FriendsListTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
         
@@ -56,16 +80,18 @@ class FriendsListTableViewCell: UITableViewCell {
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             
-            // delegate?.userID = monocleFriends[indexPath.row].userID
+              //  instagramDelegate.userID = monocleFriends[indexPath.row].userID
             if indexPath.row != 0 {
+                segmentedControll.selectedSegmentIndex = 0
+                selectedFriend = monocleFriends[indexPath.row - 1]
                 delegate?.selectedFriend = monocleFriends[indexPath.row - 1]
             }else{
                 delegate?.showFriendsSelectionVC()
-                
             }
         }
-        
     }
+
+
  
     class CustomCollectionCell: UICollectionViewCell  {
         
@@ -75,6 +101,7 @@ class FriendsListTableViewCell: UITableViewCell {
         override func awakeFromNib() {
           super.awakeFromNib()
             setUpLayer()
+            
         }
         
         func setUpLayer() {

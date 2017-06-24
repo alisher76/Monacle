@@ -158,6 +158,8 @@ class LikesTableViewController: UITableViewController {
         
         let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
         guard let userFriends = TwitterUser.array(json: savedData) else {return}
+
+        
         self.friends = userFriends
         self.userID = userFriends.first?.uid
     }

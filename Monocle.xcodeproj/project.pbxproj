@@ -19,20 +19,12 @@
 		AC28BFAA1EE902AD006112CA /* FriendsSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */; };
 		AC28BFAC1EE902CF006112CA /* FriendsSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */; };
 		AC3188B61EECCAD4003BF2CC /* InstagramUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188B51EECCAD4003BF2CC /* InstagramUser.swift */; };
-		AC3188B91EEDD527003BF2CC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3188B71EEDD527003BF2CC /* Home.storyboard */; };
-		AC3188BB1EEDF21F003BF2CC /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188BA1EEDF21F003BF2CC /* PostsTableViewCell.swift */; };
-		AC3188BD1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188BC1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift */; };
-		AC3188C01EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188BF1EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift */; };
-		AC3188C31EEE1FF2003BF2CC /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188C21EEE1FF2003BF2CC /* LikesTableViewCell.swift */; };
 		AC3188C51EEE2C57003BF2CC /* LikesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188C41EEE2C57003BF2CC /* LikesTableViewController.swift */; };
 		AC3188C91EEE2DAD003BF2CC /* TweetLikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188C81EEE2DAD003BF2CC /* TweetLikesTableViewCell.swift */; };
 		AC3188CB1EEE2DC1003BF2CC /* LikedTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188CA1EEE2DC1003BF2CC /* LikedTweetCell.swift */; };
 		AC3188CD1EEE2DD9003BF2CC /* FraindsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188CC1EEE2DD9003BF2CC /* FraindsListViewCell.swift */; };
 		AC3188D01EEF367B003BF2CC /* TwitterTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3188CF1EEF367B003BF2CC /* TwitterTableViewDelegate.swift */; };
 		AC6071271EE9CE9A00F9E081 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */; };
-		AC60712A1EEB54ED00F9E081 /* InstagramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */; };
-		AC60712C1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */; };
-		AC70638D1EE99E63007C79D3 /* generateRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70638C1EE99E63007C79D3 /* generateRandom.swift */; };
 		AC86AF3C1EE318670025B68A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86AF3B1EE318670025B68A /* AppDelegate.swift */; };
 		AC86AF411EE318670025B68A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC86AF3F1EE318670025B68A /* Main.storyboard */; };
 		AC86AF431EE318670025B68A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC86AF421EE318670025B68A /* Assets.xcassets */; };
@@ -166,6 +158,8 @@
 		ACA0A5D41EF0B5CE0029567D /* InstagramMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0A5D31EF0B5CE0029567D /* InstagramMedia.swift */; };
 		ACA0A5D61EF0F42F0029567D /* MonocleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0A5D51EF0F42F0029567D /* MonocleUser.swift */; };
 		ACA0A5DA1EF0F9220029567D /* MonocleAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0A5D91EF0F9220029567D /* MonocleAccount.swift */; };
+		ACD7ED471EF42F2200881EFA /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7ED461EF42F2200881EFA /* DetailTableViewController.swift */; };
+		ACD7ED491EF42FA600881EFA /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7ED481EF42FA600881EFA /* DetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,20 +216,12 @@
 		AC28BFA91EE902AD006112CA /* FriendsSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSelectionTableViewController.swift; sourceTree = "<group>"; };
 		AC28BFAB1EE902CF006112CA /* FriendsSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSelectionCell.swift; sourceTree = "<group>"; };
 		AC3188B51EECCAD4003BF2CC /* InstagramUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramUser.swift; sourceTree = "<group>"; };
-		AC3188B81EEDD527003BF2CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
-		AC3188BA1EEDF21F003BF2CC /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
-		AC3188BC1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesInstagramTableViewController.swift; sourceTree = "<group>"; };
-		AC3188BF1EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesFeedInstagramFriendsTableViewCell.swift; sourceTree = "<group>"; };
-		AC3188C21EEE1FF2003BF2CC /* LikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		AC3188C41EEE2C57003BF2CC /* LikesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesTableViewController.swift; sourceTree = "<group>"; };
 		AC3188C81EEE2DAD003BF2CC /* TweetLikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetLikesTableViewCell.swift; sourceTree = "<group>"; };
 		AC3188CA1EEE2DC1003BF2CC /* LikedTweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedTweetCell.swift; sourceTree = "<group>"; };
 		AC3188CC1EEE2DD9003BF2CC /* FraindsListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FraindsListViewCell.swift; sourceTree = "<group>"; };
 		AC3188CF1EEF367B003BF2CC /* TwitterTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTableViewDelegate.swift; sourceTree = "<group>"; };
 		AC6071261EE9CE9A00F9E081 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
-		AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramTableViewController.swift; sourceTree = "<group>"; };
-		AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntagramFriendsTableViewCell.swift; sourceTree = "<group>"; };
-		AC70638C1EE99E63007C79D3 /* generateRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = generateRandom.swift; sourceTree = "<group>"; };
 		AC86AF381EE318670025B68A /* Monocle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monocle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC86AF3B1EE318670025B68A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC86AF401EE318670025B68A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -496,6 +482,8 @@
 		ACA0A5D31EF0B5CE0029567D /* InstagramMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramMedia.swift; sourceTree = "<group>"; };
 		ACA0A5D51EF0F42F0029567D /* MonocleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonocleUser.swift; sourceTree = "<group>"; };
 		ACA0A5D91EF0F9220029567D /* MonocleAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonocleAccount.swift; sourceTree = "<group>"; };
+		ACD7ED461EF42F2200881EFA /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		ACD7ED481EF42FA600881EFA /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -582,7 +570,6 @@
 			isa = PBXGroup;
 			children = (
 				AC28BF9B1EE8F2F7006112CA /* Classes */,
-				AC70638C1EE99E63007C79D3 /* generateRandom.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -611,33 +598,6 @@
 			name = FriendsSelectionController;
 			sourceTree = "<group>";
 		};
-		AC3188AC1EEC96D9003BF2CC /* HomeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				AC6071291EEB54ED00F9E081 /* InstagramTableViewController.swift */,
-				AC6071281EEB545E00F9E081 /* InstagramCells */,
-			);
-			name = HomeViewController;
-			sourceTree = "<group>";
-		};
-		AC3188BE1EEE1EDC003BF2CC /* LikesFeedInstagramTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				AC3188BC1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift */,
-				AC3188C11EEE1FCC003BF2CC /* LikesInstagramTableViewCells */,
-			);
-			name = LikesFeedInstagramTableViewController;
-			sourceTree = "<group>";
-		};
-		AC3188C11EEE1FCC003BF2CC /* LikesInstagramTableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				AC3188BF1EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift */,
-				AC3188C21EEE1FF2003BF2CC /* LikesTableViewCell.swift */,
-			);
-			name = LikesInstagramTableViewCells;
-			sourceTree = "<group>";
-		};
 		AC3188C61EEE2D4B003BF2CC /* AddFriendsController */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +611,8 @@
 			isa = PBXGroup;
 			children = (
 				AC86AFA31EE47B990025B68A /* HomeTableViewController.swift */,
+				ACD7ED461EF42F2200881EFA /* DetailTableViewController.swift */,
+				ACD7ED481EF42FA600881EFA /* DetailCell.swift */,
 				AC28BF971EE8D638006112CA /* TwitterCells */,
 			);
 			name = TweetsHomeControllers;
@@ -664,15 +626,6 @@
 				AC3188CC1EEE2DD9003BF2CC /* FraindsListViewCell.swift */,
 			);
 			name = LikesTVCells;
-			sourceTree = "<group>";
-		};
-		AC6071281EEB545E00F9E081 /* InstagramCells */ = {
-			isa = PBXGroup;
-			children = (
-				AC60712B1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift */,
-				AC3188BA1EEDF21F003BF2CC /* PostsTableViewCell.swift */,
-			);
-			name = InstagramCells;
 			sourceTree = "<group>";
 		};
 		AC86AF2F1EE318670025B68A = {
@@ -706,7 +659,6 @@
 				AC86AF8D1EE3285F0025B68A /* API */,
 				AC86AF8A1EE327970025B68A /* Controllers */,
 				AC86AF3F1EE318670025B68A /* Main.storyboard */,
-				AC3188B71EEDD527003BF2CC /* Home.storyboard */,
 				AC86AF421EE318670025B68A /* Assets.xcassets */,
 				AC86AF441EE318670025B68A /* LaunchScreen.storyboard */,
 				AC28BFA81EE8F3E4006112CA /* Bridging-Header.h */,
@@ -1056,8 +1008,6 @@
 			isa = PBXGroup;
 			children = (
 				AC3188AA1EEC96BB003BF2CC /* FriendsSelectionController */,
-				AC3188AC1EEC96D9003BF2CC /* HomeViewController */,
-				AC3188BE1EEE1EDC003BF2CC /* LikesFeedInstagramTableViewController */,
 			);
 			name = "Instagram Controllers";
 			sourceTree = "<group>";
@@ -1186,7 +1136,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC86AF461EE318670025B68A /* LaunchScreen.storyboard in Resources */,
-				AC3188B91EEDD527003BF2CC /* Home.storyboard in Resources */,
 				AC86B3631EE4F3BB0025B68A /* Localizable.strings in Resources */,
 				AC86AF431EE318670025B68A /* Assets.xcassets in Resources */,
 				AC86AF411EE318670025B68A /* Main.storyboard in Resources */,
@@ -1379,7 +1328,6 @@
 				AC86B38A1EE4F3BB0025B68A /* RACDynamicSignal.m in Sources */,
 				AC86B38C1EE4F3BB0025B68A /* RACEmptySequence.m in Sources */,
 				AC28BFA41EE8F2F7006112CA /* BEMAnimationManager.m in Sources */,
-				AC60712C1EEB5A4700F9E081 /* IntagramFriendsTableViewCell.swift in Sources */,
 				AC86B3C81EE4F3BB0025B68A /* SimpleAuthInstagramProvider.m in Sources */,
 				AC86B37D1EE4F3BB0025B68A /* NSURLConnection+RACSupport.m in Sources */,
 				AC86B3AC1EE4F3BB0025B68A /* RACTupleSequence.m in Sources */,
@@ -1407,8 +1355,6 @@
 				AC86B37A1EE4F3BB0025B68A /* NSString+RACKeyPathUtilities.m in Sources */,
 				AC86B36B1EE4F3BB0025B68A /* NSData+RACSupport.m in Sources */,
 				AC86B3781EE4F3BB0025B68A /* NSOrderedSet+RACSequenceAdditions.m in Sources */,
-				AC60712A1EEB54ED00F9E081 /* InstagramTableViewController.swift in Sources */,
-				AC70638D1EE99E63007C79D3 /* generateRandom.swift in Sources */,
 				AC86B3BB1EE4F3BB0025B68A /* UISegmentedControl+RACSignalSupport.m in Sources */,
 				AC86B3971EE4F3BB0025B68A /* RACPassthroughSubscriber.m in Sources */,
 				AC86B3B81EE4F3BB0025B68A /* UIGestureRecognizer+RACSignalSupport.m in Sources */,
@@ -1432,6 +1378,7 @@
 				AC86B3C11EE4F3BB0025B68A /* UITextField+RACSignalSupport.m in Sources */,
 				AC86B3841EE4F3BB0025B68A /* RACCompoundDisposable.m in Sources */,
 				AC86B3811EE4F3BB0025B68A /* RACBlockTrampoline.m in Sources */,
+				ACD7ED471EF42F2200881EFA /* DetailTableViewController.swift in Sources */,
 				AC86AFA61EE48D8F0025B68A /* TweetTableViewCell.swift in Sources */,
 				ACA0A5D61EF0F42F0029567D /* MonocleUser.swift in Sources */,
 				AC86AF891EE3276A0025B68A /* TwitterClient.swift in Sources */,
@@ -1459,7 +1406,6 @@
 				AC28BFA71EE8F2F7006112CA /* BEMPathManager.m in Sources */,
 				AC86B3BF1EE4F3BB0025B68A /* UITableViewCell+RACSignalSupport.m in Sources */,
 				AC86B3A41EE4F3BB0025B68A /* RACStringSequence.m in Sources */,
-				AC3188C31EEE1FF2003BF2CC /* LikesTableViewCell.swift in Sources */,
 				AC6071271EE9CE9A00F9E081 /* FriendsListTableViewCell.swift in Sources */,
 				AC86B3741EE4F3BB0025B68A /* NSObject+RACKVOWrapper.m in Sources */,
 				AC86B37B1EE4F3BB0025B68A /* NSString+RACSequenceAdditions.m in Sources */,
@@ -1470,13 +1416,10 @@
 				AC86B36F1EE4F3BB0025B68A /* NSIndexSet+RACSequenceAdditions.m in Sources */,
 				AC86AF3C1EE318670025B68A /* AppDelegate.swift in Sources */,
 				AC86B37C1EE4F3BB0025B68A /* NSString+RACSupport.m in Sources */,
-				AC3188BD1EEE1EBC003BF2CC /* LikesInstagramTableViewController.swift in Sources */,
 				AC86B3951EE4F3BB0025B68A /* RACKVOTrampoline.m in Sources */,
 				AC86B39E1EE4F3BB0025B68A /* RACSerialDisposable.m in Sources */,
 				AC86B36E1EE4F3BB0025B68A /* NSFileHandle+RACSupport.m in Sources */,
-				AC3188C01EEE1FC9003BF2CC /* LikesFeedInstagramFriendsTableViewCell.swift in Sources */,
 				AC86AFA41EE47B990025B68A /* HomeTableViewController.swift in Sources */,
-				AC3188BB1EEDF21F003BF2CC /* PostsTableViewCell.swift in Sources */,
 				AC86B3911EE4F3BB0025B68A /* RACImmediateScheduler.m in Sources */,
 				AC86AFA81EE49C050025B68A /* TweetCell.swift in Sources */,
 				AC86B3CB1EE4F3BB0025B68A /* Atomic.swift in Sources */,
@@ -1500,6 +1443,7 @@
 				AC86B39C1EE4F3BB0025B68A /* RACScopedDisposable.m in Sources */,
 				AC86B3A51EE4F3BB0025B68A /* RACSubject.m in Sources */,
 				AC86B3871EE4F3BB0025B68A /* RACDisposable.m in Sources */,
+				ACD7ED491EF42FA600881EFA /* DetailCell.swift in Sources */,
 				AC86AFA21EE475460025B68A /* Tweet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1536,14 +1480,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AC3188B71EEDD527003BF2CC /* Home.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC3188B81EEDD527003BF2CC /* Base */,
-			);
-			name = Home.storyboard;
-			sourceTree = "<group>";
-		};
 		AC86AF3F1EE318670025B68A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

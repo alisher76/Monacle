@@ -9,34 +9,30 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
-    var instagramDelegate: InstagramHomeFriendsTableViewControllerDelegate?
+    
+    var selectedPost: MonoclePost?
+    var indexNum = 0
     var twitterDelegate: FriendsSelectionTableViewController?
     
     let userDeafaults = UserDefaults.standard
     var instagramAccessToken: String?
-    var monocleFriends: [MonocleUser] = [] {
-        didSet {
-            
-        }
-    }
+    
+    var monocleFriends: [MonocleUser] = []
     
     var delegate: InstagramHomeTableViewController?
     
     var selectedFriend: MonocleUser? {
         didSet {
-            if selectedFriend?.accounts?.count == 1 {
-                getMonacleFriendTimeline(userID: (selectedFriend?.twitterID)!)
-            }else{
-                getMonacleFriendTimelineForBothAccounts(twitterID: (selectedFriend?.twitterID)!, instagramID: (selectedFriend?.instagramID)!)
-            }
+            getMonocleTimeline()
         }
     }
     
     var monoclePosts: [MonoclePost] = [] {
         didSet {
-            tableView.reloadData()
+           tableView.reloadData()
         }
     }
+    
     var friends = [TwitterUser]()
     
     var instagramUserID: String?
@@ -52,7 +48,7 @@ class HomeTableViewController: UITableViewController {
             if userID == nil {
                 fetchSavedData()
             }else{
-            getMonacleFriendTimeline(userID: userID!)
+            getTwitterFriendTimeline(userID: userID!)
             }
         }
     }
@@ -64,11 +60,11 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         
         UIApplication.shared.statusBarStyle = .default
-        let logo = UIImage(named: "M")
+        let logo = UIImage(named: "icons8-Monocle-100")
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFit
         imageView.image = logo
-        tableView.estimatedRowHeight = 100.0
+        tableView.estimatedRowHeight = 200.0
         tableView.rowHeight = UITableViewAutomaticDimension
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.titleView = imageView
@@ -77,17 +73,11 @@ class HomeTableViewController: UITableViewController {
         
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        
     }
-        //Set up refreshControll
-        
-//        refreshControll = UIRefreshControl()
-//        refreshControll.addTarget(self, action: #selector(HomeTableViewController.reloadData), for: UIControlEvents.valueChanged)
-//        tableView.insertSubview(refreshControll, at: 0)
-    
 
     
     // MARK: - Table view data source
@@ -116,17 +106,35 @@ class HomeTableViewController: UITableViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        indexNum = indexPath.row
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailView" {
+            OperationQueue.main.addOperation {
+            let destination = segue.destination as! DetailTableViewController
+            destination.monoclePost = self.monoclePosts[self.indexNum]
+            destination.monocleUser = self.selectedFriend
+            }
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
           let cell = tableView.dequeueReusableCell(withIdentifier: "friendsCell") as! FriendsListTableViewCell
               cell.delegate = self
+              cell.selectionStyle = .none
+              tableView.separatorStyle = .none
               cell.monocleFriends = monocleFriends
               return cell
          }else{
+            
           let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.homeCell, for: indexPath) as! TweetCell
-              tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-              cell.selectionStyle = UITableViewCellSelectionStyle.none
+              tableView.separatorStyle = .none
+              cell.selectionStyle = .none
               cell.monoclePost = monoclePosts[indexPath.row]
               return cell
         }
@@ -139,8 +147,15 @@ class HomeTableViewController: UITableViewController {
         self.navigationItem.titleView = imageView
     }
     
+    func getMonocleTimeline() {
+        if selectedFriend?.accounts?.count == 1 {
+            getTwitterFriendTimeline(userID: (selectedFriend?.twitterID)!)
+        }else{
+            getMonacleFriendTimelineForBothAccounts(twitterID: (selectedFriend?.twitterID)!, instagramID: (selectedFriend?.instagramID)!)
+        }
+    }
     
-    func getMonacleFriendTimeline(userID: String) {
+    func getTwitterFriendTimeline(userID: String) {
         
         TwitterClient.sharedInstance?.getUserTimelineMonocle(userID: userID, success: { (monoclePost) in
             self.monoclePosts = monoclePost
@@ -151,32 +166,42 @@ class HomeTableViewController: UITableViewController {
         })
     }
     
+    func getInstagramFriendTimeline(userID: String) {
+        
+        Instagram().fetchRecentMediaForUserMonocle(userID, accessToken: self.instagramAccessToken!) { (monocleFeed) in
+                self.monoclePosts = monocleFeed
+        }
+    }
+    
     func getMonacleFriendTimelineForBothAccounts(twitterID: String, instagramID: String) {
         
+        OperationQueue.main.addOperation {
         TwitterClient.sharedInstance?.getUserTimelineMonocle(userID: twitterID, success: { (monoclePost) in
             self.monoclePosts = monoclePost
         }, failure: { (error) in
             print(error)
         })
-        
-        Instagram().fetchRecentMediaForUserMonocle(instagramID, accessToken: instagramAccessToken!) { (monocleFeed) in
+            
+            
+        Instagram().fetchRecentMediaForUserMonocle(instagramID, accessToken: self.instagramAccessToken!) { (monocleFeed) in
             for feed in monocleFeed {
                 print(feed)
                 self.monoclePosts.append(feed)
             }
             print(self.monoclePosts.count)
+            }
         }
     }
-    
-   
     
     func fetchSavedData() {
         
         if monocleFriends.count == 0 {
-        let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary] 
+        let savedData = self.userDeafaults.object(forKey: "savedFriends") as! [NSDictionary]
+        guard let savedToken = self.userDeafaults.object(forKey: "accessTokenForInstagram") as? String else {return}
         guard let userFriends = TwitterUser.array(json: savedData) else {return}
         self.friends = userFriends
         self.userID = userFriends.first?.uid
+        self.instagramAccessToken = savedToken
         var savedMonacleFriends = [MonocleUser]()
         
         for friends in userFriends {
@@ -205,10 +230,12 @@ class HomeTableViewController: UITableViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "selectFriendsInstagram") as! InstagramHomeTableViewController
         vc.twitterID = selectedFriend?.twitterID
         vc.monocleFriends = monocleFriends
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
         print("tapped")
         
     }
+    
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //        if tweets.count != 0 {
@@ -224,6 +251,8 @@ class HomeTableViewController: UITableViewController {
     @IBAction func twitterButtonTapped(_ sender: Any) {
         
     }
+    
+    
     /*
      func reloadData(appending: Bool = false)  {
      
@@ -252,25 +281,26 @@ class HomeTableViewController: UITableViewController {
      */
 }
 
-extension HomeTableViewController : FriendsSelectionTableViewControllerDelegate, InstagramHomeFriendsTableViewControllerDelegate {
-    func InstagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser]) {
-        
-        monocleFriends = lists
-        tableView.reloadData()
-        navigationController?.popViewController(animated: true)
-    }
+extension HomeTableViewController : InstagramHomeFriendsTableViewControllerDelegate, FriendsSelectionTableViewControllerDelegate {
+    
     
     func friendsSelectionTableViewController(_ viewController: FriendsSelectionTableViewController, didUpdateFriendsList lists: ([TwitterUser], [MonocleUser])) {
         friends = lists.0
         monocleFriends = lists.1
         tableView.reloadData()
         
-        // added by TJ. 
+        // added by TJ.
         selectedFriend = monocleFriends.first
         navigationController?.popViewController(animated: true)
-        
     }
     
-    
+    func instagramHomeFriendsTableViewController(_ viewController: InstagramHomeTableViewController, didUpdateFriendsList lists: [MonocleUser]) {
+        monocleFriends = lists
+        tableView.reloadData()
+        selectedFriend = monocleFriends.first
+        navigationController?.popViewController(animated: true)
+    }
 }
+
+
 
